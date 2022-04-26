@@ -25,18 +25,37 @@ onBeforeMount( async () => {
 </script>
  
 <template>
-<nav class="navbar navbar-expand-lg bg-light">
+<nav class="navbar navbar-expand-lg">
+  <div class="photo">
+<img src="./assets/snoopy.png" width="150em">
+</div>
   <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
     <div class="navbar-nav">
-      <a class="nav-item nav-link" >Home</a>
-      <a class="nav-item nav-link" >Patient</a>
-      <a class="nav-item nav-link" >Scheduling</a>
-      <input type="text" id="search" placeholder="   Search...">
+      <a class="nav-item nav-link" style="color: aliceblue; font-size: x-large; margin-left: -2em;">Home</a>
+      <a class="nav-item nav-link" style="color: aliceblue; font-size: x-large; margin-left: 1.5em;" >Patient</a>
+      <a class="nav-item nav-link" style="color: aliceblue; font-size: x-large; margin-left: 1.5em;">Scheduling</a>
+      <input type="text" id="search" placeholder="   Search... " >
     </div>
   </div>
   <Fa6RegularBell/>
 </nav>
-{{data}}
+<div class="selectcategory">
+  <h2>Category</h2>
+  <!-- <select name="Category" id="Category">
+      <option value="Project Management">Project Management</option>
+      <option value="Dev-Ops Infra">Dev-Ops Infra</option>
+      <option value="Database">Database</option>
+      <option value="Front-End">Front-End</option>
+      <option value="Back-End">Back-End</option>
+  </select> -->
+</div>
+<div class="date-time">
+<h2>Date/Time</h2>
+</div>
+  <h3 id="text">Appointment</h3>
+  <div class="appointment">
+  </div>
+<button class="next">Next</button>
 </template>
  
 <style>
@@ -44,12 +63,79 @@ html , body{
   background-color: #36628F;
 }
 #search{
-  margin-left: 45em;
+  margin-left: 28em;
   position: absolute;
-  width: 500px;
-  margin-top: 0.25em;
+  width: 590px;
+  height: 40px;
+  margin-top: 0.40em;
+  border-radius: 10px;
 }
 .navbar-nav{
-  margin-left: 8em;
+  margin-left: 10em;
+  color: #36628F;
+}
+.navbar{
+  background-color: #36628F;
+}
+.photo{
+  margin-top: 0.1em;
+  margin-left: 3.5em;
+  position: fix; 
+}
+.selectcategory{
+  margin-top: 6em;
+  margin-left: 2.5em;
+  position: absolute;
+  border-radius: 12px;
+  cursor: pointer; 
+  padding: 10px 30px;
+  text-decoration: none;
+  background-color: #A8DA89;
+  color: 00000;
+  font-family: 'Laila';
+  color: black;
+}
+.date-time{
+  margin-top: 13em;
+  margin-left: 2.5em;
+  position: absolute;
+  border-radius: 12px;
+  cursor: pointer; 
+  padding: 10px 30px;
+  text-decoration: none;
+  background-color: #F5C89F;
+  color: 00000;
+  font-family: 'Laila';
+  color: black;
+}
+#text{
+  position: absolute;
+  margin-top: -1em;   
+  margin-left: 12em;
+  color: white;
+  font-family: 'Laila';
+}
+.appointment{
+  background-color: #EDC557;
+  position: absolute;
+  width: 1180px;
+  height: 485px; 
+  margin-top: 1em;   
+  margin-left: 20em;
+  border-radius: 12px;
+}
+.next{
+  border-radius: 12px;
+  cursor: pointer; 
+  padding: 10px 40px;
+  text-align: center;
+  text-decoration: none;
+  margin-left: 86em;
+  margin-top: 31.5em;
+  background-color: #D3EAC0;
+  color: 00000;
+  font-family: 'Cinzel Decorative', cursive;
+  color: black;
+  position:  absolute;
 }
 </style>
