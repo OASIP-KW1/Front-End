@@ -1,10 +1,12 @@
 <script setup>
 import { ref,onBeforeMount } from 'vue'
-import Fa6RegularBell from './components/icons/Fa6RegularBell.vue';
+import Fa6RegularBell from './components/icons/Fa6RegularBell.vue'
+import eventlist from './components/EventList.vue'
 
 console.clear();
 
-let data = ref([])
+
+let data = ref({})
 // GET
 const getNotes = async () =>{
 
@@ -25,18 +27,8 @@ onBeforeMount( async () => {
 </script>
  
 <template>
-<nav class="navbar navbar-expand-lg bg-light">
-  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-    <div class="navbar-nav">
-      <a class="nav-item nav-link" >Home</a>
-      <a class="nav-item nav-link" >Patient</a>
-      <a class="nav-item nav-link" >Scheduling</a>
-      <input type="text" id="search" placeholder="   Search...">
-    </div>
-  </div>
-  <Fa6RegularBell/>
-</nav>
-{{data}}
+<Fa6RegularBell/>
+<eventlist :eventList = "data"/>
 </template>
  
 <style>
