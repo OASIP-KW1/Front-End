@@ -56,6 +56,7 @@ onBeforeMount( async () => {
 </div>
   <h3 id="text">Appointment</h3>
   <div class="appointment">
+    <eventlist :eventList="data"/>
   </div>
 <button class="next">Next</button>
 </template>
