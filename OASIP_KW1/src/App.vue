@@ -1,10 +1,12 @@
 <script setup>
 import { ref,onBeforeMount } from 'vue'
-import Fa6RegularBell from './components/icons/Fa6RegularBell.vue';
+import Fa6RegularBell from './components/icons/Fa6RegularBell.vue'
+import eventlist from './components/EventList.vue'
 
 console.clear();
 
-let data = ref([])
+
+let data = ref({})
 // GET
 const getNotes = async () =>{
 
