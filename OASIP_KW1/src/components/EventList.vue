@@ -23,8 +23,8 @@ defineProps({
                 </tr>
             </thead>
             <tbody>
-                <tr v-for="event in eventList" :key="event.id">
-                    <td>{{event.id}}</td>
+                <tr v-for="(event,index) in eventList" :key="event.id" >
+                    <td>{{index +1}}</td>
                     <td>{{event.bookingName}}</td>
                     <td>{{event.bookingEmail}}</td>
                     <td>{{event.eventCategory.eventCategoryName}}</td>

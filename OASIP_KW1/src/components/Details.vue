@@ -16,6 +16,7 @@ defineProps({
             <div class="modal-body">
             <table>
               <tr>
+                <th>ID</th>  
                 <th>Name</th>
                 <th>Booking Email</th>
                 <th>Category</th>
@@ -35,7 +36,7 @@ defineProps({
             </table>
           </div>
           <div class="modal-button">
-            <!-- <button class="button">OK</button> -->
+            <router-link :to="{ name: 'Home'}"><button class="button">BACK</button></router-link>
           </div>
         </div>
       </div>
