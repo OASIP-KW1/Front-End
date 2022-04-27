@@ -26,7 +26,7 @@ console.log(toggle.value);
  
 <template>
   <div>
-   <div v-if ="data.length == 0" class="null">No Scheduled Events</div>
+   <!-- <div v-if ="data.length == 0" class="null">No Scheduled Events</div> -->
     <eventlist :eventList="data"/>
   </div>
   <router-view></router-view>

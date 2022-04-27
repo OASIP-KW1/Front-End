@@ -5,11 +5,13 @@ defineProps({
     require: true
   },
 })
+
 </script>
  
 <template>
 <div class="container">
-        <h3 class="p-3 text-center">VIEW-EVENT-LIST-ALL</h3>
+        <h3 v-if ="eventList.length == 0" class="p-3 text-center">VIEW-EVENT-LIST-EMPTY</h3>
+        <h3 v-else class="p-3 text-center">VIEW-EVENT-LIST-ALL</h3>
         <table class="table table-striped table-bordered">
             <thead>
                 <tr>
@@ -37,6 +39,7 @@ defineProps({
                 </tr>
             </tbody>
         </table>
+        <div v-if ="eventList.length == 0" class="null">No Scheduled Events</div>
   </div>
 </template>
  
@@ -82,7 +85,8 @@ h6 {
 }
 .null{
   text-align: center;
-  margin-top: 2em;
-  font-size: larger;
+  font-size: 2em;
+  color: red;
+  margin-top: 2.5em;
 }
 </style>
