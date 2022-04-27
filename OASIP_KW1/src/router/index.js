@@ -7,12 +7,14 @@ const routes = [
     {
         path: '/',
         name: 'Home',
-        component: Home
-    },
-    {
-        path: '/details-base/:id',
-        name: 'Detailsbase',
-        component: Detailsbase
+        component: Home,
+        children: [
+            {
+                path: '/details-base/:id',
+                name: 'Detailsbase',
+                component: Detailsbase
+            }
+        ]
     }
 ]
 

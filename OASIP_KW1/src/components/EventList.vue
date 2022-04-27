@@ -80,4 +80,9 @@ h6 {
   display: flex;
   justify-content: end;
 }
+.null{
+  text-align: center;
+  margin-top: 2em;
+  font-size: larger;
+}
 </style>

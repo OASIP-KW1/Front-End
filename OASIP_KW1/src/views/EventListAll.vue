@@ -14,7 +14,9 @@ const getNotes = async () =>{
     console.log(`response.status: ${res.status}`)
     console.log(res);
     data.value = await res.json()
+    console.log(data.value);
     }else 
+
     console.log("error, cann't get data");
 }
 onBeforeMount( async () => {
