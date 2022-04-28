@@ -1,6 +1,6 @@
 <script setup>
 import { ref,onBeforeMount } from 'vue'
-import eventlist from './components/EventList.vue'
+import eventlist from '../components/EventList.vue'
 
 console.clear();
 
@@ -33,7 +33,6 @@ onBeforeMount( async () => {
 
 <style>
 html , body{
-  background-color: #BEBEBE;
   max-width: 100%;
   max-height: 0em
 }

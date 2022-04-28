@@ -10,11 +10,11 @@ defineProps({
  
 <template>
 <div class="container">
-        <h3 v-if ="eventList.length == 0" class="p-3 text-center">VIEW-EVENT-LIST-EMPTY</h3>
-        <h3 v-else class="p-3 text-center">VIEW-EVENT-LIST-ALL</h3>
+        <p v-if ="eventList.length == 0" class="p-3 text-center">VIEW-EVENT-LIST-EMPTY</p>
+        <p v-else class="p-3 text-center">VIEW-EVENT-LIST-ALL</p>
         <table class="table table-striped table-bordered">
             <thead>
-                <tr>
+                <tr class="title">
                     <th>ID</th>
                     <th>Booking Name</th>
                     <th>Booking Email</th>
@@ -25,15 +25,16 @@ defineProps({
                 </tr>
             </thead>
             <tbody>
-                <tr v-for="(event,index) in eventList" :key="event.id" >
+                <tr v-for="(event,index) in eventList" :key="event.id " class="datas" >
                     <td>{{index +1}}</td>
                     <td>{{event.bookingName}}</td>
                     <td>{{event.bookingEmail}}</td>
                     <td>{{event.eventCategory.eventCategoryName}}</td>
                     <td>{{event.eventStartTime}}</td>
                     <td>{{event.eventDuration}} minute</td>
-                    <td>{{event.eventNote}}</td>
-                    <td><router-link :to="{ name: 'Detailsbase' , params:{id:event.id}}"><button class="btnclick">Click</button></router-link></td>
+                    <td v-if="event.eventNote !== null">{{event.eventNote}}</td>
+                    <td v-else>-</td>
+                    <td><router-link :to="{ name: 'Detailsbase' , params:{id:event.id}}"><button type="button" class="btn btn-warning">Detail</button></router-link></td>
                     <td>
                     </td>
                 </tr>
@@ -45,14 +46,16 @@ defineProps({
  
  
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Changa+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Itim&display=swap');
 .container{
   text-align: center;
 }
-.btnclick{
-  border-radius: 10px;
+td{
+  font-size: 0.98em;
 }
-.btnclick:hover{
-  background-color: blanchedalmond;
+.btnclick{
+  border-radius: 20px;
 }
 .modal-mask {
   width: 100%;
@@ -64,24 +67,16 @@ defineProps({
   display: table-cell;
   vertical-align: middle;
 }
-h6 {
-  text-align: center;
+.p-3{
+ font-family: 'Changa One', cursive;
+ font-size: 3em;
 }
-.modal-container {
-  max-width: max-content;
-  margin: 10px auto;
-  padding: 30px 200px;
-  background-color: #ffffff;
-  border-radius: 10px;
+.title{
+  font-family: 'Itim', cursive;
+  font-size: 1.25em;
 }
-
-.modal-body {
-  margin-left: -10em;
-}
-
-.modal-button {
-  display: flex;
-  justify-content: end;
+.datas{
+  font-family: 'Itim', cursive;
 }
 .null{
   text-align: center;

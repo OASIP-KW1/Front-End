@@ -1,6 +1,7 @@
 import {createRouter, createWebHistory} from 'vue-router'
 import Home from '../views/Home.vue'
 import Detailsbase from '../views/Details-Base.vue'
+import EventListAll from '../views/EventListAll.vue'
 
 const history = createWebHistory()
 const routes = [
@@ -15,6 +16,11 @@ const routes = [
                 component: Detailsbase
             }
         ]
+    },
+    {
+        path: '/event',
+        name: 'EventListAll',
+        component: EventListAll
     }
 ]
 

@@ -12,31 +12,18 @@ defineProps({
     <div class="modal-mask">
       <div class="modal-wrapper">
         <div class="modal-container">
-          <h6>Detail ID: {{eventDetails.id}}</h6>
+          <p class="title-id"><b>Detail ID / หมายเลขนัด : </b>{{eventDetails.id}}</p>
             <div class="modal-body">
-            <table>
-              <tr>
-                <th>ID</th>  
-                <th>Name</th>
-                <th>Booking Email</th>
-                <th>Category</th>
-                <th>Start-Time</th>
-                <th>Duration</th>
-                <th>eventNote</th>
-              </tr>
-              <tr>
-                <td>{{eventDetails.id}}</td>
-                <td>{{eventDetails.bookingName}}</td>
-                <td>{{eventDetails.bookingEmail}}</td>
-                <td>{{eventDetails.eventCategory.eventCategoryName}}</td>
-                <td>{{eventDetails.eventStartTime}}</td>
-                <td>{{eventDetails.eventDuration}} minute</td>
-                <td>{{eventDetails.eventNote}}</td>
-              </tr>
-            </table>
+                <p> Name : {{eventDetails.bookingName}}</p>
+                <p> Email : {{eventDetails.bookingEmail}}</p>
+                <p> Category : {{eventDetails.eventCategory.eventCategoryName}}</p>
+                <p> Start-Time : {{eventDetails.eventStartTime}}</p>
+                <p> Duration : {{eventDetails.eventDuration}} minute</p>
+                <p v-if="eventDetails.eventNote !== null"> Note : {{eventDetails.eventNote}}</p>
+                <p v-else> Note : - </p>
           </div>
           <div class="modal-button">
-            <router-link :to="{ name: 'Home'}"><button class="button">BACK</button></router-link>
+            <router-link :to="{ name: 'Home'}"><button type="button" class="btn btn-warning">Close</button></router-link>
           </div>
         </div>
       </div>
@@ -45,5 +32,27 @@ defineProps({
 </template>
  
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Itim&display=swap');
+.modal-container {
+  max-width: max-content;
+  margin: 5px auto;
+  padding: 20px 150px;
+  background-color: #ffdbdb;
+  border-radius: 10px;
+  font-family: 'Itim', cursive;
+}
+.title-id{
+  text-align: center;
+  /* margin-left: 4em; */
+  font-size: 1.5em
+}
+.modal-body {
+  margin-left: 1em;
+}
 
+.modal-button {
+  display: flex;
+  justify-content: end;
+  margin-left: -15em;
+}
 </style> 

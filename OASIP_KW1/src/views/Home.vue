@@ -1,6 +1,6 @@
 <script setup>
 import { ref,onBeforeMount } from 'vue'
-import eventlist from '../components/EventList.vue'
+
 
 console.clear();
 
@@ -25,17 +25,27 @@ console.log(toggle.value);
 </script>
  
 <template>
-  <div>
-   <!-- <div v-if ="data.length == 0" class="null">No Scheduled Events</div> -->
-    <eventlist :eventList="data"/>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link">Home</a>
+      </li>
+      <li class="nav-item">
+        <router-link :to="{ name: 'EventListAll'}"><a class="nav-link">Scheduled</a></router-link>
+      </li>
+    </ul>
   </div>
-  <router-view></router-view>
+</nav>
 </template>
 
 <style>
 html , body{
-  background-color: #BEBEBE;
+  background-color: #fcfade;
   max-width: 100%;
   max-height: 0em
+}
+.li{
+  color: aliceblue;
 }
 </style>
