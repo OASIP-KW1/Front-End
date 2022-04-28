@@ -21,6 +21,7 @@ onBeforeMount( async () => {
    await getEvents()
 })
 
+console.log("game");
 </script>
  
 <template> 

@@ -9,19 +9,25 @@ const routes = [
         path: '/',
         name: 'Home',
         component: Home,
-        children: [
-            {
-                path: '/details-base/:id',
-                name: 'Detailsbase',
-                component: Detailsbase
-            }
-        ]
     },
     {
         path: '/event',
         name: 'EventListAll',
         component: EventListAll
+        // children: [
+        //     {
+        //         path: '/details-base/:id',
+        //         name: 'Detailsbase',
+        //         component: Detailsbase
+        //     }
+        // ]
+    },
+    {
+        path: '/details-base/:id',
+                name: 'Detailsbase',
+                component: Detailsbase
     }
+    
 ]
 
 const router = createRouter({ history,routes })
