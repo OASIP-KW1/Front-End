@@ -40,6 +40,7 @@ defineProps({
   background-color: #ffdbdb;
   border-radius: 10px;
   font-family: 'Itim', cursive;
+  margin-top: 8em;
 }
 .title-id{
   text-align: center;

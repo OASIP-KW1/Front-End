@@ -25,21 +25,35 @@ console.log(toggle.value);
 </script>
  
 <template>
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <div class="collapse navbar-collapse" id="navbarNav">
-    <ul class="navbar-nav">
-      <li class="nav-item">
-        <a class="nav-link">Home</a>
-      </li>
-      <li class="nav-item">
-        <router-link :to="{ name: 'EventListAll'}"><a class="nav-link">Scheduled</a></router-link>
-      </li>
-    </ul>
-  </div>
-</nav>
+<div class="welcome">
+  Welcome to OASIP-KW1
+</div>
+<p class="sub">Online Appoinment Scheduling System</p>
+<p class="sub">My Teams : </p>
+<div class="teams">
+  <table width="80%">
+    <tr>
+      <td><img src="../assets/opla.jpg" alt="opal" width="250"></td> 
+      <td><img src="../assets/opla.jpg" alt="opal" width="250"></td> 
+      <td><img src="../assets/opla.jpg" alt="opal" width="250"></td> 
+   </tr>
+    <tr >
+      <td>Name : Naphatsawan</td>
+      <td>Name : Pichaya</td>
+      <td>Name : Wareewan</td>
+    </tr>
+        <tr>
+      <td>ID : 63130500064</td>
+      <td>ID : 63130500086</td>
+      <td>ID : 63130500105</td>
+    </tr>
+  </table>
+</div>
 </template>
 
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Itim&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Changa+One&display=swap');
 html , body{
   background-color: #fcfade;
   max-width: 100%;
@@ -47,5 +61,29 @@ html , body{
 }
 .li{
   color: aliceblue;
+}
+.btn{
+  margin-top: 2em;
+  margin-left: 2em;
+  font-family: 'Itim', cursive;
+}
+.welcome{
+ font-family: 'Changa One', cursive;
+ font-size: 3em;
+ text-align: center;
+ margin-top: 1em;
+}
+.sub{
+  font-size: 1.5em;
+  text-align: center;
+  font-family: 'Changa One', cursive;
+}
+.teams{
+  position: relative;
+  margin-left: 14em;
+}
+td{
+  text-align: center;
+  font-family: 'Itim', cursive;
 }
 </style>

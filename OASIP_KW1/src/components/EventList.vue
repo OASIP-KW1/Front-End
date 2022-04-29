@@ -22,6 +22,7 @@ defineProps({
                     <th>Start-Time</th>
                     <th>Duration</th>
                     <th>Event Notes</th>
+                    <th>Details</th>
                 </tr>
             </thead>
             <tbody>
@@ -32,9 +33,12 @@ defineProps({
                     <td>{{event.eventCategory.eventCategoryName}}</td>
                     <td>{{event.eventStartTime}}</td>
                     <td>{{event.eventDuration}} minute</td>
-                    <td v-if="event.eventNote !== null">{{event.eventNote}}</td>
-                    <td v-else>-</td>
-                    <td><router-link :to="{ name: 'Detailsbase' , params:{id:event.id}}"><button type="button" class="btn btn-warning">Detail</button></router-link></td>
+                    <td v-if="event.eventNote == null">-</td>
+                    <td v-else>{{event.eventNote}}</td>
+                    <td><router-link :to="{ name: 'Detailsbase' , params:{id:event.id}}">
+                    <button type="button" class="btn btn-warning">Detail</button>
+                    </router-link>
+                    </td>
                     <td>
                     </td>
                 </tr>
@@ -54,8 +58,10 @@ defineProps({
 td{
   font-size: 0.98em;
 }
-.btnclick{
-  border-radius: 20px;
+.btn{
+  margin-right: 1.5em;
+  margin-top: 2em;
+  position: relative;
 }
 .modal-mask {
   width: 100%;
