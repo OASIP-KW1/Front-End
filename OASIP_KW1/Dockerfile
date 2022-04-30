@@ -1,7 +1,9 @@
 FROM node:18-alpine3.14 as build
 WORKDIR /app
 COPY package*.json ./
-RUN npm install
+RUN npm install 
+RUN npm install --save bootstrap
+RUN npm install --save @popperjs/core
 COPY . .
 RUN npm run build
 
