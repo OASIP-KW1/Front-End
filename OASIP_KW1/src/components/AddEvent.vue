@@ -4,9 +4,14 @@
  
 <template>
     <p class="addtitle">Add Events / Booking</p>
+    <div class="input">
+       <p>Name : <input type="text" size="50"> &nbsp;&nbsp;
+       Email : <input type="text" size="50"> </p> 
+    </div>
     <div class="select1">
         <p class="select">Select Category do you need</p>
 <select class="option">
+    <option value="">--Please choose an option--</option>
     <option value="1">Project Management Clinic</option>
     <option value="2">DevOps/Infra Clinic</option>
     <option value="3">Database Clinic</option>
@@ -17,7 +22,8 @@
 <div class="select2">
     <p>Date / Time</p>
     <input id="party" type="datetime-local" name="partydate">
-</div>
+</div >
+<p class="addnotes">Add Note :</p> <textarea id="notes" cols="50" rows="10"></textarea> 
 
 </template>
  
@@ -30,30 +36,32 @@
  text-align: center;
  margin-top: 0.5em;
 }
-.select{
-    font-size: larger;
-    margin-left: 2em;
-    font-family: 'Changa One', cursive;
-     text-align: center;
+.input{
+ font-family: 'Changa One', cursive;
+ font-size: 1.25em;
+ text-align: center;
 }
-.option{
-    margin-left: 2.5em;
-    text-align: center;
+.addnotes{
+    font-size: larger;
+    margin-left: 6em;
+    font-family: 'Changa One', cursive; 
+    margin-top: 2em;
 }
 .select2{
     font-size: larger;
-    margin-left: 2em;
+    margin-left: 6em;
     font-family: 'Changa One', cursive;
-     text-align: center;
+     /* text-align: center; */
 }
 .select1{
-    /* font-size: larger; */
-    margin-left: 2em;
-    /* font-family: 'Changa One', cursive; */
-    text-align: center; 
+    font-size: larger;
+    margin-left: 6em;
+    font-family: 'Changa One', cursive;
+     
 }
-.party{
-    font-family: 'Itim', cursive;
-    margin-left: 2em
+#notes{
+    position: relative;
+    margin-left: 15em;
+    margin-top: -2em;
 }
 </style>
