@@ -1,7 +1,6 @@
 <script setup>
 import { ref,onBeforeMount } from 'vue'
 
-
 console.clear();
 
 let data = ref({})
