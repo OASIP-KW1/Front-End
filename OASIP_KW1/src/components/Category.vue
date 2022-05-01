@@ -41,13 +41,8 @@ defineProps({
   font-family: 'Itim', cursive;
   margin-top: 8em; */
   width: 400px;
-  height: 35px;    
-  padding: 100px;
-}
-.card-body{
-  width: 400px;
   height: 550px;      
-  padding: 100px; 
+  padding: 100px;
 }
 .titleCategory{
  font-family: 'Changa One', cursive;
@@ -56,7 +51,7 @@ defineProps({
  margin-top: 0.5em;
 }
 .add{
-  /* position: relative; */
+  position: relative;
   /* margin-top: 0.0015em; */
   margin-left: -80em;
 }
