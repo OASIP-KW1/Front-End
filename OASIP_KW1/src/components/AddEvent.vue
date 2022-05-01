@@ -52,16 +52,27 @@
     margin-left: 6em;
     font-family: 'Changa One', cursive;
      /* text-align: center; */
+    margin-top: 2em;
+    display: flex;
 }
 .select1{
     font-size: larger;
     margin-left: 6em;
     font-family: 'Changa One', cursive;
-     
+    display: flex;
+    margin-top: 2em;
+}
+.option{
+    margin-left: 3em;
+    width:52.2em;
+    text-align: center;
 }
 #notes{
     position: relative;
     margin-left: 15em;
     margin-top: -2em;
+}
+#party{
+    margin-left: 2em;
 }
 </style>

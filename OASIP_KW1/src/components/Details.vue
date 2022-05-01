@@ -23,24 +23,25 @@ defineProps({
                 <p v-else> Note : - </p>
           </div>
           <div class="modal-button">
-            <router-link :to="{  name: 'EventListAll' }"><button type="button" class="btn btn-warning">Close</button></router-link>
+            <div class ="add"><router-link :to="{  name: 'AddEvents' }"><button type="button" class="Add btn btn-success">Add Appointment</button></router-link></div>
+            <div class ="close"><router-link :to="{  name: 'EventListAll' }"><button type="button" class="Close btn btn-warning">Close</button></router-link></div>
+          </div>
           </div>
         </div>
       </div>
-    </div> 
-</div> 
+    </div>  
 </template>
  
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Itim&display=swap');
 .modal-container {
   max-width: max-content;
-  margin: 5px auto;
-  padding: 20px 150px;
+  margin: 10px auto;
+  padding: 20px 100px;
   background-color: #ffdbdb;
   border-radius: 10px;
   font-family: 'Itim', cursive;
-  margin-top: 8em;
+  margin-top: 5em;
 }
 .title-id{
   text-align: center;
@@ -48,12 +49,28 @@ defineProps({
   font-size: 1.5em
 }
 .modal-body {
-  margin-left: 1em;
+  margin-left: -1em;
+  width: 300px;
+  height: 15em;  
 }
-
 .modal-button {
+  display: inline-block;
+  justify-content: end;
+  margin-top: 3em;
+  margin-right: 6em;
+}
+.add{
+  /* padding: 1em;
+  margin-top: -5em;
+  margin-left: 150em; */
+  margin-top: -3em;
+}
+.close{
   display: flex;
   justify-content: end;
-  margin-left: -15em;
+  margin-left: -10em;
+  /* margin-inline-start: 50%;
+  margin-inline-end: 5%; */
+
 }
-</style> 
+</style>
