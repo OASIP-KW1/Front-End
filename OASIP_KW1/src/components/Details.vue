@@ -23,7 +23,7 @@ defineProps({
                 <p v-else> Note : - </p>
           </div>
           <div class="modal-button">
-            <div class ="add"><router-link :to="{  name: 'AddEvents' }"><button type="button" class="Add btn btn-success">Add Appointment</button></router-link></div>
+            <!-- <div class ="add"><router-link :to="{  name: 'AddEvents' }"><button type="button" class="Add btn btn-success">Add Appointment</button></router-link></div> -->
             <div class ="close"><router-link :to="{  name: 'EventListAll' }"><button type="button" class="Close btn btn-warning">Close</button></router-link></div>
           </div>
         </div>

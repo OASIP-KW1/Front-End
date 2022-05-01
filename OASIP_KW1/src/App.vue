@@ -26,7 +26,7 @@
  
 <style>
 .navbar{
-  padding: 39em;
+  padding: 40em;
   width: max-content;
 }
 </style>

@@ -21,7 +21,7 @@ defineProps({
                     <th>Category</th>
                     <th>Start-Time</th>
                     <th>Duration</th>
-                    <th>Event Notes</th>
+                    <!-- <th>Event Notes</th> -->
                     <th>Details</th>
                 </tr>
             </thead>
@@ -33,8 +33,8 @@ defineProps({
                     <td>{{event.eventCategory.eventCategoryName}}</td>
                     <td>{{event.eventStartTime}}</td>
                     <td>{{event.eventDuration}} minute</td>
-                    <td v-if="event.eventNote == null">-</td>
-                    <td v-else>{{event.eventNote}}</td>
+                    <!-- <td v-if="event.eventNote == null">-</td>
+                    <td v-else>{{event.eventNote}}</td> -->
                     <td><router-link :to="{ name: 'Detailsbase' , params:{id:event.id}}">
                     <button type="button" class="btn btn-warning">Detail</button>
                     </router-link>

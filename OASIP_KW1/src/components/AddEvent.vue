@@ -1,34 +1,86 @@
 <script setup>
+import { computed } from '@vue/reactivity';
+import { ref } from 'vue';
 
+defineEmits(['createAppointment'])
+const props = defineProps ({
+    categories: {
+    type: Array,
+    default: []
+  }
+}) 
+
+const name = ref()
+const email = ref()
+const category = ref()
+const date = ref()
+// const time = ref()
+const addnotes = ref()
+const alldata  = computed(() => {
+    return {bookingName: name.value , bookingEmail: email.value , eventCategory:{"id": categoryId.value,
+            "eventCategoryName": category.value,
+            "eventCategoryDescription": null,
+            "eventDuration":  null } , eventStartTime: datetime() , eventDuration: duration.value , eventNote: addnotes.value }
+})
+
+const datetime  = () =>{
+    const disdate = new Date(date.value) 
+    // date.setDate(date.value) 
+    // date.setTime(time.value)
+    return  disdate
+}
+
+const duration = computed(() => {
+    const currentCategoryId = ref(0);
+    for (let i = 0; i < props.categories.length; i++) {
+        console.log(props.categories[i]);
+        console.log(i);
+        if (category.value == props.categories[i].eventCategoryName) {
+            currentCategoryId.value = props.categories[i].eventDuration;
+        }
+    }
+    return currentCategoryId.value;
+})
+
+const categoryId = computed(() => {
+    const currentCategoryId = ref(0);
+    for (let i = 0; i < props.categories.length; i++) {
+        if (category.value == props.categories[i].eventCategoryName) {
+            currentCategoryId.value = props.categories[i].id;
+        }
+    }
+    return currentCategoryId.value;
+})
 </script>
  
 <template>
     <p class="addtitle">Add Events / Booking</p>
     <div class="input">
-       <p>Name : <input type="text" size="50"> &nbsp;&nbsp;
-       Email : <input type="text" size="50"> </p> 
+       <p>Name : <input type="text" size="50" v-model="name"> &nbsp;&nbsp;
+       Email : <input type="text" size="50" v-model="email"> </p> 
     </div>
     <div class="select1">
         <p class="select">Select Category do you need</p>
-<select class="option">
-    <option value="">--Please choose an option--</option>
-    <option value="1">Project Management Clinic</option>
+<select class="option" v-model="category">
+    <option v-for="(category,index) in categories" :key="index">{{category.eventCategoryName}}</option>
+    <!-- <option value="1">Project Management Clinic</option>
     <option value="2">DevOps/Infra Clinic</option>
     <option value="3">Database Clinic</option>
     <option value="4">Client-side Clinic</option>
-    <option value="5">Server-side Clinic</option>
+    <option value="5">Server-side Clinic</option> -->
 </select>
     </div>
 <div class="select2">
-    <p>Date</p>
-    <input id="party" type="date" name="partydate">
+    <p>Date - Time </p>
+    <input id="party" type="datetime-local" name="partydate" v-model="date">
 </div >
-<div class="select3">
+<!-- <div class="select3">
     <p>Time</p>
-    <input id="party" type="time" name="partydate" >
-</div >
-<p class="addnotes">Add Note :</p> <textarea id="notes" cols="157" rows="5" maxlength="100"></textarea> 
-<div class ="button"><router-link :to="{  name: 'EventListAll' }"><button type="button" class="Close btn btn-success btn-lg">Create Appointment</button></router-link></div>
+    <input id="party" type="time" name="partydate" v-model="time" >
+</div > -->
+<p class="addnotes">Add Note :</p> <textarea id="notes" cols="157" rows="5" maxlength="100" v-model="addnotes"></textarea> 
+<!-- <div class ="button"><router-link :to="{  name: 'EventListAll' }"><button type="button" class="Close btn btn-success btn-lg" @click="$emit('createAppointment' , alldata)">Create Appointment</button></router-link></div> -->
+<div class ="button"><button type="button" class="Close btn btn-success btn-lg" @click="$emit('createAppointment' , alldata)">Create Appointment</button></div>
 </template>
  
 <style>
