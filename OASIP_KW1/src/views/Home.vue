@@ -34,7 +34,7 @@ console.log(toggle.value);
   <table width="80%">
     <tr>
       <td><img src="../assets/dear.jpeg" alt="opal" width="250"></td> 
-      <td><img src="../assets/opla.jpg" alt="opal" width="250"></td> 
+      <td><img src="../assets/game.jpg" alt="opal" width="250"></td> 
       <td><img src="../assets/opla.jpg" alt="opal" width="250"></td> 
    </tr>
     <tr >

@@ -20,11 +20,15 @@
 </select>
     </div>
 <div class="select2">
-    <p>Date / Time</p>
-    <input id="party" type="datetime-local" name="partydate">
+    <p>Date</p>
+    <input id="party" type="date" name="partydate">
 </div >
-<p class="addnotes">Add Note :</p> <textarea id="notes" cols="50" rows="10"></textarea> 
-
+<div class="select3">
+    <p>Time</p>
+    <input id="party" type="time" name="partydate" >
+</div >
+<p class="addnotes">Add Note :</p> <textarea id="notes" cols="157" rows="5" maxlength="100"></textarea> 
+<div class ="button"><router-link :to="{  name: 'EventListAll' }"><button type="button" class="Close btn btn-success btn-lg">Create Appointment</button></router-link></div>
 </template>
  
 <style>
@@ -47,13 +51,23 @@
     font-family: 'Changa One', cursive; 
     margin-top: 2em;
 }
+.select3{
+    display: flex;
+    font-size: larger;
+    margin-left: 6em;
+    font-family: 'Changa One', cursive;
+     /* text-align: center; */
+         margin-top: -2.5em;
+    justify-content: center;
+    
+}
 .select2{
     font-size: larger;
     margin-left: 6em;
     font-family: 'Changa One', cursive;
      /* text-align: center; */
     margin-top: 2em;
-    display: flex;
+    display: flex;   
 }
 .select1{
     font-size: larger;
@@ -66,6 +80,16 @@
     margin-left: 3em;
     width:52.2em;
     text-align: center;
+}
+.button{
+    display: flex;
+    justify-content: center;
+    /* padding: 15px 32px; */
+    font-size: 16px;
+
+}
+.button:hover{
+    color: white;
 }
 #notes{
     position: relative;
