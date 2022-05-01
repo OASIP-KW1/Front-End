@@ -26,22 +26,23 @@ defineProps({
             <div class ="add"><router-link :to="{  name: 'AddEvents' }"><button type="button" class="Add btn btn-success">Add Appointment</button></router-link></div>
             <div class ="close"><router-link :to="{  name: 'EventListAll' }"><button type="button" class="Close btn btn-warning">Close</button></router-link></div>
           </div>
-          </div>
         </div>
       </div>
-    </div>  
+    </div> 
+</div> 
 </template>
  
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Itim&display=swap');
 .modal-container {
   max-width: max-content;
-  margin: 10px auto;
+  margin: 5px auto;
   padding: 20px 100px;
   background-color: #ffdbdb;
   border-radius: 10px;
   font-family: 'Itim', cursive;
   margin-top: 5em;
+
 }
 .title-id{
   text-align: center;
@@ -54,23 +55,17 @@ defineProps({
   height: 15em;  
 }
 .modal-button {
-  display: inline-block;
-  justify-content: end;
-  margin-top: 3em;
-  margin-right: 6em;
-}
-.add{
-  /* padding: 1em;
-  margin-top: -5em;
-  margin-left: 150em; */
-  margin-top: -3em;
-}
-.close{
   display: flex;
   justify-content: end;
-  margin-left: -10em;
-  /* margin-inline-start: 50%;
-  margin-inline-end: 5%; */
-
+  margin-top: 2em;
+  /* padding-left: 1em; */
+  margin-left: 14em;
 }
+.close{
+  margin-top: 3em;
+  margin-left: -10em;
+  margin-right: 5em;
+}
+
+
 </style>
