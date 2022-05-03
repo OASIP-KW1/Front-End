@@ -78,15 +78,15 @@ const categoryId = computed(() => {
 @import url('https://fonts.googleapis.com/css2?family=Changa+One&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Itim&display=swap');
 .addtitle{
- font-family: 'Changa One', cursive;
- font-size: 3em;
- text-align: center;
- margin-top: 0.5em;
+    font-family: 'Changa One', cursive;
+    font-size: 3em;
+    text-align: center;
+    margin-top: 0.5em;
 }
 .input{
- font-family: 'Changa One', cursive;
- font-size: 1.25em;
- text-align: center;
+    font-family: 'Changa One', cursive;
+    font-size: 1.25em;
+    text-align: center;
 }
 .addnotes{
     font-size: larger;
@@ -102,7 +102,6 @@ const categoryId = computed(() => {
      /* text-align: center; */
          margin-top: -2.5em;
     justify-content: center;
-    
 }
 .select2{
     font-size: larger;
@@ -110,7 +109,7 @@ const categoryId = computed(() => {
     font-family: 'Changa One', cursive;
      /* text-align: center; */
     margin-top: 2em;
-    display: flex;   
+    display: flex; 
 }
 .select1{
     font-size: larger;

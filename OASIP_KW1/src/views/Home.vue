@@ -34,7 +34,7 @@ console.log(toggle.value);
 @import url('https://fonts.googleapis.com/css2?family=Itim&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Changa+One&display=swap');
 html , body{
-  background-color: #FDE5EC;
+  background-color: #B16A97;
   max-width: 100%;
   max-height: 0em
 }
