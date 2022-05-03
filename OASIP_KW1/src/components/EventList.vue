@@ -1,9 +1,11 @@
 <script setup>
+defineEmits(['deleteEvent'])
 defineProps({
   eventList: {
     type: Object,
     require: true
   },
+  
 })
 
 </script>
@@ -38,6 +40,7 @@ defineProps({
                     <td><router-link :to="{ name: 'Detailsbase' , params:{id:event.id}}">
                     <button type="button" class="btn btn-warning">Detail</button>
                     </router-link>
+                    <button type="button" class="btn btn-warning" @click="$emit('deleteEvent',event.id)">Delete</button>
                     </td>
                     <td>
                     </td>
