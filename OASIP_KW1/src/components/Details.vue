@@ -23,8 +23,8 @@ defineProps({
                 <p v-else> Note : - </p>
           </div>
           <div class="modal-button">
-            <div class ="add"><router-link :to="{  name: 'AddEvents' }"><button type="button" class="Add btn btn-success">Add Appointment</button></router-link></div>
-            <div class ="close"><router-link :to="{  name: 'EventListAll' }"><button type="button" class="Close btn btn-warning">Close</button></router-link></div>
+            <div class ="close"><router-link :to="{  name: 'EventListAll' }"><button type="button" class="btn btn-danger">Close</button></router-link></div>
+            <div class ="edit"><router-link :to="{  name: 'AddEvents' }"><button type="button" class="btn btn-1 btn-success ">Edit</button></router-link></div>
           </div>
         </div>
       </div>
@@ -38,7 +38,7 @@ defineProps({
   max-width: max-content;
   margin: 5px auto;
   padding: 20px 100px;
-  background-color: #ffdbdb;
+  background-color: #f8a9bfb5;
   border-radius: 10px;
   font-family: 'Itim', cursive;
   margin-top: 5em;
@@ -59,13 +59,22 @@ defineProps({
   justify-content: end;
   margin-top: 2em;
   /* padding-left: 1em; */
-  margin-left: 14em;
+  /* margin-left: 12em; */
+}
+.edit{
+  margin-left: -1em;
+  margin-right: 3.75em;
+  
 }
 .close{
-  margin-top: 3em;
-  margin-left: -10em;
-  margin-right: 5em;
+  /* margin-top: 2em; */
+  margin-left: -12.5em;
+  margin-right: 0.5em;
 }
+.btn-1{
+  background-color: #93C276;
+}
+
 
 
 </style>

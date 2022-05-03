@@ -3,7 +3,7 @@
 </script>
  
 <template>
-<nav class="navbar navbar-expand-lg navbar-warning background-color: #F8A9BF;">
+<nav class="navbar navbar-expand-lg">
     <div class="collapse navbar-collapse" id="navbarNav">
     <ul class="navbar-nav">
       <li class="nav-item">
@@ -25,9 +25,19 @@
 </template>
  
 <style>
+้html , body{
+  background-color: #FDE5EC;
+}
 .navbar{
-  background-color: #F8A9BF;
   padding: 40em;
   width: max-content;
+  background-color: #F8A9BF;
+  height: 90px;
+  font-family: 'Changa One';
+}
+.nav-item{
+  position: relative;
+  padding-left: 8em;
+  margin-left: -1em;
 }
 </style>

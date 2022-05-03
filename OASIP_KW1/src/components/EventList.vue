@@ -14,8 +14,8 @@ defineProps({
 <div class="container">
         <p v-if ="eventList.length == 0" class="p-3 text-center">VIEW-EVENT-LIST-EMPTY</p>
         <p v-else class="p-3 text-center">VIEW-EVENT-LIST-ALL</p>
-        <table class="table table-striped table-bordered">
-            <thead>
+        <table class="table table-hover">            
+          <thead>
                 <tr class="title">
                     <th>ID</th>
                     <th>Booking Name</th>
@@ -28,21 +28,19 @@ defineProps({
                 </tr>
             </thead>
             <tbody>
-                <tr v-for="(event,index) in eventList" :key="event.id " class="datas" >
-                    <td>{{index +1}}</td>
-                    <td>{{event.bookingName}}</td>
-                    <td>{{event.bookingEmail}}</td>
-                    <td>{{event.eventCategory.eventCategoryName}}</td>
-                    <td>{{event.eventStartTime}}</td>
-                    <td>{{event.eventDuration}} minute</td>
+                <tr v-for="(event,index) in eventList" :key="event.id" class="datas">
+                    <td >{{index +1}}</td>
+                    <td >{{event.bookingName}}</td>
+                    <td >{{event.bookingEmail}}</td>
+                    <td >{{event.eventCategory.eventCategoryName}}</td>
+                    <td >{{event.eventStartTime}}</td>
+                    <td >{{event.eventDuration}} minute</td>
                     <!-- <td v-if="event.eventNote == null">-</td>
                     <td v-else>{{event.eventNote}}</td> -->
                     <td><router-link :to="{ name: 'Detailsbase' , params:{id:event.id}}">
-                    <button type="button" class="btn btn-warning">Detail</button>
+                    <button class="detail">Detail</button>
                     </router-link>
-                    <button type="button" class="btn btn-warning" @click="$emit('deleteEvent',event.id)">Delete</button>
-                    </td>
-                    <td>
+                    <button class="delete" @click="$emit('deleteEvent',event.id)">Delete</button>
                     </td>
                 </tr>
             </tbody>
@@ -57,18 +55,21 @@ defineProps({
 @import url('https://fonts.googleapis.com/css2?family=Itim&display=swap');
 html , body{
   background-color: #8E689C;
-}
+  }
 .container{
   text-align: center;
 }
-td,tr{
+td{
   font-size: 0.98em;
-  color: white;
+  /* color: white; */
 }
-.btn{
-  margin-right: 1.5em;
-  margin-top: 2em;
-  position: relative;
+.detail{
+  background-color: #F7D97C;
+  border-radius: 10px;
+}
+.delete{
+  background-color: #FB757E;
+  border-radius: 10px;
 }
 .modal-mask {
   width: 100%;
@@ -81,17 +82,18 @@ td,tr{
   vertical-align: middle;
 }
 .p-3{
- font-family: 'Changa One', cursive;
+ font-family: 'Kanit';
  font-size: 3em;
- color: white;
+ color: #ffffff;
 }
 .title{
-  font-family: 'Itim', cursive;
+  font-family: 'Kanit';
   font-size: 1.25em;
-  color: white;
+  color: #ffffff;
 }
 .datas{
-  font-family: 'Itim', cursive;
+  font-family: 'Kanit';
+  color: #ffffff;
 }
 .null{
   text-align: center;
