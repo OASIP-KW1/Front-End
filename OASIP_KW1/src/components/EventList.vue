@@ -38,11 +38,9 @@ defineProps({
                     <!-- <td v-if="event.eventNote == null">-</td>
                     <td v-else>{{event.eventNote}}</td> -->
                     <td><router-link :to="{ name: 'Detailsbase' , params:{id:event.id}}">
-                    <button type="button" class="btn btn-warning">Detail</button>
+                    <button class="detail">Detail</button>
                     </router-link>
-                    <button type="button" class="btn btn-warning" @click="$emit('deleteEvent',event.id)">Delete</button>
-                    </td>
-                    <td>
+                    <button class="delete" @click="$emit('deleteEvent',event.id)">Delete</button>
                     </td>
                 </tr>
             </tbody>
@@ -55,16 +53,22 @@ defineProps({
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Changa+One&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Itim&display=swap');
+html , body{
+  background-color: #8E689C;
+  }
 .container{
   text-align: center;
 }
 td{
   font-size: 0.98em;
 }
-.btn{
-  margin-right: 1.5em;
-  margin-top: 2em;
-  position: relative;
+.detail{
+  background-color: #F7D97C;
+  border-radius: 10px;
+}
+.delete{
+  background-color: #FB757E;
+  border-radius: 10px;
 }
 .modal-mask {
   width: 100%;
@@ -77,15 +81,18 @@ td{
   vertical-align: middle;
 }
 .p-3{
- font-family: 'Changa One', cursive;
+ font-family: 'Kanit';
  font-size: 3em;
+ color: #ffffff;
 }
 .title{
-  font-family: 'Itim', cursive;
+  font-family: 'Kanit';
   font-size: 1.25em;
+  color: #ffffff;
 }
 .datas{
-  font-family: 'Itim', cursive;
+  font-family: 'Kanit';
+  color: #ffffff;
 }
 .null{
   text-align: center;

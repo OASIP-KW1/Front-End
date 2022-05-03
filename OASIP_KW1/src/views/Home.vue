@@ -28,33 +28,13 @@ console.log(toggle.value);
   Welcome to OASIP-KW1
 </div>
 <p class="sub">Online Appoinment Scheduling System</p>
-<p class="sub">My Teams : </p>
-<div class="teams">
-  <table width="80%">
-    <tr>
-      <td><img src="../assets/dear.jpeg" alt="opal" width="250"></td> 
-      <td><img src="../assets/game.jpg" alt="opal" width="250"></td> 
-      <td><img src="../assets/opla.jpg" alt="opal" width="250"></td> 
-   </tr>
-    <tr >
-      <td>Name : Naphatsawan</td>
-      <td>Name : Pichaya</td>
-      <td>Name : Wareewan</td>
-    </tr>
-        <tr>
-      <td>ID : 63130500064</td>
-      <td>ID : 63130500086</td>
-      <td>ID : 63130500105</td>
-    </tr>
-  </table>
-</div>
 </template>
 
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Itim&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Changa+One&display=swap');
 html , body{
-  background-color: #fcfade;
+  background-color: #FDE5EC;
   max-width: 100%;
   max-height: 0em
 }
@@ -67,15 +47,26 @@ html , body{
   font-family: 'Itim', cursive;
 }
 .welcome{
- font-family: 'Changa One', cursive;
+ font-family: 'Changa One';
  font-size: 3em;
- text-align: center;
  margin-top: 1em;
+ color: #3593A7;
+ position: absolute;
+width: 671px;
+height: 68px;
+left: 858px;
+top: 250px;
 }
 .sub{
   font-size: 1.5em;
   text-align: center;
   font-family: 'Changa One', cursive;
+  color: #E5CDB1;
+  position: absolute;
+  width: 540px;
+  height: 32px;
+  left: 875px;
+  top: 400px;
 }
 .teams{
   position: relative;
