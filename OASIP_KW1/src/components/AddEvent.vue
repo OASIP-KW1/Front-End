@@ -63,23 +63,14 @@ const categoryId = computed(() => {
         <p class="select">Select Category do you need</p>
 <select class="option" v-model="category">
     <option v-for="(category,index) in categories" :key="index">{{category.eventCategoryName}}</option>
-    <!-- <option value="1">Project Management Clinic</option>
-    <option value="2">DevOps/Infra Clinic</option>
-    <option value="3">Database Clinic</option>
-    <option value="4">Client-side Clinic</option>
-    <option value="5">Server-side Clinic</option> -->
 </select>
     </div>
 <div class="select2">
     <p>Date - Time </p>
     <input id="party" type="datetime-local" name="partydate" v-model="date">
 </div >
-<!-- <div class="select3">
-    <p>Time</p>
-    <input id="party" type="time" name="partydate" v-model="time" >
-</div > -->
+
 <p class="addnotes">Add Note :</p> <textarea id="notes" cols="157" rows="5" maxlength="100" v-model="addnotes"></textarea> 
-<!-- <div class ="button"><router-link :to="{  name: 'EventListAll' }"><button type="button" class="Close btn btn-success btn-lg" @click="$emit('createAppointment' , alldata)">Create Appointment</button></router-link></div> -->
 <div class ="button"><button type="button" class="Close btn btn-success btn-lg" @click="$emit('createAppointment' , alldata)">Create Appointment</button></div>
 </template>
  

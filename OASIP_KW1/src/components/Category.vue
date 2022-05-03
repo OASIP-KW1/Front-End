@@ -9,10 +9,9 @@ defineProps({
  
 <template>
 <p class="titleCategory">Category</p>
-<div class="row row-cols-1 row-cols-md-3 g-4">
+<div class="row row-cols-2 row-cols-md-3 g-2 justify-content-center">
   <div v-for="(eventCategory,index) in eventCategory">
   <div class="col">
-    <div class="card h-100">
       <div class="card-body">
         <img src="../assets/project-management.png" class="card-img-top" alt="project-management" style="background-color: #9090CF;" v-if="eventCategory.id == 1">
         <img src="../assets/dev-ops2.png" class="card-img-top" alt="dev-ops" style="background-color: #DB7688;" v-if="eventCategory.id == 2">
@@ -21,7 +20,6 @@ defineProps({
         <img src="../assets/back-end2.png" class="card-img-top" alt="back-end" style="background-color: #C6A46B;" v-if="eventCategory.id == 5">
       </div>
     </div>
-  </div>
   </div>
   </div>
 </template>
@@ -42,5 +40,8 @@ defineProps({
   /* position: relative; */
   /* margin-top: 0.0015em; */
   margin-left: -80em;
+}
+.card-img-top{
+  /* margin-left: 5em; */
 }
 </style>

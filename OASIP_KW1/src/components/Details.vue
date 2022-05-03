@@ -66,6 +66,4 @@ defineProps({
   margin-left: -10em;
   margin-right: 5em;
 }
-
-
 </style>

@@ -52,10 +52,12 @@ html , body{
  margin-top: 1em;
  color: #3593A7;
  position: absolute;
-width: 671px;
-height: 68px;
-left: 858px;
-top: 250px;
+ width: 671px;
+ height: 68px;
+ left: 858px;
+ top: 250px;
+ text-shadow: -1px 0 black, 0 1px black,
+      1px 0 black, 0 -1px black
 }
 .sub{
   font-size: 1.5em;
@@ -67,6 +69,8 @@ top: 250px;
   height: 32px;
   left: 875px;
   top: 400px;
+  text-shadow: -1px 0 black, 0 1px black,
+      1px 0 black, 0 -1px black
 }
 .teams{
   position: relative;

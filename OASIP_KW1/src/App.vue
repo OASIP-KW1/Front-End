@@ -7,16 +7,16 @@
     <div class="collapse navbar-collapse" id="navbarNav">
     <ul class="navbar-nav">
       <li class="nav-item">
-        <router-link :to="{ name: 'Home'}"><a class="nav-link">Home</a></router-link>
+        <router-link :to="{ name: 'Home'}"><a class="nav-link" style="color: #D13A27; font-size: larger;">Home</a></router-link>
       </li>
        <li class="nav-item">
-        <router-link :to="{ name: 'EventCategory'}"><a class="nav-link">Category</a></router-link>
+        <router-link :to="{ name: 'EventCategory'}"><a class="nav-link" style="color: #9E538E;; font-size: larger;">Category</a></router-link>
       </li>
        <li class="nav-item">
-        <router-link :to="{ name: 'EventListAll'}"><a class="nav-link">Event</a></router-link>
+        <router-link :to="{ name: 'EventListAll'}"><a class="nav-link" style="color: #F1802A;; font-size: larger;">Event</a></router-link>
       </li>
       <li class="nav-item">
-        <router-link :to="{  name: 'AddEvents' }"><a class="nav-link">Add Event</a></router-link>
+        <router-link :to="{  name: 'AddEvents' }"><a class="nav-link" style="color: #47251C;; font-size: larger;">Add Event</a></router-link>
       </li>
     </ul>
   </div>
@@ -33,6 +33,7 @@
   width: max-content;
   background-color: #F8A9BF;
   height: 90px;
+  font-family: 'Changa One';
 }
 .nav-item{
   position: relative;

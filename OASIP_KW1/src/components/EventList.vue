@@ -14,7 +14,7 @@ defineProps({
 <div class="container">
         <p v-if ="eventList.length == 0" class="p-3 text-center">VIEW-EVENT-LIST-EMPTY</p>
         <p v-else class="p-3 text-center">VIEW-EVENT-LIST-ALL</p>
-        <table class="table table-striped table-bordered">
+        <table class="table table-hover">
             <thead>
                 <tr class="title">
                     <th>ID</th>
@@ -23,23 +23,18 @@ defineProps({
                     <th>Category</th>
                     <th>Start-Time</th>
                     <th>Duration</th>
-                    <!-- <th>Event Notes</th> -->
                     <th>Details</th>
                 </tr>
             </thead>
             <tbody>
-                <tr v-for="(event,index) in eventList" :key="event.id " class="datas" >
+                <tr v-for="(event,index) in eventList" :key="event.id " class="datas">
                     <td>{{index +1}}</td>
                     <td>{{event.bookingName}}</td>
                     <td>{{event.bookingEmail}}</td>
                     <td>{{event.eventCategory.eventCategoryName}}</td>
                     <td>{{event.eventStartTime}}</td>
                     <td>{{event.eventDuration}} minute</td>
-                    <!-- <td v-if="event.eventNote == null">-</td>
-                    <td v-else>{{event.eventNote}}</td> -->
-                    <td><router-link :to="{ name: 'Detailsbase' , params:{id:event.id}}">
-                    <button class="detail">Detail</button>
-                    </router-link>
+                    <td><router-link :to="{ name: 'Detailsbase' , params:{id:event.id}}"><button class="detail">Detail</button></router-link>
                     <button class="delete" @click="$emit('deleteEvent',event.id)">Delete</button>
                     </td>
                 </tr>
@@ -59,8 +54,12 @@ html , body{
 .container{
   text-align: center;
 }
+tr{
+  border: #ffffff;
+}
 td{
   font-size: 0.98em;
+  color: white;
 }
 .detail{
   background-color: #F7D97C;
@@ -81,7 +80,7 @@ td{
   vertical-align: middle;
 }
 .p-3{
- font-family: 'Kanit';
+  font-family: 'Changa One', cursive;
  font-size: 3em;
  color: #ffffff;
 }
@@ -99,5 +98,8 @@ td{
   font-size: 2em;
   color: red;
   margin-top: 2.5em;
+}
+thead{
+  border: #ffffff;
 }
 </style>

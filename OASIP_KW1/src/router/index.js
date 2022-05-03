@@ -16,13 +16,6 @@ const routes = [
         path: '/event',
         name: 'EventListAll',
         component: EventListAll
-        // children: [
-        //     {
-        //         path: '/details-base/:id',
-        //         name: 'Detailsbase',
-        //         component: Detailsbase
-        //     }
-        // ]
     },
     {
         path: '/details-base/:id',
