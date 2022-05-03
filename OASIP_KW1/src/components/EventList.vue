@@ -55,11 +55,15 @@ defineProps({
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Changa+One&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Itim&display=swap');
+html , body{
+  background-color: #8E689C;
+}
 .container{
   text-align: center;
 }
-td{
+td,tr{
   font-size: 0.98em;
+  color: white;
 }
 .btn{
   margin-right: 1.5em;
@@ -79,10 +83,12 @@ td{
 .p-3{
  font-family: 'Changa One', cursive;
  font-size: 3em;
+ color: white;
 }
 .title{
   font-family: 'Itim', cursive;
   font-size: 1.25em;
+  color: white;
 }
 .datas{
   font-family: 'Itim', cursive;
