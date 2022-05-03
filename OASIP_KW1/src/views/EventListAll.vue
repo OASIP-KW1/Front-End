@@ -23,11 +23,21 @@ onBeforeMount( async () => {
    await getNotes()
 })
 
+const deleteEvent = async (eventID) => {
+  let ans = confirm(`Do you want to delete?`)
+  if(ans){
+  const res = await fetch (`/api/events/${eventID}` , 
+  {method: 'delete'})
+  if(res.status === 200){
+    (data.value = data.value.filter((event) => event.id !== eventID))
+  }
+  }
+}
 </script>
  
 <template>
   <div>
-    <eventlist :eventList="data"/>
+    <eventlist :eventList="data" @deleteEvent="deleteEvent"/>
   </div>
 </template>
 
