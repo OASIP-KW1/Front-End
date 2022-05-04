@@ -14,7 +14,6 @@ const name = ref()
 const email = ref()
 const category = ref()
 const date = ref()
-// const time = ref()
 const addnotes = ref()
 const alldata  = computed(() => {
     return {bookingName: name.value , bookingEmail: email.value , eventCategory:{"id": categoryId.value,
@@ -72,11 +71,40 @@ const categoryId = computed(() => {
 
 <p class="addnotes">Add Note :</p> <textarea id="notes" cols="157" rows="5" maxlength="100" v-model="addnotes"></textarea> 
 <div class ="button"><button type="button" class="Close btn btn-success btn-lg" @click="$emit('createAppointment' , alldata)">Create Appointment</button></div>
+<div class="modal-dialog " role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Add Events / Booking</h5>
+      </div>
+        <div class="modal-body">
+        <p>Your appointment is complete.</p>
+        <p>นัดหมายของคุณเสร็จเรียบร้อย</p>
+      </div>
+      <img src="../assets/complete.png" alt="complete" class="picture">
+      <router-link :to="{ name: 'EventListAll' }"><button class="btnclose">close</button></router-link>
+    </div>
+</div>
 </template>
  
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Changa+One&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Itim&display=swap');
+.picture{
+    margin-top: -10em;
+}
+.btnclose{
+  background-color: #FB757E;
+  border-radius: 10px;
+  font-family: 'Itim', cursive;
+  font-size: medium;
+  margin-left: 15em;
+}
+.modal-title{
+    font-family: 'Changa One', cursive;
+}
+.modal-body{
+    font-family: 'Kanit';
+}
 .addtitle{
     font-family: 'Changa One', cursive;
     font-size: 3em;
@@ -140,5 +168,8 @@ const categoryId = computed(() => {
 }
 #party{
     margin-left: 2em;
+}
+.modal-body{
+    text-align: center;
 }
 </style>

@@ -27,6 +27,11 @@ const routes = [
         name: 'EventCategory',
         component: EventCategory
     },
+    // {
+    //     path: '/eventCategory/:id',
+    //     name: 'DetailCategory',
+    //     component: DetailCategory
+    // },
     {
         path: '/addevent',
         name: 'AddEvents',

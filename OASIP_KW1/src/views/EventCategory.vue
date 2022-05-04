@@ -1,6 +1,7 @@
 <script setup>
 import { ref,onBeforeMount } from 'vue'
 import Category from '../components/Category.vue';
+// import DetailCategory from '../components/DetailCategory.vue';
 
 
 let data = ref({})
@@ -23,7 +24,8 @@ onBeforeMount( async () => {
 </script>
  
 <template>
-<Category :eventCategory = "data"/>
+<Category :eventCategory = "data" />
+<!-- <DetailCategory/> -->
 </template>
  
 <style>

@@ -24,7 +24,7 @@ onBeforeMount( async () => {
 })
 
 const deleteEvent = async (eventID) => {
-  let ans = confirm(`Do you want to delete?`)
+  let ans = confirm(`Do you want to cancel appointment?`)
   if(ans){
   const res = await fetch (`/api/events/${eventID}` , 
   {method: 'delete'})
