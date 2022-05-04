@@ -11,15 +11,25 @@ const props = defineProps ({
 }) 
 
 const name = ref()
+let checked = ref(false)
+let popup = ref(false)
+let input = ref(true)
 const email = ref()
 const category = ref()
 const date = ref()
 const addnotes = ref()
 const alldata  = computed(() => {
+    if(name.value == undefined || email.value == undefined || date.value == undefined || category.value == undefined){
+        checked.value = true;
+        return {status: 0}
+    }else{
+        input.value = false;
+        popup.value = true;
     return {bookingName: name.value , bookingEmail: email.value , eventCategory:{"id": categoryId.value,
             "eventCategoryName": category.value,
             "eventCategoryDescription": null,
-            "eventDuration":  null } , eventStartTime: datetime() , eventDuration: duration.value , eventNote: addnotes.value }
+            "eventDuration":  null } , eventStartTime: datetime() , eventDuration: duration.value , eventNote: addnotes.value , status: 1}
+    }
 })
 
 const datetime  = () =>{
@@ -32,8 +42,8 @@ const datetime  = () =>{
 const duration = computed(() => {
     const currentCategoryId = ref(0);
     for (let i = 0; i < props.categories.length; i++) {
-        console.log(props.categories[i]);
-        console.log(i);
+        // console.log(props.categories[i]);
+        // console.log(i);
         if (category.value == props.categories[i].eventCategoryName) {
             currentCategoryId.value = props.categories[i].eventDuration;
         }
@@ -50,13 +60,16 @@ const categoryId = computed(() => {
     }
     return currentCategoryId.value;
 })
+
 </script>
  
 <template>
+<div v-show="input">
     <p class="addtitle">Add Events / Booking</p>
     <div class="input">
-       <p>Name : <input type="text" size="50" v-model="name"> &nbsp;&nbsp;
-       Email : <input type="text" size="50" v-model="email"> </p> 
+        <p  v-show="checked" style="color: red;">Please input info</p>
+       <p>name<input type="text" size="50" v-model="name">
+       email <input type="text" size="50" v-model="email"></p>
     </div>
     <div class="select1">
         <p class="select">Select Category do you need</p>
@@ -71,7 +84,8 @@ const categoryId = computed(() => {
 
 <p class="addnotes">Add Note :</p> <textarea id="notes" cols="157" rows="5" maxlength="100" v-model="addnotes"></textarea> 
 <div class ="button"><button type="button" class="Close btn btn-success btn-lg" @click="$emit('createAppointment' , alldata)">Create Appointment</button></div>
-<div class="modal-dialog " role="document">
+</div>
+<div class="modal-dialog " role="document" v-show="popup">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title">Add Events / Booking</h5>

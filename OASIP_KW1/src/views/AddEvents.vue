@@ -22,7 +22,9 @@ onBeforeMount( async () => {
 
 // post
 const createAppointment = async (newEvent) => {
-    console.log(newEvent);
+  if(newEvent.status == 0){
+    console.log('no data');
+  }else{
   const res = await fetch('/api/events', {
     method: 'POST',
     headers: {
@@ -35,11 +37,12 @@ const createAppointment = async (newEvent) => {
     console.log("complete")
   }else console.log("fail")
 }
-
+}
 </script>
  
 <template>
 <AddEvent :categories="data" @createAppointment="createAppointment" />
+<!-- <AddEvent :categories="data"  /> -->
 </template>
  
 <style>
