@@ -18,7 +18,7 @@ defineProps({
                 <p> Email : {{eventDetails.bookingEmail}}</p>
                 <p> Category : {{eventDetails.eventCategory.eventCategoryName}}</p>
                 <p> Start-Time : {{eventDetails.eventStartTime}}</p>
-                <p> Duration : {{eventDetails.eventDuration}} minute</p>
+                <p> Duration : {{eventDetails.eventDuration.split(':')[1]}} minutes</p>
                 <p v-if="eventDetails.eventNote !== null"> Note : {{eventDetails.eventNote}}</p>
                 <p v-else> Note : - </p>
           </div>

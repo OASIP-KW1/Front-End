@@ -33,7 +33,7 @@ defineProps({
                     <td>{{event.bookingEmail}}</td>
                     <td>{{event.eventCategory.eventCategoryName}}</td>
                     <td>{{event.eventStartTime}}</td>
-                    <td>{{event.eventDuration}} minute</td>
+                    <td>{{event.eventDuration.split(':')[1]}} minutes</td>
                     <td><router-link :to="{ name: 'Detailsbase' , params:{id:event.id}}"><button class="detail">Detail</button></router-link>
                     <button class="delete" @click="$emit('deleteEvent',event.id)">Cancel</button>
                     </td>
