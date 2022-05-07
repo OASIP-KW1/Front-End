@@ -41,7 +41,7 @@ const createAppointment = async (newEvent) => {
 
 //modify
 const modifyEvent = async (events) => {
-  const res = await fetch(`${import.meta.env.BASE_URL}api/events${events.id}`, {
+  const res = await fetch(`${import.meta.env.BASE_URL}api/events/${events.id}`, {
     method: 'PUT',
     headers: {
       'content-type': 'application/json'
