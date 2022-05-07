@@ -25,7 +25,12 @@ defineProps({
           </div>
           <div class="modal-button">
             <div class ="close"><router-link :to="{  name: 'EventListAll' }"><button type="button" class="btn btn-danger">Close</button></router-link></div>
-            <div class ="edit"><router-link :to="{  name: 'AddEvents' }"><button type="button" class="btn btn-1 btn-success" @click="$emit('edit',eventDetails)">Edit</button></router-link></div>
+            <div class ="edit"><router-link :to="{  name: 'AddEvents' , params:{name:eventDetails.bookingName 
+                                                                                ,email:eventDetails.bookingEmail
+                                                                                ,eventCategory:eventDetails.eventCategory.eventCategoryName
+                                                                                ,time:eventDetails.eventStartTime
+                                                                                ,note:eventDetails.eventNote
+                                                                                ,id:eventDetails.id}}"><button type="button" class="btn btn-1 btn-success">Edit</button></router-link></div>
           </div>
         </div>
       </div>

@@ -22,7 +22,7 @@ onBeforeMount( async () => {
 
 // post
 const createAppointment = async (newEvent) => {
-  if(newEvent.status == 0 || newEvent.status == -1 ){
+  if(newEvent.status == 0){
     console.log('no data');
   }else{
   const res = await fetch(`${import.meta.env.BASE_URL}api/events`, {
@@ -38,10 +38,33 @@ const createAppointment = async (newEvent) => {
   }else console.log("fail")
 }
 }
+
+//modify
+const modifyEvent = async (events) => {
+  const res = await fetch(`${import.meta.env.BASE_URL}api/events${events.id}`, {
+    method: 'PUT',
+    headers: {
+      'content-type': 'application/json'
+    },
+    body: JSON.stringify({ bookingName: events.bookingName , bookingEmail: events.bookingEmail , eventCategory:events.eventCategory,
+                           eventStartTime: events.eventStartTime , eventDuration: events.eventDuration , eventNote: events.eventNote })
+  })
+}
+
+// const modifyEvent = async (events) => {
+//   const date = new Date(events.eventStartTime)
+//   const dateUTC = date.toISOString()
+//   const res = await fetch(`/api/event/${events.id}?eventStartTime=${dateUTC}&eventNote=${events.eventNote}` ,{
+//     method : 'PUT',
+//     headers: {'content-type' : 'application/json'}
+//   })
+// }
+
+
 </script>
  
 <template>
-<AddEvent :categories="data" @createAppointment="createAppointment" />
+<AddEvent :categories="data" @createAppointment="createAppointment" @edit="modifyEvent"/>
 <!-- <AddEvent :categories="data"  /> -->
 </template>
  

@@ -8,7 +8,6 @@ const {params} = useRoute()
 let eventDetail = ref({})
 // GET
 const getEvents = async () =>{
-
     const res = await fetch(`${import.meta.env.BASE_URL}api/events/${params.id}`)
     if(res.status === 200) {
     console.log(`response.status: ${res.status}`)
