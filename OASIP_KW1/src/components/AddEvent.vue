@@ -2,7 +2,7 @@
 import { computed } from '@vue/reactivity';
 import { ref } from 'vue';
 
-defineEmits(['createAppointment'])
+defineEmits(['createAppointment' , 'edit'])
 const props = defineProps ({
     categories: {
     type: Array,
@@ -12,6 +12,7 @@ const props = defineProps ({
 
 const name = ref()
 let checked = ref(false)
+let checked_email = ref(false)
 let popup = ref(false)
 let input = ref(true)
 const email = ref()
@@ -21,14 +22,21 @@ const addnotes = ref()
 const alldata  = computed(() => {
     if(name.value == undefined || email.value == undefined || date.value == undefined || category.value == undefined){
         checked.value = true;
-        return {status: 0}
+        checked_email.value = false;
+        return {status: -1}
     }else{
+        if(email.value.split('@').length > 1){
         input.value = false;
         popup.value = true;
-    return {bookingName: name.value , bookingEmail: email.value , eventCategory:{"id": categoryId.value,
+        return {bookingName: name.value , bookingEmail: email.value , eventCategory:{"id": categoryId.value,
             "eventCategoryName": category.value,
             "eventCategoryDescription": null,
             "eventDuration":  null } , eventStartTime: datetime() , eventDuration: duration.value , eventNote: addnotes.value , status: 1}
+        }else{
+            checked.value = false;
+            checked_email.value = true;
+           return {status: 0}
+        }
     }
 })
 
@@ -66,8 +74,9 @@ const categoryId = computed(() => {
 <template>
 <div v-show="input">
     <p class="addtitle">Add Events / Booking</p>
-    <div class="input">
+    <div class="input"> 
         <p  v-show="checked" style="color: red;">Please input info</p>
+        <p  v-show="checked_email" style="color: red;">Please input email</p>
        <p>name<input type="text" size="50" v-model="name">
        email <input type="text" size="50" v-model="email"></p>
     </div>
@@ -79,7 +88,7 @@ const categoryId = computed(() => {
     </div>
 <div class="select2">
     <p>Date - Time </p>
-    <input id="party" type="datetime-local" name="partydate" v-model="date">
+    <input id="party" type="datetime-local" name="partydate" v-model="date"> 
 </div >
 
 <p class="addnotes">Add Note :</p> <textarea id="notes" cols="157" rows="5" maxlength="100" v-model="addnotes"></textarea> 

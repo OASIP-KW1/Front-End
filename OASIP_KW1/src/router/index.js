@@ -5,7 +5,7 @@ import EventListAll from '../views/EventListAll.vue'
 import EventCategory from '../views/EventCategory.vue'
 import AddEvents from '../views/AddEvents.vue'
 
-const history = createWebHistory()
+const history = createWebHistory(`${import.meta.env.VUE_ROUTER}`)
 const routes = [
     {
         path: '/',
