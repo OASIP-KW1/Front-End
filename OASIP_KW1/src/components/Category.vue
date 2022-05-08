@@ -62,8 +62,6 @@ defineProps({
   margin-left: 2.55em;
   margin-top: -0.5em;
 }
-.card-img-top{
-}
 </style>
 
 <!-- <script setup>

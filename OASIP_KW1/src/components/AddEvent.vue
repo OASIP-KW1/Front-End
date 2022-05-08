@@ -117,6 +117,7 @@ const categoryId = computed(() => {
       <img src="../assets/complete.png" alt="complete" class="picture">
       <router-link :to="{ name: 'EventListAll' }"><button class="btnclose">close</button></router-link>
     </div>
+</div>
 </template>
  
 <style>
@@ -218,7 +219,6 @@ const categoryId = computed(() => {
 #party {
     margin-left: 2em;
 }
-
 .modal-body {
     text-align: center;
 }
