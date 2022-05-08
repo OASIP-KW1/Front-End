@@ -24,9 +24,17 @@ console.log(toggle.value);
 </script>
  
 <template>
-<div class="welcome">
-  Welcome to OASIP-KW1
+<div>
+  <img src="../assets/logo-1.png" alt="logo" class="logo">
+
 </div>
+<div class="welcome">
+  Welcome to 
+</div>
+<div class="welcome-1">
+  OASIP-KW1 
+</div>
+
 <p class="sub">Online Appoinment Scheduling System</p>
 </template>
 
@@ -34,7 +42,7 @@ console.log(toggle.value);
 @import url('https://fonts.googleapis.com/css2?family=Itim&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Changa+One&display=swap');
 html , body{
-  background-color: #B16A97;
+  background-color: #EFEFEF;
   max-width: 100%;
   max-height: 0em
 }
@@ -46,31 +54,49 @@ html , body{
   margin-left: 2em;
   font-family: 'Itim', cursive;
 }
+.logo{
+margin-left: 42em;
+margin-top: 5em;
+width: 219px;
+height: 224px;
+
+}
 .welcome{
  font-family: 'Changa One';
- font-size: 3em;
- margin-top: 1em;
- color: #3593A7;
+ font-size: 2em;
+ margin-top: 3em;
+ color: #172B3A;
  position: absolute;
  width: 671px;
  height: 68px;
- left: 858px;
- top: 250px;
- text-shadow: -1px 0 black, 0 1px black,
-      1px 0 black, 0 -1px black
+ left: 700px;
+ top: 280px;
+ /* text-shadow: -1px 0 black, 0 1px black,
+      1px 0 black, 0 -1px black */
+}
+.welcome-1{
+font-family: 'Changa One';
+ font-size: 4em;
+ margin-top: 2em;
+ color: #172B3A;
+ position: absolute;
+ width: 671px;
+ height: 68px;
+ left: 615px;
+ top: 280px;
 }
 .sub{
-  font-size: 1.5em;
+  font-size: 1.2em;
   text-align: center;
   font-family: 'Changa One', cursive;
-  color: #E5CDB1;
+  color: #172B3A;
   position: absolute;
   width: 540px;
   height: 32px;
-  left: 875px;
-  top: 400px;
-  text-shadow: -1px 0 black, 0 1px black,
-      1px 0 black, 0 -1px black
+  left: 510px;
+  top: 670px;
+  /* text-shadow: -1px 0 black, 0 1px black,
+      1px 0 black, 0 -1px black */
 }
 .teams{
   position: relative;

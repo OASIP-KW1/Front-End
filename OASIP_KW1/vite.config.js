@@ -1,5 +1,6 @@
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
+import { resolveComponent } from 'vue';
 
 
 // https://vitejs.dev/config/

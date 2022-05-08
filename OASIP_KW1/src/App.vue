@@ -7,16 +7,17 @@
     <div class="collapse navbar-collapse" id="navbarNav">
     <ul class="navbar-nav">
       <li class="nav-item">
-        <router-link :to="{ name: 'Home'}"><a class="nav-link" style="color: #D13A27; font-size: larger;">Home</a></router-link>
+        <router-link :to="{ name: 'Home'}"><a class="nav-link" style="color: #EFEFEF; font-size: larger;">Home</a></router-link>
       </li>
        <li class="nav-item">
-        <router-link :to="{ name: 'EventCategory'}"><a class="nav-link" style="color: #9E538E;; font-size: larger;">Category</a></router-link>
-      </li>
+        <router-link :to="{ name: 'EventCategory'}"><a class="nav-link" style="color: #EFEFEF; font-size: larger;">Category</a></router-link>
+      </li> 
+       <img src="./assets/KW1.png" alt="loco" class="logonav">
        <li class="nav-item">
-        <router-link :to="{ name: 'EventListAll'}"><a class="nav-link" style="color: #F1802A;; font-size: larger;">Event</a></router-link>
+        <router-link :to="{ name: 'EventListAll'}"><a class="nav-link" style="color: #EFEFEF; font-size: larger;">Event</a></router-link>
       </li>
       <li class="nav-item">
-        <router-link :to="{  name: 'AddEvents' }"><a class="nav-link" style="color: #47251C;; font-size: larger;">Add Event</a></router-link>
+        <router-link :to="{  name: 'AddEvents' }"><a class="nav-link" style="color: #EFEFEF; font-size: larger;">Add Event</a></router-link>
       </li>
     </ul>
   </div>
@@ -26,18 +27,23 @@
  
 <style>
 ้html , body{
-  background-color: #FDE5EC;
+  background-color: #EFEFEF;
 }
 .navbar{
-  padding: 40em;
+  padding: 35.5em;
   width: max-content;
-  background-color: #F8A9BF;
+  background-color: #2D5272;
   height: 90px;
   font-family: 'Changa One';
+  /* text-align: center; */
+  /* vertical-align: middle; */
 }
 .nav-item{
   position: relative;
-  padding-left: 8em;
-  margin-left: -1em;
+  margin-top: 0.99em;
+  /* margin-left: 0.9em; */
+}
+.logonav{
+  height: 5em;
 }
 </style>
