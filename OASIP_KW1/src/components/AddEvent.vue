@@ -2,7 +2,6 @@
 import { computed } from '@vue/reactivity';
 import { ref } from 'vue';
 import { useRouter, useRoute } from 'vue-router'
-
 defineEmits(['createAppointment', 'edit'])
 const props = defineProps({
     categories: {
@@ -10,16 +9,13 @@ const props = defineProps({
         default: []
     }
 })
-
 const myRouter = useRouter()
 const { params } = useRoute()
-
 const name = ref(params.name)
 const email = ref(params.email)
 const category = ref(params.eventCategory)
 const date = ref(params.time)
 const addnotes = ref(params.note)
-
 let checked = ref(false)
 let checked_email = ref(false)
 let popup = ref(false)
@@ -50,7 +46,6 @@ const alldata = computed(() => {
         }
     }
 })
-
 const datetime = () => {
     const disdate = new Date(date.value)
     // date.setDate(date.value) 
@@ -58,7 +53,6 @@ const datetime = () => {
     console.log(disdate);
     return disdate
 }
-
 const duration = computed(() => {
     const currentCategoryId = ref(0);
     for (let i = 0; i < props.categories.length; i++) {
@@ -70,7 +64,6 @@ const duration = computed(() => {
     }
     return currentCategoryId.value;
 })
-
 const categoryId = computed(() => {
     const currentCategoryId = ref(0);
     for (let i = 0; i < props.categories.length; i++) {
@@ -80,7 +73,6 @@ const categoryId = computed(() => {
     }
     return currentCategoryId.value;
 })
-
 </script>
  
 <template>
@@ -117,17 +109,15 @@ const categoryId = computed(() => {
       <img src="../assets/complete.png" alt="complete" class="picture">
       <router-link :to="{ name: 'EventListAll' }"><button class="btnclose">close</button></router-link>
     </div>
-</div>
+    </div>
 </template>
  
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Changa+One&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Itim&display=swap');
-
 .picture {
     margin-top: -10em;
 }
-
 .btnclose {
     background-color: #FB757E;
     border-radius: 10px;
@@ -135,37 +125,31 @@ const categoryId = computed(() => {
     font-size: medium;
     margin-left: 15em;
 }
-
 .modal-title {
     font-family: 'Changa One', cursive;
     color: #172B3A;
 }
-
 .modal-body {
     font-family: 'Kanit';
     color: #172B3A;
 }
-
 .addtitle {
     font-family: 'Changa One', cursive;
     font-size: 3em;
     text-align: center;
     margin-top: 0.5em;
 }
-
 .input {
     font-family: 'Changa One', cursive;
     font-size: 1.25em;
     text-align: center;
 }
-
 .addnotes {
     font-size: larger;
     margin-left: 6em;
     font-family: 'Changa One', cursive;
     margin-top: 2em;
 }
-
 .select3 {
     display: flex;
     font-size: larger;
@@ -175,7 +159,6 @@ const categoryId = computed(() => {
     margin-top: -2.5em;
     justify-content: center;
 }
-
 .select2 {
     font-size: larger;
     margin-left: 6em;
@@ -184,7 +167,6 @@ const categoryId = computed(() => {
     margin-top: 2em;
     display: flex;
 }
-
 .select1 {
     font-size: larger;
     margin-left: 6em;
@@ -192,30 +174,25 @@ const categoryId = computed(() => {
     display: flex;
     margin-top: 2em;
 }
-
 .option {
     margin-left: 3em;
     width: 52.2em;
     text-align: center;
 }
-
 .button {
     display: flex;
     justify-content: center;
     /* padding: 15px 32px; */
     font-size: 16px;
-
 }
 .button:hover{
     color: #172B3A;
 }
-
 #notes {
     position: relative;
     margin-left: 15em;
     margin-top: -2em;
 }
-
 #party {
     margin-left: 2em;
 }
