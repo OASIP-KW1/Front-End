@@ -1,4 +1,5 @@
 <script setup>
+defineEmits(['edit'])
 defineProps({
   eventDetails: {
     type: Object,
@@ -23,8 +24,8 @@ defineProps({
                 <p v-else> Note : - </p>
           </div>
           <div class="modal-button">
-            <div class ="close"><router-link :to="{  name: 'EventListAll' }"><button type="button" class="btn btn-danger">Close</button></router-link></div>
-            <div class ="edit"><router-link :to="{  name: 'AddEvents' }"><button type="button" class="btn btn-1 btn-success ">Edit</button></router-link></div>
+            <div class ="close"><router-link :to="{  name: 'EventListAll' }"><button type="button" class="btn btn-light">Close</button></router-link></div>
+            <div class ="edit"><router-link :to="{  name: 'AddEvents' }"><button type="button" class="btn btn-1 btn-dark" @click="$emit('edit',eventDetails)">Edit</button></router-link></div>
           </div>
         </div>
       </div>
@@ -33,14 +34,14 @@ defineProps({
 </template>
  
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Itim&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Kanit:wght@100;300&display=swap');
 .modal-container {
   max-width: max-content;
   margin: 5px auto;
   padding: 20px 100px;
-  background-color: #f8a9bfb5;
-  border-radius: 10px;
-  font-family: 'Itim', cursive;
+  background-color: #E67331;
+  border-radius: 41px;
+  font-family: 'Kanit', sans-serif;
   margin-top: 5em;
 
 }
@@ -63,7 +64,7 @@ defineProps({
 }
 .edit{
   margin-left: -1em;
-  margin-right: 3.75em;
+  margin-right: 5.35em;
   
 }
 .close{

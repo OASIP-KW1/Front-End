@@ -65,11 +65,11 @@ const categoryId = computed(() => {
  
 <template>
 <div v-show="input">
-    <p class="addtitle">Add Events / Booking</p>
+    <p class="addtitle" style="color: #172B3A;">Add Events / Booking</p>
     <div class="input">
         <p  v-show="checked" style="color: red;">Please input info</p>
-       <p>name<input type="text" size="50" v-model="name">
-       email <input type="text" size="50" v-model="email"></p>
+       <p> Name <input type="text" size="50" v-model="name" >
+       Email <input type="text" size="50" v-model="email"></p>
     </div>
     <div class="select1">
         <p class="select">Select Category do you need</p>
@@ -83,17 +83,17 @@ const categoryId = computed(() => {
 </div >
 
 <p class="addnotes">Add Note :</p> <textarea id="notes" cols="157" rows="5" maxlength="100" v-model="addnotes"></textarea> 
-<div class ="button"><button type="button" class="Close btn btn-success btn-lg" @click="$emit('createAppointment' , alldata)">Create Appointment</button></div>
+<div class ="button"><button type="button" class="Close btn btn-warning btn-lg" @click="$emit('createAppointment' , alldata)">Create Appointment</button></div>
 </div>
 <div class="modal-dialog " role="document" v-show="popup">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title">Add Events / Booking</h5>
+        <h5 class="modal-title" style="color:#172B3A;" >Add Events / Booking</h5>
       </div>
         <div class="modal-body">
         <p>Your appointment is complete.</p>
         <p>นัดหมายของคุณเสร็จเรียบร้อย</p>
-      </div>
+        </div>
       <img src="../assets/complete.png" alt="complete" class="picture">
       <router-link :to="{ name: 'EventListAll' }"><button class="btnclose">close</button></router-link>
     </div>
@@ -115,9 +115,11 @@ const categoryId = computed(() => {
 }
 .modal-title{
     font-family: 'Changa One', cursive;
+    color: #172B3A;
 }
 .modal-body{
     font-family: 'Kanit';
+    color: #172B3A;
 }
 .addtitle{
     font-family: 'Changa One', cursive;
@@ -142,7 +144,7 @@ const categoryId = computed(() => {
     margin-left: 6em;
     font-family: 'Changa One', cursive;
      /* text-align: center; */
-         margin-top: -2.5em;
+    margin-top: -2.5em;
     justify-content: center;
 }
 .select2{
@@ -173,7 +175,7 @@ const categoryId = computed(() => {
 
 }
 .button:hover{
-    color: white;
+    color: #172B3A;
 }
 #notes{
     position: relative;
@@ -185,5 +187,8 @@ const categoryId = computed(() => {
 }
 .modal-body{
     text-align: center;
+}
+p{
+    color: #172B3A;
 }
 </style>

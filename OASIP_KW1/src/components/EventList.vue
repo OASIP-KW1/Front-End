@@ -49,17 +49,17 @@ defineProps({
 @import url('https://fonts.googleapis.com/css2?family=Changa+One&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Itim&display=swap');
 html , body{
-  background-color: #8E689C;
+  background-color: #EFEFEF;
   }
 .container{
   text-align: center;
 }
 tr{
-  border: #ffffff;
+  border: #172B3A;
 }
 td{
   font-size: 0.98em;
-  color: white;
+  color: #172B3A;
 }
 .detail{
   background-color: #F7D97C;
@@ -82,16 +82,16 @@ td{
 .p-3{
   font-family: 'Changa One', cursive;
  font-size: 3em;
- color: #ffffff;
+ color: #172B3A;
 }
 .title{
   font-family: 'Kanit';
   font-size: 1.25em;
-  color: #ffffff;
+  color: #172B3A;
 }
 .datas{
   font-family: 'Kanit';
-  color: #ffffff;
+  color: #172B3A;
 }
 .null{
   text-align: center;
@@ -100,6 +100,6 @@ td{
   margin-top: 2.5em;
 }
 thead{
-  border: #ffffff;
+  border: #172B3A;
 }
 </style>
