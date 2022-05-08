@@ -170,11 +170,7 @@ const categoryId = computed(() => {
     font-size: larger;
     margin-left: 6em;
     font-family: 'Changa One', cursive;
-<<<<<<< HEAD
      /* text-align: center; */
-=======
-    /* text-align: center; */
->>>>>>> c5258b00d2827928b934674c447414ae39bd466a
     margin-top: -2.5em;
     justify-content: center;
 }
@@ -209,14 +205,8 @@ const categoryId = computed(() => {
     font-size: 16px;
 
 }
-<<<<<<< HEAD
 .button:hover{
     color: #172B3A;
-=======
-
-.button:hover {
-    color: white;
->>>>>>> c5258b00d2827928b934674c447414ae39bd466a
 }
 
 #notes {
