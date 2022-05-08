@@ -8,7 +8,7 @@ const {params} = useRoute()
 let eventDetail = ref({})
 // GET
 const getEvents = async () =>{
-    const res = await fetch(`${import.meta.env.BASE_URL}api/events/${params.id}`)
+    const res = await fetch(`http://intproj21.sit.kmutt.ac.th/kw1/events/${params.id}`)
     if(res.status === 200) {
     console.log(`response.status: ${res.status}`)
     console.log(res);
@@ -27,12 +27,12 @@ const toEditingNode = async (editNote) => {
   console.log(editingNote.value);
 }
 
-onBeforeMount(async () =>{
-  await getEvents()
-})
+// onBeforeMount(async () =>{
+//   await getEvents()
+// })
 
 const modifyEvent = async (events) => {
-  const res = await fetch(`${import.meta.env.BASE_URL}api/events/${params.id}`, {
+  const res = await fetch(`http://intproj21.sit.kmutt.ac.th/kw1/events/${params.id}`, {
     method: 'PUT',
     headers: {
       'content-type': 'application/json'
