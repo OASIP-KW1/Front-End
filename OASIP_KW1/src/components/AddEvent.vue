@@ -1,42 +1,62 @@
 <script setup>
 import { computed } from '@vue/reactivity';
 import { ref } from 'vue';
+import { useRouter, useRoute } from 'vue-router'
 
-defineEmits(['createAppointment'])
-const props = defineProps ({
+defineEmits(['createAppointment', 'edit'])
+const props = defineProps({
     categories: {
-    type: Array,
-    default: []
-  }
-}) 
-
-const name = ref()
-let checked = ref(false)
-let popup = ref(false)
-let input = ref(true)
-const email = ref()
-const category = ref()
-const date = ref()
-const addnotes = ref()
-const alldata  = computed(() => {
-    if(name.value == undefined || email.value == undefined || date.value == undefined || category.value == undefined){
-        checked.value = true;
-        return {status: 0}
-    }else{
-        input.value = false;
-        popup.value = true;
-    return {bookingName: name.value , bookingEmail: email.value , eventCategory:{"id": categoryId.value,
-            "eventCategoryName": category.value,
-            "eventCategoryDescription": null,
-            "eventDuration":  null } , eventStartTime: datetime() , eventDuration: duration.value , eventNote: addnotes.value , status: 1}
+        type: Array,
+        default: []
     }
 })
 
-const datetime  = () =>{
-    const disdate = new Date(date.value) 
+const myRouter = useRouter()
+const { params } = useRoute()
+
+const name = ref(params.name)
+const email = ref(params.email)
+const category = ref(params.eventCategory)
+const date = ref(params.time)
+const addnotes = ref(params.note)
+
+let checked = ref(false)
+let checked_email = ref(false)
+let popup = ref(false)
+let create = ref(true)
+const edit = params.name == undefined?true:false
+const view = params.name == undefined?false:true
+const alldata = computed(() => {
+    if (name.value == undefined || email.value == undefined || date.value == undefined || category.value == undefined) {
+        checked.value = true;
+        checked_email.value = false;
+        return { status: -1 }
+    } else {
+        if (email.value.split('@').length > 1) {
+            create.value = false;
+            popup.value = true;
+            return {
+                bookingName: name.value, bookingEmail: email.value, eventCategory: {
+                    "id": categoryId.value,
+                    "eventCategoryName": category.value,
+                    "eventCategoryDescription": null,
+                    "eventDuration": null
+                }, eventStartTime: datetime(), eventDuration: duration.value, eventNote: addnotes.value, status: 1 , id: params.id
+            }
+        } else {
+            checked.value = false;
+            checked_email.value = true;
+            return { status: 0 }
+        }
+    }
+})
+
+const datetime = () => {
+    const disdate = new Date(date.value)
     // date.setDate(date.value) 
     // date.setTime(time.value)
-    return  disdate
+    console.log(disdate);
+    return disdate
 }
 
 const duration = computed(() => {
@@ -97,95 +117,119 @@ const categoryId = computed(() => {
       <img src="../assets/complete.png" alt="complete" class="picture">
       <router-link :to="{ name: 'EventListAll' }"><button class="btnclose">close</button></router-link>
     </div>
-</div>
 </template>
  
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Changa+One&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Itim&display=swap');
-.picture{
+
+.picture {
     margin-top: -10em;
 }
-.btnclose{
-  background-color: #FB757E;
-  border-radius: 10px;
-  font-family: 'Itim', cursive;
-  font-size: medium;
-  margin-left: 15em;
+
+.btnclose {
+    background-color: #FB757E;
+    border-radius: 10px;
+    font-family: 'Itim', cursive;
+    font-size: medium;
+    margin-left: 15em;
 }
-.modal-title{
+
+.modal-title {
     font-family: 'Changa One', cursive;
     color: #172B3A;
 }
-.modal-body{
+
+.modal-body {
     font-family: 'Kanit';
     color: #172B3A;
 }
-.addtitle{
+
+.addtitle {
     font-family: 'Changa One', cursive;
     font-size: 3em;
     text-align: center;
     margin-top: 0.5em;
 }
-.input{
+
+.input {
     font-family: 'Changa One', cursive;
     font-size: 1.25em;
     text-align: center;
 }
-.addnotes{
+
+.addnotes {
     font-size: larger;
     margin-left: 6em;
-    font-family: 'Changa One', cursive; 
+    font-family: 'Changa One', cursive;
     margin-top: 2em;
 }
-.select3{
+
+.select3 {
     display: flex;
     font-size: larger;
     margin-left: 6em;
     font-family: 'Changa One', cursive;
+<<<<<<< HEAD
      /* text-align: center; */
+=======
+    /* text-align: center; */
+>>>>>>> c5258b00d2827928b934674c447414ae39bd466a
     margin-top: -2.5em;
     justify-content: center;
 }
-.select2{
+
+.select2 {
     font-size: larger;
     margin-left: 6em;
     font-family: 'Changa One', cursive;
-     /* text-align: center; */
+    /* text-align: center; */
     margin-top: 2em;
-    display: flex; 
+    display: flex;
 }
-.select1{
+
+.select1 {
     font-size: larger;
     margin-left: 6em;
     font-family: 'Changa One', cursive;
     display: flex;
     margin-top: 2em;
 }
-.option{
+
+.option {
     margin-left: 3em;
-    width:52.2em;
+    width: 52.2em;
     text-align: center;
 }
-.button{
+
+.button {
     display: flex;
     justify-content: center;
     /* padding: 15px 32px; */
     font-size: 16px;
 
 }
+<<<<<<< HEAD
 .button:hover{
     color: #172B3A;
+=======
+
+.button:hover {
+    color: white;
+>>>>>>> c5258b00d2827928b934674c447414ae39bd466a
 }
-#notes{
+
+#notes {
     position: relative;
     margin-left: 15em;
     margin-top: -2em;
 }
-#party{
+
+#party {
     margin-left: 2em;
 }
-.modal-body{
+
+.modal-body {
     text-align: center;
 }
 p{

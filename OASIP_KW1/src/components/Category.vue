@@ -121,4 +121,63 @@ const picture = ref("src/assets/Pic_1.png")
   transition: .5s ease;
   background-color: #008CBA;
 }
+<<<<<<< HEAD
+=======
+</style>
+<!-- <script setup>
+import { ref } from 'vue'
+defineProps({
+  eventCategory: {
+    type: Object,
+    require: true
+  },
+})
+const picture = ref("src/assets/Pic_1.png")
+</script>
+ 
+<template>
+<p class="titleCategory">Category</p>
+<div class="row row-cols-2 row-cols-md-3 g-2 justify-content-center">
+  <div v-for="(eventCategory,index) in eventCategory">
+    <img :src="picture">
+    <p> {{ eventCategory.eventCategoryName }} </p>
+    <p> {{ typeof(String(eventCategory.id))}} </p>
+ </div>
+  </div>
+</template>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Itim&display=swap');
+้html , body{
+  background-color: #B16A97;
+}
+.titleCategory{
+ font-family: 'Changa One', cursive;
+ font-size: 3em;
+ text-align: center;
+ margin-top: 0.5em;
+ color: #ffffff;
+}
+.add{
+  position: relative;
+  /* margin-top: 0.0015em; */
+  margin-left: -80em;
+}
+.img-bottom{
+  position: relative;
+  /* margin-left: 80em; */
+}
+.overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  transition: .5s ease;
+  background-color: #008CBA;
+}
+>>>>>>> c5258b00d2827928b934674c447414ae39bd466a
 </style> -->
