@@ -27,9 +27,9 @@ const toEditingNode = async (editNote) => {
   console.log(editingNote.value);
 }
 
-onBeforeMount(async () =>{
-  await getEvents()
-})
+// onBeforeMount(async () =>{
+//   await getEvents()
+// })
 
 const modifyEvent = async (events) => {
   const res = await fetch(`http://intproj21.sit.kmutt.ac.th/kw1/api/events/${params.id}`, {

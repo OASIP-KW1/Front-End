@@ -109,6 +109,7 @@ td{
   font-size: 2em;
   color: red;
   margin-top: 2.5em;
+  font-family: 'Changa One', cursive;
 }
 thead{
   border: #172B3A;
