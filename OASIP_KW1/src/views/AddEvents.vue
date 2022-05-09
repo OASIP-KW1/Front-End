@@ -5,7 +5,11 @@ import AddEvent from '../components/AddEvent.vue';
 let data = ref({})
 // GET
 const getCategories = async () =>{
+<<<<<<< HEAD
     const res = await fetch(`${import.meta.env.BASE_URL}/api/eventCategory`)
+=======
+    const res = await fetch(`http://intproj21.sit.kmutt.ac.th/kw1/api/eventCategory`)
+>>>>>>> f03157ca3fd4843f0cc90985ffd61823eee63941
     if(res.status === 200) {
     console.log(`response.status: ${res.status}`)
     console.log(res);
@@ -24,7 +28,11 @@ const createAppointment = async (newEvent) => {
   if(newEvent.status == 0){
     console.log('no data');
   }else{
+<<<<<<< HEAD
   const res = await fetch(`${import.meta.env.BASE_URL}/api/events`, {
+=======
+  const res = await fetch(`http://intproj21.sit.kmutt.ac.th/kw1/api/events`, {
+>>>>>>> f03157ca3fd4843f0cc90985ffd61823eee63941
     method: 'POST',
     headers: {
       'content-type': 'application/json'
@@ -38,12 +46,19 @@ const createAppointment = async (newEvent) => {
 }
 }
 
+<<<<<<< HEAD
 // modify
 const modifyEvent = async (edit) => {
   const date = new Date(edit.eventStartTime)
   // const dateUTC = date.toISOString()
   console.log(edit.eventStartTime)
   const res = await fetch(`${import.meta.env.BASE_URL}/api/events/${edit.id}`, {
+=======
+//modify
+const modifyEvent = async (events) => {
+  console.log(events.eventStartTime)
+  const res = await fetch(`http://intproj21.sit.kmutt.ac.th/kw1/api/events/${events.id}`, {
+>>>>>>> f03157ca3fd4843f0cc90985ffd61823eee63941
     method: 'PUT',
     headers: {
       'content-type': 'application/json'
