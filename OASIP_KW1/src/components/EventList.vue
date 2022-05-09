@@ -11,10 +11,10 @@ defineProps({
 </script>
  
 <template>
-<div class="container">
+<div class="container"  >
         <p v-if ="eventList.length == 0" class="p-3 text-center">VIEW-EVENT-LIST-EMPTY</p>
         <p v-else class="p-3 text-center">VIEW-EVENT-LIST-ALL</p>
-        <table class="table table-hover">
+        <table class="table table-hover width=100%">
             <thead>
                 <tr class="title">
                     <th>ID</th>
@@ -60,6 +60,9 @@ tr{
 td{
   font-size: 0.98em;
   color: #172B3A;
+}
+.table{
+  margin-left: auto;
 }
 .detail{
   background-color: #F7D97C;
