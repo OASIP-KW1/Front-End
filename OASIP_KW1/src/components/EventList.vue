@@ -14,9 +14,10 @@ defineProps({
 <div class="container"  >
         <p v-if ="eventList.length == 0" class="p-3 text-center">VIEW-EVENT-LIST-EMPTY</p>
         <p v-else class="p-3 text-center">VIEW-EVENT-LIST-ALL</p>
-        <table class="table table-hover width=100%">
+        <div class="table-responsive-lg">
+        <table class="table table-hover" >
             <thead>
-                <tr class="title">
+                <tr class="title" id="header" >
                     <th>ID</th>
                     <th>Booking Name</th>
                     <th>Booking Email</th>
@@ -27,7 +28,7 @@ defineProps({
                 </tr>
             </thead>
             <tbody>
-                <tr v-for="(event,index) in eventList" :key="event.id " class="datas">
+                <tr v-for="(event,index) in eventList" :key="event.id " class="datas" tr-hover>
                     <td>{{index +1}}</td>
                     <td>{{event.bookingName}}</td>
                     <td>{{event.bookingEmail}}</td>
@@ -40,19 +41,28 @@ defineProps({
                 </tr>
             </tbody>
         </table>
+        </div>
+        </div>
         <div v-if ="eventList.length == 0" class="null">No Scheduled Events</div>
-  </div>
 </template>
  
  
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Changa+One&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Itim&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Kanit:wght@100;300&display=swap');
 html , body{
   background-color: #EFEFEF;
   }
 .container{
   text-align: center;
+}
+
+#header:hover{
+  background-color: unset;
+}
+tr:hover{
+  background-color: #f59761;
 }
 tr{
   border: #172B3A;
@@ -83,7 +93,8 @@ td{
   vertical-align: middle;
 }
 .p-3{
-  font-family: 'Changa One', cursive;
+ font-family: 'Kanit', sans-serif;
+ font-weight: bold;
  font-size: 3em;
  color: #172B3A;
 }

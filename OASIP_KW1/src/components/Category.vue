@@ -8,7 +8,7 @@ defineProps({
 </script>
  
 <template>
-<p class="titleCategory">Category</p>
+<p class="titleCategory">CATEGORY</p>
 <div class="row row-cols-2 row-cols-md-3 g-2 justify-content-center">
   <div v-for="(eventCategory,index) in eventCategory">
   <div class="col">
@@ -27,10 +27,12 @@ defineProps({
 </template>
 
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Kanit:wght@100;300&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Itim&display=swap');
 
 .titleCategory{
- font-family: 'Changa One', cursive;
+ font-family: 'Kanit', sans-serif;
+ font-weight: bold;
  font-size: 3em;
  text-align: center;
  margin-top: 0.5em;
