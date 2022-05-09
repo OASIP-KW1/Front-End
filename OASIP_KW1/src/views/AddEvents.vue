@@ -5,8 +5,7 @@ import AddEvent from '../components/AddEvent.vue';
 let data = ref({})
 // GET
 const getCategories = async () =>{
-
-    const res = await fetch(`http://intproj21.sit.kmutt.ac.th/kw1/eventCategory`)
+    const res = await fetch(`${import.meta.env.BASE_URL}/api/eventCategory`)
     if(res.status === 200) {
     console.log(`response.status: ${res.status}`)
     console.log(res);
@@ -25,7 +24,7 @@ const createAppointment = async (newEvent) => {
   if(newEvent.status == 0){
     console.log('no data');
   }else{
-  const res = await fetch(`http://intproj21.sit.kmutt.ac.th/kw1/events`, {
+  const res = await fetch(`${import.meta.env.BASE_URL}/api/events`, {
     method: 'POST',
     headers: {
       'content-type': 'application/json'
@@ -39,17 +38,22 @@ const createAppointment = async (newEvent) => {
 }
 }
 
-//modify
-const modifyEvent = async (events) => {
-  console.log(events.eventStartTime)
-  const res = await fetch(`http://intproj21.sit.kmutt.ac.th/kw1/events/${events.id}`, {
+// modify
+const modifyEvent = async (edit) => {
+  const date = new Date(edit.eventStartTime)
+  // const dateUTC = date.toISOString()
+  console.log(edit.eventStartTime)
+  const res = await fetch(`${import.meta.env.BASE_URL}/api/events/${edit.id}`, {
     method: 'PUT',
     headers: {
       'content-type': 'application/json'
     },
-    body: JSON.stringify({ bookingName: events.bookingName , bookingEmail: events.bookingEmail , eventCategory:events.eventCategory,
-                           eventStartTime: events.eventStartTime , eventDuration: events.eventDuration , eventNote: events.eventNote })
+    body: JSON.stringify({ bookingName: edit.bookingName , bookingEmail: edit.bookingEmail , eventCategory:edit.eventCategory,
+                           eventStartTime: edit.eventStartTime , eventDuration: edit.eventDuration , eventNote: edit.eventNote })
   })
+  if(res.status === 200){
+    console.log('update success')
+  }else console.log('error, cannot update note');
 }
 
 
