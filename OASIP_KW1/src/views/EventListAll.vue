@@ -9,7 +9,7 @@ let data = ref({})
 // GET
 const getNotes = async () =>{
 
-    const res = await fetch(`${import.meta.env.BASE_URL}api/events`)
+    const res = await fetch(`http://intproj21.sit.kmutt.ac.th/kw1/api/events`)
     if(res.status === 200) {
     console.log(`response.status: ${res.status}`)
     console.log(res);
@@ -26,7 +26,7 @@ onBeforeMount( async () => {
 const deleteEvent = async (eventID) => {
   let ans = confirm(`Do you want to cancel appointment?`)
   if(ans){
-  const res = await fetch (`${import.meta.env.BASE_URL}api/events/${eventID}` , 
+  const res = await fetch (`http://intproj21.sit.kmutt.ac.th/kw1/api/events/${eventID}` , 
   {method: 'delete'})
   if(res.status === 200){
     (data.value = data.value.filter((event) => event.id !== eventID))

@@ -27,7 +27,9 @@ let create = ref(true)
 const edit = params.name == undefined?true:false
 const view = params.name == undefined?false:true
 const alldata = computed(() => {
-    if (name.value == undefined || email.value == undefined || date.value == undefined || category.value == undefined) {
+    if (name.value == undefined || email.value == undefined || date.value == undefined || category.value == undefined ||
+    name.value == "" || email.value == "" || date.value == "" || category.value == ""
+    ) {
         checked.value = true;
         checked_email.value = false;
         return { status: -1 }
@@ -85,30 +87,30 @@ const categoryId = computed(() => {
  
 <template>
     <div v-show="create">
-        <p class="addtitle">Add Events / Booking</p>
+        <p class="addtitle">ADD EVENTS / BOOKING</p>
         <div class="input" v-show="view">
-        <p >name : {{params.name}} email: {{params.email}}</p>
+        <p >Name : {{params.name}} Email: {{params.email}}</p>
         <p >Category : {{params.eventCategory}}</p>
         </div>
         <div class="input" v-show="edit">
             <p v-show="checked" style="color: red;">Please input info</p>
             <p v-show="checked_email" style="color: red;">Please input email</p>
-            <p>name<input type="text" size="50" v-model="name">
-                email <input type="text" size="50" v-model="email"></p>
+            <p>Name<input type="text" size="54" v-model="name" style="border-radius: 9px; color: #172B3A;"> 
+            Email <input type="text" size="53" v-model="email" style="border-radius: 9px; color: #172B3A;"></p>
         </div>
         <div class="select1" v-show="edit">
             <p class="select">Select Category do you need</p>
-            <select class="option" v-model="category">
+            <select class="option" v-model="category" style="border-radius: 9px;">
                 <option v-for="(category, index) in categories" :key="index">{{ category.eventCategoryName }}</option>
             </select>
         </div>
         <div class="select2">
             <p>Date - Time </p>
-            <input id="party" type="datetime-local" name="partydate" v-model="date">
+            <input id="party" type="datetime-local" name="partydate" v-model="date" style="border-radius: 9px;">
         </div>
 
         <p class="addnotes">Add Note :</p> <textarea id="notes" cols="157" rows="5" maxlength="100"
-            v-model="addnotes"></textarea>
+            v-model="addnotes" style="border-radius: 9px;"></textarea>
         <div class="button" v-show="edit"><button type="button" class="Close btn btn-success btn-lg"
                 @click="$emit('createAppointment', alldata)">Create Appointment</button></div>
         <div class="button" v-show="view"><button type="button" class="Close btn btn-success btn-lg"
@@ -118,7 +120,7 @@ const categoryId = computed(() => {
     <div class="modal-dialog " role="document" v-show="popup">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Add Events / Booking</h5>
+                <h5 class="modal-title">ADD EVENTS / BOOKING</h5>
             </div>
             <div class="modal-body">
                 <p>Your appointment is complete.</p>
@@ -155,7 +157,8 @@ const categoryId = computed(() => {
 }
 
 .addtitle {
-    font-family: 'Changa One', cursive;
+    font-family: 'Kanit', sans-serif;
+    font-weight: bold;
     font-size: 3em;
     text-align: center;
     margin-top: 0.5em;
@@ -170,7 +173,7 @@ const categoryId = computed(() => {
 .addnotes {
     font-size: larger;
     margin-left: 6em;
-    font-family: 'Changa One', cursive;
+    font-family: 'Kanit', sans-serif;
     margin-top: 2em;
 }
 
@@ -200,6 +203,9 @@ const categoryId = computed(() => {
     display: flex;
     margin-top: 2em;
 }
+.select{
+    border-radius: 41px;
+}
 
 .option {
     margin-left: 3em;
@@ -218,6 +224,14 @@ const categoryId = computed(() => {
 .button:hover {
     color: white;
 }
+.modal-dialog{
+    font-family: 'Kanit', sans-serif;
+}
+.modal-title{
+    font-family: 'Kanit', sans-serif;
+    font-weight: bolder;
+    text-align: center
+}
 
 #notes {
     position: relative;
@@ -231,5 +245,9 @@ const categoryId = computed(() => {
 
 .modal-body {
     text-align: center;
+}
+
+p{
+    font-family: 'Kanit', sans-serif;
 }
 </style>

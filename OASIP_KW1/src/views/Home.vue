@@ -7,7 +7,7 @@ let data = ref({})
 let toggle = ref(true)
 // GET
 const getNotes = async () =>{
-    const res = await fetch(`${import.meta.env.BASE_URL}api/events`)
+    const res = await fetch(`http://intproj21.sit.kmutt.ac.th/kw1/api/events`)
     if(res.status === 200) {
     console.log(`response.status: ${res.status}`)
     console.log(res);
@@ -39,6 +39,7 @@ console.log(toggle.value);
 </template>
 
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Kanit:wght@100;300&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Itim&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Changa+One&display=swap');
 html , body{
@@ -52,7 +53,7 @@ html , body{
 .btn{
   margin-top: 2em;
   margin-left: 2em;
-  font-family: 'Itim', cursive;
+  font-family:'Kanit', sans-serif;
 }
 .logo{
 margin-left: 42em;
@@ -62,7 +63,7 @@ height: 224px;
 
 }
 .welcome{
- font-family: 'Changa One';
+ font-family: 'Kanit', sans-serif;
  font-size: 2em;
  margin-top: 3em;
  color: #172B3A;
@@ -75,7 +76,8 @@ height: 224px;
       1px 0 black, 0 -1px black */
 }
 .welcome-1{
-font-family: 'Changa One';
+ font-family: 'Kanit', sans-serif;
+ font-weight: bold;
  font-size: 4em;
  margin-top: 2em;
  color: #172B3A;
@@ -88,7 +90,7 @@ font-family: 'Changa One';
 .sub{
   font-size: 1.2em;
   text-align: center;
-  font-family: 'Changa One', cursive;
+  font-family: 'Kanit', sans-serif;
   color: #172B3A;
   position: absolute;
   width: 540px;

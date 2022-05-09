@@ -8,7 +8,7 @@ let data = ref({})
 // GET
 const getNotes = async () =>{
 
-    const res = await fetch(`${import.meta.env.BASE_URL}api/eventCategory`)
+    const res = await fetch(`http://intproj21.sit.kmutt.ac.th/kw1/api/eventCategory`)
     if(res.status === 200) {
     console.log(`response.status: ${res.status}`)
     console.log(res);
