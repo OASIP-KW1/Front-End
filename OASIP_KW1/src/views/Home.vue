@@ -7,7 +7,7 @@ let data = ref({})
 let toggle = ref(true)
 // GET
 const getNotes = async () =>{
-    const res = await fetch(`/api/events`)
+    const res = await fetch(`${import.meta.env.BASE_URL}api/events`)
     if(res.status === 200) {
     console.log(`response.status: ${res.status}`)
     console.log(res);
@@ -38,8 +38,6 @@ console.log(toggle.value);
 @import url('https://fonts.googleapis.com/css2?family=Itim&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Changa+One&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Ubuntu+Mono:wght@700&display=swap');
-html , body{
-}
 #grad1{ 
   background: linear-gradient(-45deg,#C6DBDA,#FEE1E8,#FED7C3,#F6EAC2,#ECD5E3);
   width: 100%;

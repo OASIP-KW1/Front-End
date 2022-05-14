@@ -157,9 +157,6 @@ const formatdate = (date) => {
 @import url('https://fonts.googleapis.com/css2?family=Itim&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Kanit:wght@100;300&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Mali:wght@500&display=swap');
-/* select:invalid {
-  color: #666;
-} */
 table {
   border-collapse: collapse;
   width: 100%;
@@ -170,9 +167,6 @@ tr.head{
 }
 td{
   font-family: 'Mali', cursive;
-}
-th{
-  margin-left: 5em;
 }
 .container{
   text-align: center;
