@@ -4,8 +4,10 @@ import Detailsbase from '../views/Details-Base.vue'
 import EventListAll from '../views/EventListAll.vue'
 import EventCategory from '../views/EventCategory.vue'
 import AddEvents from '../views/AddEvents.vue'
+import Abouts from '../views/Abouts.vue'
 
-const history = createWebHistory('/kw1/')
+// const history = createWebHistory('/kw1/')
+const history = createWebHistory('')
 const routes = [
     {
         path: '/',
@@ -27,15 +29,15 @@ const routes = [
         name: 'EventCategory',
         component: EventCategory
     },
-    // {
-    //     path: '/eventCategory/:id',
-    //     name: 'DetailCategory',
-    //     component: DetailCategory
-    // },
     {
         path: '/addevent',
         name: 'AddEvents',
         component: AddEvents
+    },
+    {
+        path: '/aboutsus',
+        name: 'Abouts',
+        component: Abouts
     }
     
 ]

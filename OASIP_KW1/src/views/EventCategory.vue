@@ -4,11 +4,11 @@ import Category from '../components/Category.vue';
 // import DetailCategory from '../components/DetailCategory.vue';
 
 
-let data = ref({})
+let data = ref([])
 // GET
 const getNotes = async () =>{
 
-    const res = await fetch(`${import.meta.env.BASE_URL}api/eventCategory`)
+    const res = await fetch(`/api/eventCategory`)
     if(res.status === 200) {
     console.log(`response.status: ${res.status}`)
     console.log(res);

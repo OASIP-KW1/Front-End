@@ -7,7 +7,7 @@ let data = ref({})
 let toggle = ref(true)
 // GET
 const getNotes = async () =>{
-    const res = await fetch(`${import.meta.env.BASE_URL}api/events`)
+    const res = await fetch(`/api/events`)
     if(res.status === 200) {
     console.log(`response.status: ${res.status}`)
     console.log(res);
@@ -24,88 +24,92 @@ console.log(toggle.value);
 </script>
  
 <template>
-<div>
-  <img src="../assets/logo-1.png" alt="logo" class="logo">
-
+<div id="grad1">
+<p class="sub">Welcome Online Appoinment Scheduling System</p>
+<p class="sub2">About INT221 INFORMATION TECHNOLOGY INTEGRATED PROJECT</p>
+<p class="sub4">By OASIP_KW1</p>
+<div class="sub3">
+  <img src="../assets/logo-1.png" alt="img">
 </div>
-<div class="welcome">
-  Welcome to 
 </div>
-<div class="welcome-1">
-  OASIP-KW1 
-</div>
-
-<p class="sub">Online Appoinment Scheduling System</p>
 </template>
 
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Kanit:wght@100;300&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Itim&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Changa+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu+Mono:wght@700&display=swap');
 html , body{
-  background-color: #EFEFEF;
-  max-width: 100%;
-  max-height: 0em
 }
-.li{
-  color: aliceblue;
-}
-.btn{
-  margin-top: 2em;
-  margin-left: 2em;
-  font-family:'Kanit', sans-serif;
-}
-.logo{
-margin-left: 42em;
-margin-top: 5em;
-width: 219px;
-height: 224px;
-
-}
-.welcome{
- font-family: 'Kanit', sans-serif;
- font-size: 2em;
- margin-top: 3em;
- color: #172B3A;
- position: absolute;
- width: 671px;
- height: 68px;
- left: 700px;
- top: 280px;
- /* text-shadow: -1px 0 black, 0 1px black,
-      1px 0 black, 0 -1px black */
-}
-.welcome-1{
- font-family: 'Kanit', sans-serif;
- font-weight: bold;
- font-size: 4em;
- margin-top: 2em;
- color: #172B3A;
- position: absolute;
- width: 671px;
- height: 68px;
- left: 615px;
- top: 280px;
+#grad1{ 
+  background: linear-gradient(-45deg,#C6DBDA,#FEE1E8,#FED7C3,#F6EAC2,#ECD5E3);
+  width: 100%;
+  height: 100vh;
+  background-size: 400% 400%;
+  position: relative;
+  animation: change 1s ease-in-out infinite;
 }
 .sub{
-  font-size: 1.2em;
+  font-size: 2.5em;
   text-align: center;
-  font-family: 'Kanit', sans-serif;
-  color: #172B3A;
+  color: #000000;
   position: absolute;
-  width: 540px;
-  height: 32px;
-  left: 510px;
-  top: 670px;
-  /* text-shadow: -1px 0 black, 0 1px black,
-      1px 0 black, 0 -1px black */
+  width: 1000px;
+  left: 365px;
+  margin-top: -10em;
+  font-family: 'Ubuntu Mono', monospace;
+  margin-left: -1.5em;
 }
-.teams{
-  position: relative;
-  margin-left: 14em;
-}
-td{
+.sub2{
+  font-size: 1.5em;
   text-align: center;
-  font-family: 'Itim', cursive;
+  color: #000000;
+  position: absolute;
+  width: 702px;
+  left: 480px;
+  margin-top: -10em;
+  font-family: 'Ubuntu Mono', monospace;
+  margin-left: -1.5em;
 }
+.sub3{
+  position: absolute;
+  width: 702px;
+  left: 480px;
+  margin-top: -39em;
+  font-family: 'Ubuntu Mono', monospace;
+  margin-left: 12.5em;
+    -webkit-animation-name: example; 
+    -webkit-animation-duration: 1s; 
+    -webkit-animation-iteration-count: infinite; 
+    animation-name: example;
+    animation-iteration-count:infinite;  
+}
+
+
+@-webkit-keyframes example {
+    0%  {left:455px; top:0px;}
+    25%  {left:495px; top:0px;}
+    50%  {left:455px; top:20px;}
+    100%  {left:495px; top:20px;}
+}
+
+@keyframes example {
+    0%  {left:455px; top:0px;}
+    25%  {left:495px; top:0px;}
+    50%  {left:455px; top:20px;}
+    100%  {left:495px; top:20px;}
+}
+
+.sub4{
+  font-size: 1.5em;
+  text-align: center;
+  color: #000000;
+  position: absolute;
+  width: 702px;
+  left: 480px;
+  margin-top: -8em;
+  font-family: 'Ubuntu Mono', monospace;
+  margin-left: -1.5em;
+}
+
+    
 </style>
