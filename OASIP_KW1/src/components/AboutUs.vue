@@ -39,7 +39,7 @@ import AntDesignGithubOutlined from './icons/AntDesignGithubOutlined.vue';
 }
 .name , .id , .git{
   text-align: center;
-  font-family: 'Ubuntu Mono', monospace;
+  font-family: 'Mali', cursive;
   font-size: 1.25em;
  /* padding-top: 1em; */
 }

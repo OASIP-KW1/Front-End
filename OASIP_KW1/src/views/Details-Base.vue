@@ -52,6 +52,7 @@ const modifyEvent = async (events) => {
     }
     editingNote.value=""
 }
+
 </script>
  
 <template> 

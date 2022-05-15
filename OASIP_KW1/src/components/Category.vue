@@ -29,7 +29,6 @@ const props = defineProps({
     <p>Duration : {{category.eventDuration}} minutes</p>
   </div>
 </div>
-  
 </div>
 </template>
 
@@ -52,7 +51,7 @@ const props = defineProps({
   font-size: 2.5em;
   font-weight: bolder;
   padding-top: 0.5em;
-}
+  }
 .clinics{
   text-align: center;
 }

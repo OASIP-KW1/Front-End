@@ -175,12 +175,12 @@ const checkemail = (email) => {
 <div id="grad1">
     <div v-show="create">
     <div class="back">
-        <p class="addtitle" v-if="view"><b>Edit Appointment</b></p>
-        <p class="addtitle" v-else><b>Appointment</b></p>
+        <p class="addtitle" v-if="view"><b>EDIT APPOINTMENT</b></p>
+        <p class="addtitle" v-else><b>APPOINMENT</b></p>
         <!-- edit -->
         <div class="input" v-show="view">
         <p class="names">Name &nbsp;<input type="text" size="50" :value="  params.name" disabled style="border-radius: 10px;"></p>
-       <p>Email &nbsp; <input type="text" size="50" :value="  params.email" disabled style="border-radius: 10px;"></p>
+       <p class="emails">Email &nbsp; <input type="text" size="50" :value="  params.email" disabled style="border-radius: 10px;" ></p>
         </div>
         <!-- end edit -->
         <div class="input" v-show="edit">
@@ -207,7 +207,7 @@ const checkemail = (email) => {
              <!-- create -->
             <div class="addform">
             <p class="names">Name &nbsp; <input type="text" size="50" v-model="name" placeholder="  Name" style="border-radius: 10px;"></p>
-            <p>Email &nbsp; <input type="text" size="50" v-model="email" placeholder="  Email" style="border-radius: 10px;"></p>
+            <p class="emails">Email &nbsp; <input type="text" size="50" v-model="email" placeholder="  Email" style="border-radius: 10px;"></p>
             </div>
         </div>
         <br>
@@ -255,7 +255,7 @@ const checkemail = (email) => {
     </div>
 </div>
 </template>
- 
+
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Changa+One&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Itim&display=swap');
@@ -349,6 +349,10 @@ const checkemail = (email) => {
     /* font-family: 'Changa One', cursive; */
     font-size: 2em;
     margin-top: -0.5em;
+}
+
+.emails{
+    padding-right: 2.85em;
 }
 
 .input {

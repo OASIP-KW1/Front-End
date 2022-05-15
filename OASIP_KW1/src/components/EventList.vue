@@ -97,7 +97,7 @@ const formatdate = (date) => {
     <th>Option</th>
   </tr>
   <tr>
-    <td><input type="text" v-model="searchByEmail" placeholder="Your Email" @keyup="restoreDate"></td>
+    <td><input type="text" v-model="searchByEmail" placeholder="Your Email" @keyup="restoreDate" style="border-radius: 10px;"></td>
     <td>
       <select class="option2" v-model="searchByCategory" required>
       <option value="" disabled selected hidden>Choose Clinics or Category</option>
@@ -176,10 +176,12 @@ td{
   margin-top: 0.5em;
   height: 2em;
   margin-left: -0.7em;
+  border-radius: 10px;
 }
 .option3{
   margin-top: 0.25em;
   height: 2em;
+  border-radius: 10px;
 }
 .col{
   margin-left: 5em;
