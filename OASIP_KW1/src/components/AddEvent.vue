@@ -245,10 +245,10 @@ const checkemail = (email) => {
                 <router-link :to="{ name: 'EventListAll' }"><button type="button" class="btn btn-default" data-dismiss="modal">X</button></router-link>
             </div>
             <div class="modal-body">
-                <p v-if="edit == true">Your appointment is complete.</p>
-                <p v-else>Edit your appointment is complete.</p>
-                <p v-if="edit == true">นัดหมายของคุณเสร็จเรียบร้อย</p>
-                <p v-else>แก้ไขนัดหมายของคุณเสร็จเรียบร้อย</p>
+                <p >Your appointment is complete.</p>
+                <!-- <p v-else>Edit your appointment is complete.</p> -->
+                <p >นัดหมายของคุณเสร็จเรียบร้อย</p>
+                <!-- <p v-else>แก้ไขนัดหมายของคุณเสร็จเรียบร้อย</p> -->
             </div>
         </div>
     </div>
