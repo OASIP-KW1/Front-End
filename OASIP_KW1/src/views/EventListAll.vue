@@ -8,7 +8,7 @@ console.clear();
 let data = ref([])
 // GET
 const getCategories = async () =>{
-    const res = await fetch(`${import.meta.env.BASE_URL}api/eventCategory`)
+    const res = await fetch(`api/eventCategory`)
     if(res.status === 200) {
     data.value = await res.json()
     }

@@ -32,7 +32,7 @@ const toEditingNode = async (editNote) => {
 // })
 
 const modifyEvent = async (events) => {
-  const res = await fetch(`/api/events/${params.id}`, {
+  const res = await fetch(`$/api/events/${params.id}`, {
     method: 'PUT',
     headers: {
       'content-type': 'application/json'

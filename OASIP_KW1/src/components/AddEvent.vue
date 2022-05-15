@@ -14,7 +14,7 @@ const props = defineProps({
 let data = ref([])
 
 const getDate = async () =>{
-    const res = await fetch('api/events')
+    const res = await fetch(`${import.meta.env.BASE_URL}api/events`)
     if(res.status === 200) {
     data.value = await res.json()
     }
@@ -245,10 +245,10 @@ const checkemail = (email) => {
                 <router-link :to="{ name: 'EventListAll' }"><button type="button" class="btn btn-default" data-dismiss="modal">X</button></router-link>
             </div>
             <div class="modal-body">
-                <p v-if="edit == true">Your appointment is complete.</p>
-                <p v-else>Edit your appointment is complete.</p>
-                <p v-if="edit == true">นัดหมายของคุณเสร็จเรียบร้อย</p>
-                <p v-else>แก้ไขนัดหมายของคุณเสร็จเรียบร้อย</p>
+                <p >Your appointment is complete.</p>
+                <!-- <p v-else>Edit your appointment is complete.</p> -->
+                <p >นัดหมายของคุณเสร็จเรียบร้อย</p>
+                <!-- <p v-else>แก้ไขนัดหมายของคุณเสร็จเรียบร้อย</p> -->
             </div>
         </div>
     </div>
@@ -260,6 +260,9 @@ const checkemail = (email) => {
 @import url('https://fonts.googleapis.com/css2?family=Changa+One&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Itim&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Mali:wght@500&display=swap');
+.alert{
+    box-shadow: 5px 5px 5px rgb(197, 141, 180);
+}
 .names{
     margin-left: -3em;
 }
@@ -267,7 +270,14 @@ const checkemail = (email) => {
     margin-left: 2.5em;
 }
 .modal-content{
-    margin-top: -35em;
+    margin-top: -38em;
+    background: linear-gradient(-45deg ,#EBDEF0,#FADBD8);
+    box-shadow: 5px 5px 10px grey;
+    font-family: 'Mali', cursive;
+}
+.modal-title{
+    font-weight: bolder;
+    margin-left: 6.75em;
 }
 .modal-body{
     text-align: center;
@@ -278,11 +288,11 @@ const checkemail = (email) => {
     padding-top: 1em;
     margin-left: 15em;
     width: 70em;
-    height: 38em;    
+    height: 45em;    
     padding: 60px;
     /* border: 1px solid #FFD8BE; */
-    background-color: #C1E7E3;
-    /* background: linear-gradient(#C1E7E3,#DCFFFB); */
+    /* background-color: #C1E7E3; */
+    background: linear-gradient(-45deg , #AED6F1,#EBDEF0,#FADBD8,#B6E5F5);
     border-radius: 20px;
     box-shadow: 5px 5px 10px grey;
     /* opacity: 90%; */
@@ -300,13 +310,14 @@ const checkemail = (email) => {
 }
 #party{
     width: 50%;
-     margin-left: 2em;
+    margin-left: 2em;
 }
 .Close{
   /* font-family: 'Ubuntu Mono', monospace; */
   font-family: 'Mali', cursive;
   border-radius: 10px;
   background-color: aquamarine;
+  box-shadow: 5px 5px 10px grey;
   margin-top: 1.75em;
 }
 .textdt{
