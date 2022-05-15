@@ -7,7 +7,7 @@ let data = ref({})
 let toggle = ref(true)
 // GET
 const getNotes = async () =>{
-    const res = await fetch(`/api/events`)
+    const res = await fetch(`${import.meta.env.BASE_URL}api/events`)
     if(res.status === 200) {
     console.log(`response.status: ${res.status}`)
     console.log(res);

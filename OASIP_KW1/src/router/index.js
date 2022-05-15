@@ -6,8 +6,8 @@ import EventCategory from '../views/EventCategory.vue'
 import AddEvents from '../views/AddEvents.vue'
 import Abouts from '../views/Abouts.vue'
 
-// const history = createWebHistory('/kw1/')
-const history = createWebHistory('')
+const history = createWebHistory('/kw1/')
+// const history = createWebHistory('')
 const routes = [
     {
         path: '/',
