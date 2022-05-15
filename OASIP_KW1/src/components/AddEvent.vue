@@ -14,7 +14,7 @@ const props = defineProps({
 let data = ref([])
 
 const getDate = async () =>{
-    const res = await fetch(`${import.meta.env.BASE_URL}api/events`)
+    const res = await fetch(`api/events`)
     if(res.status === 200) {
     data.value = await res.json()
     }
