@@ -240,14 +240,14 @@ const checkemail = (email) => {
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" v-if="edit == true">ADD APPOINTMENT</h5>
-                <h5 class="modal-title" v-else>EDIT APPOINTMENT</h5>
+                <h5 class="modal-title">ADD APPOINTMENT</h5>
+                <!-- <h5 class="modal-title" v-else>EDIT APPOINTMENT</h5> -->
                 <router-link :to="{ name: 'EventListAll' }"><button type="button" class="btn btn-default" data-dismiss="modal">X</button></router-link>
             </div>
             <div class="modal-body">
-                <p >Your appointment is complete.</p>
+                <p>Your appointment is complete.</p>
                 <!-- <p v-else>Edit your appointment is complete.</p> -->
-                <p >นัดหมายของคุณเสร็จเรียบร้อย</p>
+                <p>นัดหมายของคุณเสร็จเรียบร้อย</p>
                 <!-- <p v-else>แก้ไขนัดหมายของคุณเสร็จเรียบร้อย</p> -->
             </div>
         </div>
