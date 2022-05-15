@@ -74,6 +74,14 @@ const refresh = () =>{
   searchByTime.value = ''
 }
 
+const monthName = ref(['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'])
+
+const formatdate = (date) => {
+  const checkdate = new Date(date)
+  return `${checkdate.getDate()} ${monthName.value[checkdate.getMonth()]} ${checkdate.getFullYear()}
+  ${checkdate.getHours()}:${String(checkdate.getMinutes()).padStart(2, '0')}`
+}
+
 </script>
  
 <template>
@@ -89,7 +97,7 @@ const refresh = () =>{
     <th>Option</th>
   </tr>
   <tr>
-    <td><input type="text" v-model="searchByEmail" placeholder="Your Email" @keyup="restoreDate"></td>
+    <td><input type="text" v-model="searchByEmail" placeholder="Your Email" @keyup="restoreDate" style="border-radius: 10px;"></td>
     <td>
       <select class="option2" v-model="searchByCategory" required>
       <option value="" disabled selected hidden>Choose Clinics or Category</option>
@@ -111,7 +119,7 @@ const refresh = () =>{
   </table>
   <br>
         <div class="table-responsive-lg"> 
-        <table class="table table-hover" >
+        <table class="table table-hover">
             <thead>
                 <tr class="head">
                     <th>ID</th>
@@ -129,7 +137,7 @@ const refresh = () =>{
                     <td>{{event.bookingName}}</td>
                     <td>{{event.bookingEmail}}</td>
                     <td>{{event.eventCategory.eventCategoryName}}</td>
-                    <td>{{event.eventStartTime}}</td>
+                    <td>{{formatdate(event.eventStartTime)}}</td>
                     <td>{{event.eventDuration}} minutes</td>
                     <td><router-link :to="{ name: 'Detailsbase' , params:{id:event.id}}"><button class="detail">Detail</button></router-link>&nbsp;&nbsp;
                     <button class="delete" @click="$emit('deleteEvent',event.id); deleteData(event.id)">Cancel</button>
@@ -149,9 +157,6 @@ const refresh = () =>{
 @import url('https://fonts.googleapis.com/css2?family=Itim&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Kanit:wght@100;300&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Mali:wght@500&display=swap');
-/* select:invalid {
-  color: #666;
-} */
 table {
   border-collapse: collapse;
   width: 100%;
@@ -171,10 +176,12 @@ td{
   margin-top: 0.5em;
   height: 2em;
   margin-left: -0.7em;
+  border-radius: 10px;
 }
 .option3{
   margin-top: 0.25em;
   height: 2em;
+  border-radius: 10px;
 }
 .col{
   margin-left: 5em;

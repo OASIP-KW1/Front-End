@@ -4,7 +4,7 @@ import Category from '../components/Category.vue';
 // import DetailCategory from '../components/DetailCategory.vue';
 
 
-let data = ref({})
+let data = ref([])
 // GET
 const getNotes = async () =>{
 

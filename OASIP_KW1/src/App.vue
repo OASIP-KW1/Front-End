@@ -14,13 +14,13 @@
         <router-link :to="{ name: 'EventCategory'}"><a class="nav-link" style="color: #000000; font-size: larger;">CATEGORY</a></router-link>
       </li> 
        <li class="nav-item">
-        <router-link :to="{ name: 'EventListAll'}"><a class="nav-link" style="color: #000000; font-size: larger;">EVENT</a></router-link>
+        <router-link :to="{ name: 'EventListAll'}"><a class="nav-link" style="color: #000000; font-size: larger;">APPOINMENT</a></router-link>
       </li>
       <li class="nav-item">
-        <router-link :to="{  name: 'AddEvents' }"><a class="nav-link" style="color: #000000; font-size: larger;">SCHEDULE</a></router-link>
+        <router-link :to="{  name: 'AddEvents' }"><a class="nav-link" style="color: #000000; font-size: larger;">RESERVE</a></router-link>
       </li>
        <li class="nav-item">
-        <router-link :to="{  name: 'Abouts' }"><a class="nav-link" style="color: #000000; font-size: larger;">ABOUT US</a></router-link>
+        <router-link :to="{  name: 'Abouts' }"><a class="nav-link" style="color: #000000; font-size: larger;">PROFILES</a></router-link>
       </li>
     </ul>
   </div>

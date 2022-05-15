@@ -47,7 +47,7 @@ const alldata = computed(() => {
         checked_email.value = false;
         return { status: 0 }
     } else {
-        if (email.value.split('@').length > 1) {
+        if (checkemail(email.value)) {
             if(isFuture()){
                 // console.log(checkSchedule(datetime()));
             if(eventStartTime.value.includes(checktime()) || checkSchedule(datetime())){
@@ -95,10 +95,12 @@ const checktime = () =>{
 }
 
 const isFuture = () =>{
-    const today = new Date(new Date().getTime() - 24*60*60*1000);
+    const today = new Date(new Date().getTime());
     const disdate = new Date(date.value)
     return disdate > today
 }
+console.log(new Date(new Date().getTime()));
+
 const duration = computed(() => {
     const currentCategoryId = ref(0);
     for (let i = 0; i < props.categories.length; i++) {
@@ -156,22 +158,29 @@ const checkSchedule = (date)=>{
     })
     return result.value
 }
-// let a = new Date('24 May 2022, 02:40:00')
-// let b = new Date('24 May 2022, 02:45:00')
-// let c = new Date('24 May 2022, 02:55:00')
-// console.log(a < b && b < c);
+
+const checkemail = (email) => {
+    if(email.split('@').length == 2 && email.split('@')[0] != ""){
+        // console.log(object);
+        if(email.split('@')[1].split('.').length > 1){
+            return true
+        }
+    }else {
+        return false
+        }
+}
 </script>
  
 <template>
 <div id="grad1">
     <div v-show="create">
     <div class="back">
-        <p class="addtitle" v-if="view">Edit Appointment</p>
-        <p class="addtitle" v-else>Appointment</p>
+        <p class="addtitle" v-if="view"><b>EDIT APPOINTMENT</b></p>
+        <p class="addtitle" v-else><b>APPOINMENT</b></p>
         <!-- edit -->
         <div class="input" v-show="view">
-        Name &nbsp;<input type="text" size="50" :value="params.name" disabled>&nbsp;&nbsp;
-        Email &nbsp;<input type="text" size="50" :value="params.email" disabled>
+        <p class="names">Name &nbsp;<input type="text" size="50" :value="  params.name" disabled style="border-radius: 10px;"></p>
+       <p class="emails">Email &nbsp; <input type="text" size="50" :value="  params.email" disabled style="border-radius: 10px;" ></p>
         </div>
         <!-- end edit -->
         <div class="input" v-show="edit">
@@ -193,18 +202,12 @@ const checkSchedule = (date)=>{
                 <!-- past day -->
             <p v-show="checked_date" style="color: red;">
                 <div class="alert alert-danger" role="alert">
-                Please validate that date-time is in the future.
+                Please validate that date-time is in the future
                 </div></p>
-                <!-- complete -->
-            <p v-show="checked_date" style="color: red;">
-            <div class="alert alert-danger" role="alert">
-            Please validate that date-time is in the future.
-            </div></p>
-            
-            <!-- create -->
+             <!-- create -->
             <div class="addform">
-            Name &nbsp;<input type="text" size="50" v-model="name" placeholder="Name" style="border-radius: 10px;">&nbsp;&nbsp;
-            Email &nbsp;<input type="text" size="50" v-model="email" placeholder="Email" style="border-radius: 10px;">
+            <p class="names">Name &nbsp; <input type="text" size="50" v-model="name" placeholder="  Name" style="border-radius: 10px;"></p>
+            <p class="emails">Email &nbsp; <input type="text" size="50" v-model="email" placeholder="  Email" style="border-radius: 10px;"></p>
             </div>
         </div>
         <br>
@@ -227,34 +230,39 @@ const checkSchedule = (date)=>{
         <!-- create + edit -->
         <p class="addnotes">Add Note : </p><textarea id="notes" cols="157" rows="5" maxlength="500"
             v-model="addnotes"></textarea>
-        <div class="button" v-show="edit"><button type="button" class="Close btn btn-success btn-lg"
+        <div class="button" v-show="edit"><button type="button" class="Close btn btn-light btn-lg"
                 @click="$emit('createAppointment', alldata)">Create Appointment</button></div>
-        <div class="button" v-show="view"><button type="button" class="Close btn btn-success btn-lg"
+        <div class="button" v-show="view"><button type="button" class="Close btn btn-light btn-lg"
                 @click="$emit('edit', alldata)">Update Appointment</button></div>
         </div>
     </div>  
-
     <div class="modal-dialog " role="document" v-show="popup">
+    <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Add Events / Booking</h5>
-                <router-link :to="{ name: 'EventListAll' }"><button type="button" class="btn btn-default" data-dismiss="modal">X</button></router-link></div>
-            <div class="modal-body">
-                <p>Your appointment is complete.</p>
-                <p>นัดหมายของคุณเสร็จเรียบร้อย</p>
+                <h5 class="modal-title" v-if="edit == true">ADD APPOINTMENT</h5>
+                <h5 class="modal-title" v-else>EDIT APPOINTMENT</h5>
+                <router-link :to="{ name: 'EventListAll' }"><button type="button" class="btn btn-default" data-dismiss="modal">X</button></router-link>
             </div>
-            <img src="../assets/complete.png" alt="complete" class="picture">
-            <!-- <router-link :to="{ name: 'EventListAll' }"><button class="btnclose">close</button></router-link> -->
+            <div class="modal-body">
+                <p v-if="edit == true">Your appointment is complete.</p>
+                <p v-else>Edit your appointment is complete.</p>
+                <p v-if="edit == true">นัดหมายของคุณเสร็จเรียบร้อย</p>
+                <p v-else>แก้ไขนัดหมายของคุณเสร็จเรียบร้อย</p>
+            </div>
         </div>
     </div>
+    </div>
 </div>
-
 </template>
 
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Changa+One&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Itim&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Mali:wght@500&display=swap');
+.names{
+    margin-left: -3em;
+}
 .duration{
     margin-left: 2.5em;
 }
@@ -266,21 +274,23 @@ const checkSchedule = (date)=>{
 }
 
 .back{
-    margin-top: -38em;
+    margin-top: -40em;
     padding-top: 1em;
     margin-left: 15em;
     width: 70em;
     height: 38em;    
     padding: 60px;
     /* border: 1px solid #FFD8BE; */
-    background-color: aliceblue;
+    background-color: #C1E7E3;
+    /* background: linear-gradient(#C1E7E3,#DCFFFB); */
     border-radius: 20px;
-    box-shadow: 5px 5px 10px #D0D3D4;
+    box-shadow: 5px 5px 10px grey;
     /* opacity: 90%; */
 }
 .addnotes {
     margin-left: 3em;
     margin-top: 2em;
+    font-family: 'Mali', cursive;
 }
 #notes{
     margin-left: 10em;
@@ -293,17 +303,19 @@ const checkSchedule = (date)=>{
      margin-left: 2em;
 }
 .Close{
-  font-family: 'Ubuntu Mono', monospace;
+  /* font-family: 'Ubuntu Mono', monospace; */
+  font-family: 'Mali', cursive;
   border-radius: 10px;
   background-color: aquamarine;
   margin-top: 1.75em;
 }
 .textdt{
     margin-left: 0.5em;
+    font-family: 'Mali', cursive;
 }
 .addform{
-    margin-left: 2em;
-    /* font-family: 'Mali', cursive; */
+    /* margin-left: 5em; */
+    font-family: 'Mali', cursive;
 }
 .picture {
     margin-top: -2em;
@@ -322,15 +334,19 @@ const checkSchedule = (date)=>{
 
 .addtitle {
     text-align: center;
-    /* font-family: 'Mali', cursive; */
-    font-family: 'Changa One', cursive;
+    font-family: 'Mali', cursive;
+    /* font-family: 'Changa One', cursive; */
     font-size: 2em;
     margin-top: -0.5em;
 }
 
+.emails{
+    padding-right: 2.85em;
+}
+
 .input {
     text-align: center;
-    /* font-family: 'Mali', cursive; */
+    font-family: 'Mali', cursive;
 }
 
 .select3 {
@@ -344,7 +360,7 @@ const checkSchedule = (date)=>{
     margin-left: 2.5em;
 }
 .select{
-    /* font-family: 'Mali', cursive; */
+    font-family: 'Mali', cursive;
     margin-left: 3em;
 }
 
