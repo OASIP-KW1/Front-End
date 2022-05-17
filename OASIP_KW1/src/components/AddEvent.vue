@@ -223,8 +223,10 @@ const checkemail = (email) => {
         <br>
         <!-- create + edit -->
         <div class="select2">
+            <span class="category" v-show="view" > Category : {{category}} </span>
             <p class="textdt">Date - Time 
-            <input id="party" type="datetime-local" name="partydate" v-model="date" style="border-radius: 10px;">
+            <input id="party" type="datetime-local" name="partydate" v-model="date" style="border-radius: 10px;"> 
+            <span class="duration" v-show="view" > Duration : {{duration}} minutes </span>
             </p>
         </div>
         <!-- create + edit -->
@@ -263,8 +265,14 @@ const checkemail = (email) => {
 .alert{
     box-shadow: 5px 5px 5px rgb(197, 141, 180);
 }
+
 .names{
     margin-left: -3em;
+}
+.category{
+    font-weight: bolder;
+    font-family: 'Mali', cursive;
+    margin-left: 21.95em;
 }
 .duration{
     margin-left: 2.5em;
@@ -309,7 +317,7 @@ const checkemail = (email) => {
     border-radius: 15px;
 }
 #party{
-    width: 50%;
+    width: 20%;
     margin-left: 2em;
 }
 .Close{
