@@ -49,17 +49,18 @@ const alldata = computed(() => {
     } else {
         if (checkemail(email.value)) {
             if(isFuture()){
-                // console.log(checkSchedule(datetime()));
             if(eventStartTime.value.includes(checktime()) || checkSchedule(datetime())){
+                checked_date.value = false;
                 checked_time.value = true;
                 checked.value = false
                 checked_email.value = false
                 return { status: 0 }
+                
             }else{
             create.value = false;
             popup.value = true;
             return {
-                bookingName: name.value, bookingEmail: email.value, eventCategory: {
+                bookingName: name.value.trim(), bookingEmail: email.value, eventCategory: {
                     "id": categoryId.value,
                     "eventCategoryName": category.value,
                     "eventCategoryDescription": null,
@@ -137,8 +138,8 @@ const eventStartTime = computed(() =>{
 
 const schedule = computed(()=>{
     const info = ref([])
-    info.value = eventStartTime.value.map((data) =>{
-        return [new Date(data) , new Date(new Date(data).getTime() + duration.value*60*1000)]
+    info.value = dataEachCategory.value.map((data) =>{
+        return [new Date(data.eventStartTime) , new Date(new Date(data.eventStartTime).getTime() + data.eventDuration*60*1000)]
     })
     return info.value
 })
@@ -172,7 +173,7 @@ const checkemail = (email) => {
 </script>
  
 <template>
-<div id="grad1">
+<!-- <div id="grad1"> -->
     <div v-show="create">
     <div class="back">
         <p class="addtitle" v-if="view"><b>EDIT APPOINTMENT</b></p>
@@ -253,7 +254,7 @@ const checkemail = (email) => {
         </div>
     </div>
     </div>
-</div>
+<!-- </div> -->
 </template>
 
 <style>

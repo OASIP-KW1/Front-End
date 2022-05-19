@@ -8,13 +8,7 @@ const props = defineProps({
 </script>
  
 <template>
-<div id="grad1">
-  <!-- <div v-for="category in eventCategory" class="background">
-    <p>{{category.id}}</p>
-    <p>{{category.eventCategoryName}}</p>
-    <p>{{category.eventCategoryDescription}}</p>
-    <p>{{category.eventDuration}}</p>
-  </div> -->
+<!-- <div id="grad1"> -->
   <p class="titleCategory">CATEGORY</p>
   <div class="flex-container">
    <div v-for="category in eventCategory">
@@ -29,7 +23,7 @@ const props = defineProps({
     <p>Duration : {{category.eventDuration}} minutes</p>
   </div>
 </div>
-</div>
+<!-- </div> -->
 </template>
 
 <style>
@@ -58,13 +52,13 @@ const props = defineProps({
 .flex-container {
   display: flex;
   /* grid-auto-rows: 1fr; */
-  height: 85%;
+  height: 90%;
   font-family: 'Mali', cursive;
   /* width: 60%; */
   /* margin-left: 5em; */
 }
 .flex-container > div {
-  background: linear-gradient(#E0BBE4,#FFDFD3,#FFC8D8,#FFDFD3);
+  background: linear-gradient(#7DC8CA,#CECBD6,#CAE9E0,#AAC9CE);
   margin: 10px;
   padding: 20px;
   width: 30%;

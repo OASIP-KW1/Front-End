@@ -22,7 +22,7 @@ const date = (date) => {
 </script>
  
 <template>
-<div id="grad1">
+<!-- <div id="grad1"> -->
   <div v-if="eventDetails.eventCategory !== null">
   <!-- <h2 class="titled">Details</h2> -->
   <div class="card" style="max-width: 1000px;">
@@ -55,7 +55,7 @@ const date = (date) => {
   </div>
 </div>
 </div> 
-</div>
+<!-- </div> -->
 
 </template>
  

@@ -32,8 +32,6 @@
  
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Ubuntu+Mono:wght@700&display=swap');
-
-
 .navbar{
   /* margin-left: -1em; */
   padding: 29.75em;

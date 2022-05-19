@@ -9,56 +9,109 @@ defineProps({
     }
 })
 let data = ref([])
+let alldata = ref([])
+let databypage = ref([])
+let databyseach = ref([])
+let dataEachPage = ref([])
+let head = ref(0)
+let page = ref(0)
+let numofpage = ref()
 // GET
 const getEvent = async () =>{
     const res = await fetch(`api/events`)
     if(res.status === 200) {
-    data.value = await res.json()
+    alldata.value = await res.json()
     } 
 }
 onBeforeMount( async () => {
    await getEvent()
 })
 
+const getEventByPage = async () => {
+    const res = await fetch(`api/events/page?page=${page.value}`)
+    if(res.status === 200) {
+    databypage.value = await res.json()
+    data.value = databypage.value.content;
+    numofpage.value = databypage.value.totalPages;
+    }
+    
+}
+onBeforeMount( async () => {
+   await getEventByPage()
+})
+
+const goToPage = (index) =>{
+  if(isSearching.value){
+    if(numofpage.value > 1){
+    databyseach.value = databyseach.value.filter((event) =>{
+      return !(data.value.includes(event))
+    })
+      let nextPage = ref([])
+      for(let i=0; i < databyseach.value.length; i++){
+        if(i < 6){
+        nextPage.value.push(databyseach.value[i]);
+        }
+      }
+      dataEachPage.value[head.value++] = nextPage.value
+      data.value = dataEachPage.value[index];
+      }
+  }else{
+  page.value = index
+  getEventByPage()
+  }
+}
+
 const searchByEmail = ref('')
 const searchByCategory = ref('')
 const searchByTime = ref('')
-//ควรจะ search เปน function อันเดียว
 
+const isSearching = ref(false);
 const searchLastest = () =>{
+  isSearching.value = true;
   getEvent()
+  data.value = alldata.value
+  databyseach.value = alldata.value
   setTimeout(() => {
     if(searchByEmail.value !== ''){
       console.log('search by e-mail');
-    data.value = data.value.filter((event) =>{
+      databyseach.value = databyseach.value.filter((event) =>{
       return event.bookingEmail == searchByEmail.value
     })
     }
     if(searchByCategory.value !== ''){
       console.log('search by category');
-    data.value = data.value.filter((event) => {
-      return event.eventCategory.eventCategoryName == searchByCategory.value
+      databyseach.value = databyseach.value.filter((event) => {
+      return event.eventCategoryName == searchByCategory.value
     })
     }
     if(searchByTime.value == 'Past'){
       console.log('search by past');
-    data.value = data.value.filter((event) => {
+    databyseach.value = databyseach.value.filter((event) => {
         return new Date() > new Date(event.eventStartTime)
     })
     }else if(searchByTime.value == 'Today'){
       console.log('search by today');
-    data.value = data.value.filter((event) => {
+    databyseach.value = databyseach.value.filter((event) => {
         return new Date().setHours(0,0,0,0) == new Date(event.eventStartTime).setHours(0,0,0,0)
     })
     }else if(searchByTime.value == 'Future / On going'){
-    data.value = data.value.filter((event) => {
       console.log('search by Future');
+      databyseach.value = databyseach.value.filter((event) => {
         return new Date() < new Date(event.eventStartTime)
     })
     }
+    console.log(databyseach.value);
+    numofpage.value = Math.ceil(databyseach.value.length / 6)
+      data.value = []
+      for(let i=0; i < databyseach.value.length; i++){
+        if(i < 6){
+        data.value.push(databyseach.value[i]);
+        }
+      }
+      dataEachPage.value[head.value++] = data.value;
   }, 400);
+  
 }
-
 const restoreDate = () =>{
   if(search.value == ''){
     getEvent()
@@ -68,10 +121,11 @@ const deleteData = (eventID) =>{
   data.value = data.value.filter((event) => event.id !== eventID)
 }
 const refresh = () =>{
-  getEvent()
   searchByEmail.value = ''
   searchByCategory.value = ''
   searchByTime.value = ''
+  getEventByPage()
+  numofpage.value = databypage.value.totalPages;
 }
 
 const monthName = ref(['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'])
@@ -85,8 +139,12 @@ const formatdate = (date) => {
 </script>
  
 <template>
-<div id="grad1">
-  <div class="container">
+<div>
+  
+</div>
+<!-- <div id="grad1"> -->
+  <div>
+      <div class="container">
         <p v-if ="data.length == 0" class="p-3 text-center">CHECK APPOINMENT</p>
         <p v-else class="p-3 text-center">CHECK APPOINMENT</p>
         <table>
@@ -136,7 +194,7 @@ const formatdate = (date) => {
                     <td>{{index +1}}</td>
                     <td>{{event.bookingName}}</td>
                     <td>{{event.bookingEmail}}</td>
-                    <td>{{event.eventCategory.eventCategoryName}}</td>
+                    <td>{{event.eventCategoryName}}</td>
                     <td>{{formatdate(event.eventStartTime)}}</td>
                     <td>{{event.eventDuration}} minutes</td>
                     <td><router-link :to="{ name: 'Detailsbase' , params:{id:event.id}}"><button class="detail">Detail</button></router-link>&nbsp;&nbsp;
@@ -145,10 +203,14 @@ const formatdate = (date) => {
                 </tr>
             </tbody>
         </table>
+        <div v-for="(item , index) in numofpage">
+          <p @click="goToPage(index)">{{index+1}}</p>
         </div>
         </div>
+        </div>
+  </div>
         <div v-if ="data.length == 0" class="null">No Scheduled Events</div>
-</div>
+<!-- </div> -->
 
 </template>
 
