@@ -5,7 +5,7 @@ import AddEvent from '../components/AddEvent.vue';
 let data = ref({})
 // GET
 const getCategories = async () =>{
-    const res = await fetch(`api/eventCategory`)
+    const res = await fetch(`${import.meta.env.BASE_URL}api/eventCategory`)
     if(res.status === 200) {
     console.log(`response.status: ${res.status}`)
     console.log(res);
@@ -24,7 +24,7 @@ const createAppointment = async (newEvent) => {
   if(newEvent.status == 0){
     console.log('no data');
   }else{
-  const res = await fetch(`/api/events`, {
+  const res = await fetch(`${import.meta.env.BASE_URL}api/events`, {
     method: 'POST',
     headers: {
       'content-type': 'application/json'
@@ -42,7 +42,7 @@ const createAppointment = async (newEvent) => {
 const modifyEvent = async (edit) => {
   const date = new Date(edit.eventStartTime)
   console.log(edit.eventStartTime)
-  const res = await fetch(`api/events/${edit.id}`, {
+  const res = await fetch(`${import.meta.env.BASE_URL}api/events/${edit.id}`, {
     method: 'PUT',
     headers: {
       'content-type': 'application/json'

@@ -22,13 +22,14 @@ const date = (date) => {
 </script>
  
 <template>
-<div id="grad1">
+<!-- <div id="grad1"> -->
   <div v-if="eventDetails.eventCategory !== null">
   <!-- <h2 class="titled">Details</h2> -->
   <div class="card" style="max-width: 1000px;">
   <div class="row g-0">
     <div class="col-md-4">
       <img src="../assets/icon.png" class="img-fluid rounded-start" alt="people">
+      <p class="id">ID : {{eventDetails.id}}</p>
     </div>
     <div class="col-md-8">
       <div class="card-body">
@@ -55,7 +56,7 @@ const date = (date) => {
   </div>
 </div>
 </div> 
-</div>
+<!-- </div> -->
 
 </template>
  
@@ -92,6 +93,10 @@ const date = (date) => {
 .close{
   margin-left: -1em;
   margin-right: 0.5em;
+  font-family: 'Mali', cursive;
+}
+.id{
+  margin-top: -2em;
   font-family: 'Mali', cursive;
 }
 </style>

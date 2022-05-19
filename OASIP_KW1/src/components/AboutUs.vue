@@ -4,8 +4,7 @@ import AntDesignGithubOutlined from './icons/AntDesignGithubOutlined.vue';
 </script>
  
 <template>
-<div id="grad1">
-  <!-- <div> -->
+<!-- <div id="grad1"> -->
   <p class="title">OUR EXCUTIVE TEAMS</p>
   <table style="width:100%" id="group">
   <tr>
@@ -29,13 +28,13 @@ import AntDesignGithubOutlined from './icons/AntDesignGithubOutlined.vue';
     <td class="git"><a href="https://github.com/wareewan-opal"><AntDesignGithubOutlined/></a></td>
   </tr>
 </table>
-  </div>
+  <!-- </div> -->
   <!-- </div> -->
 </template>
  
 <style>
 #group{
-  margin-top: -5em;
+  margin-top: -5.5em;
 }
 .name , .id , .git{
   text-align: center;
@@ -44,10 +43,11 @@ import AntDesignGithubOutlined from './icons/AntDesignGithubOutlined.vue';
  /* padding-top: 1em; */
 }
 .title{
-    font-family: 'Ubuntu Mono', monospace;
+    font-family: 'Mali', cursive;
+    font-weight: bolder;
     text-align: center;
     font-size: 2.5em;
-    margin-top: -15.5em;
+    margin-top: -16em;
     margin-left: 0.5em;
 }
 .col{

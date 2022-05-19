@@ -8,15 +8,9 @@ const props = defineProps({
 </script>
  
 <template>
-<div id="grad1">
-  <!-- <div v-for="category in eventCategory" class="background">
-    <p>{{category.id}}</p>
-    <p>{{category.eventCategoryName}}</p>
-    <p>{{category.eventCategoryDescription}}</p>
-    <p>{{category.eventDuration}}</p>
-  </div> -->
+<!-- <div id="grad1"> -->
   <p class="titleCategory">CATEGORY</p>
-  <div class="flex-container">
+  <div class="flex-container" >
    <div v-for="category in eventCategory">
    <img src="../assets/project-manage.png" alt="" v-if="category.id ==1" class="id1">
    <img src="../assets/devops.png" alt="" v-if="category.id ==2" class="id2">
@@ -29,7 +23,7 @@ const props = defineProps({
     <p>Duration : {{category.eventDuration}} minutes</p>
   </div>
 </div>
-</div>
+<!-- </div> -->
 </template>
 
 <style>
@@ -47,7 +41,7 @@ const props = defineProps({
 .titleCategory{
   font-family: 'Mali', cursive;
   text-align: center;
-  margin-top: -17em;
+  margin-top: -16.55em;
   font-size: 2.5em;
   font-weight: bolder;
   padding-top: 0.5em;
@@ -58,18 +52,22 @@ const props = defineProps({
 .flex-container {
   display: flex;
   /* grid-auto-rows: 1fr; */
-  height: 85%;
+  height: 90%;
   font-family: 'Mali', cursive;
   /* width: 60%; */
   /* margin-left: 5em; */
 }
 .flex-container > div {
-  background: linear-gradient(#E0BBE4,#FFDFD3,#FFC8D8,#FFDFD3);
+  background: linear-gradient(#7DC8CA,#CECBD6,#CAE9E0,#AAC9CE);
   margin: 10px;
   padding: 20px;
-  width: 30%;
-  height: 80%;
+  width: 20%;
+  height: 33em;
   box-shadow: 5px 5px 10px #D0D3D4;
   border-radius: 5px;
+}
+
+.id2{
+  /* padding-bottom: 2em; */
 }
 </style>
