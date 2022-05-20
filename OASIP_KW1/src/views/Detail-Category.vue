@@ -1,29 +1,28 @@
 <script setup>
-import DetailCategory from '../components/Detail-Category.vue'
-
+import DetailCategoryVue from '../components/Detail-Category.vue';
+import {useRouter, useRoute} from 'vue-router'
+import { ref , onBeforeMount} from 'vue'
 
 const myRouter = useRouter()
 const {params} = useRoute()
-let eventDetail = ref({})
+let eventDetail = ref([])
 // GET
-const getEvents = async () =>{
-
-    const res = await fetch(`api/events/${params.id}`)
+const getCategoryDetail = async () =>{
+    const res = await fetch(`/api/eventCategory/${params.id}`)
     if(res.status === 200) {
-    console.log(`response.status: ${res.status}`)
-    console.log(res);
     eventDetail.value = await res.json()
+    console.log("Yo");
+    console.log(eventDetail.value);
     }else 
     console.log("error, cann't get data");
 }
 onBeforeMount( async () => {
-   await getEvents()
+   await getCategoryDetail()
 })
 </script>
  
 <template>
-    <DetailCategory :categoryDetails="eventDetail"></DetailCategory>
-    
+    <DetailCategoryVue  :categoryDetail="eventDetail"></DetailCategoryVue>
 </template>
  
 <style>

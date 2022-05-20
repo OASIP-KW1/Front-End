@@ -7,7 +7,7 @@ let data = ref({})
 let toggle = ref(true)
 // GET
 const getNotes = async () =>{
-    const res = await fetch(`api/events`)
+    const res = await fetch(`${import.meta.env.BASE_URL}api/events`)
     if(res.status === 200) {
     console.log(`response.status: ${res.status}`)
     console.log(res);
@@ -25,9 +25,9 @@ console.log(toggle.value);
  
 <template>
 <!-- <div id="grad1"> -->
-<p class="sub">BOOKING</p>
-<p class="sub2">About INT221 INFORMATION TECHNOLOGY INTEGRATED PROJECT</p>
-<p class="sub4">By OASIP_KW1</p>
+<p class="sub"><b>BOOKING</b></p>
+<p class="sub2">ABOUT INT221 INFORMATION TECHNOLOGY INTEGRATED PROJECT</p>
+<!-- <p class="sub4">By OASIP_KW1</p> -->
 <div class="sub3">
   <img src="../assets/title.png" alt="">
 </div>
@@ -38,16 +38,11 @@ console.log(toggle.value);
 @import url('https://fonts.googleapis.com/css2?family=Itim&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Changa+One&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Ubuntu+Mono:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@700&display=swap');
 html, body {
   width: 100%;
   height:100%;
 }
-
-/* body {
-    background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
-    background-size: 400% 400%;
-    animation: gradient 15s ease infinite;
-} */
 
 @keyframes gradient {
     0% {
@@ -74,26 +69,33 @@ html, body {
     /* animation: change 1s ease-in-out infinite; */
 }
 .sub{
-  font-size: 2.5em;
+  font-size: 3em;
   text-align: center;
   color: #000000;
   position: absolute;
   width: 1000px;
   left: 365px;
-  margin-top: -10em;
+  margin-top: -9em;
   /* font-family: 'Ubuntu Mono', monospace; */
-  margin-left: -10em;
+  /* font-family: 'Libre Baskerville', serif; */
+  font-family: 'Mali', cursive;
+  margin-left: -11.5em;
+  text-shadow: 5px 5px 10px #FFFFFF;
 }
 .sub2{
-  /* font-size: 1.5em; */
+  font-size:0.95em;
   text-align: center;
   color: #000000;
   position: absolute;
   width: 702px;
   left: 480px;
-  margin-top: -20em;
+  margin-top: -23em;
+  /* font-family: 'Libre Baskerville', serif; */
+  text-shadow: 5px 5px 10px #FFFFFF;
+  font-family: 'Mali', cursive;
   /* font-family: 'Ubuntu Mono', monospace; */
-  margin-left: -30em;
+  /* font-family: 'Libre Baskerville', serif; */
+  margin-left: -33.5em;
 }
 .sub3{
   position: absolute;
@@ -113,6 +115,7 @@ html, body {
   left: 480px;
   margin-top: -18em;
   /* font-family: 'Ubuntu Mono', monospace; */
+  font-family: 'Libre Baskerville', serif;
   margin-left: -21em;
 }
 

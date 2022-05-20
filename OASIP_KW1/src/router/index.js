@@ -5,6 +5,8 @@ import EventListAll from '../views/EventListAll.vue'
 import EventCategory from '../views/EventCategory.vue'
 import AddEvents from '../views/AddEvents.vue'
 import Abouts from '../views/Abouts.vue'
+import CategoryDetail from '../views/Detail-Category.vue'
+import EditCategory from '../views/Edit-Category.vue'
 
 // const history = createWebHistory('/kw1/')
 const history = createWebHistory('')
@@ -38,6 +40,16 @@ const routes = [
         path: '/aboutsus',
         name: 'Abouts',
         component: Abouts
+    },
+    {
+        path: '/category-detail/:id',
+        name: 'categorydetail',
+        component: CategoryDetail
+    },
+    {
+        path: '/editCategory',
+        name: 'editCategory',
+        component: EditCategory
     }
     
 ]

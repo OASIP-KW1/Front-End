@@ -34,7 +34,7 @@ import AntDesignGithubOutlined from './icons/AntDesignGithubOutlined.vue';
  
 <style>
 #group{
-  margin-top: -8em;
+  margin-top: -5.5em;
 }
 .name , .id , .git{
   text-align: center;
@@ -43,10 +43,11 @@ import AntDesignGithubOutlined from './icons/AntDesignGithubOutlined.vue';
  /* padding-top: 1em; */
 }
 .title{
-    font-family: 'Ubuntu Mono', monospace;
+    font-family: 'Mali', cursive;
+    font-weight: bolder;
     text-align: center;
     font-size: 2.5em;
-    margin-top: -15.5em;
+    margin-top: -16em;
     margin-left: 0.5em;
 }
 .col{

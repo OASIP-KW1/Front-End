@@ -41,26 +41,25 @@ let create = ref(true)
 const edit = params.name == undefined?true:false
 const view = params.name == undefined?false:true
 const alldata = computed(() => {
-    if (name.value == undefined || email.value == undefined || date.value == undefined || category.value == undefined
-        || name.value == "" || email.value == "" || date.value == "" || category.value == "") {
+    if (name.value.trim() == undefined || email.value.trim() == undefined || date.value == undefined || category.value == undefined
+        || name.value.trim() == "" || email.value.trim() == "" || date.value == "" || category.value == "" || name.value.trim().length == 0 || email.value.trim().length == 0) {
         checked.value = true;
         checked_email.value = false;
         return { status: 0 }
     } else {
         if (checkemail(email.value)) {
             if(isFuture()){
+                console.log(checktime());
             if(eventStartTime.value.includes(checktime()) || checkSchedule(datetime())){
-                checked_date.value = false;
                 checked_time.value = true;
                 checked.value = false
                 checked_email.value = false
                 return { status: 0 }
-                
             }else{
             create.value = false;
             popup.value = true;
             return {
-                bookingName: name.value.trim(), bookingEmail: email.value, eventCategory: {
+                bookingName: name.value, bookingEmail: email.value, eventCategory: {
                     "id": categoryId.value,
                     "eventCategoryName": category.value,
                     "eventCategoryDescription": null,
@@ -91,8 +90,7 @@ const datetime = () => {
 
 const checktime = () =>{
     const disdate = new Date(date.value)
-    return `${disdate.getDate()} ${monthName.value[disdate.getMonth()]} ${disdate.getFullYear()}, 
-    ${disdate.getHours()}:${disdate.getMinutes()}:${String(disdate.getSeconds()).padStart(2, '0')}`
+    return `${disdate.getFullYear()}-${String(disdate.getMonth()+1).padStart(2, '0')}-${disdate.getDate()} ${String(disdate.getHours()).padStart(2, '0')}:${String(disdate.getMinutes()).padStart(2, '0')}:${String(disdate.getSeconds()).padStart(2, '0')}`
 }
 
 const isFuture = () =>{
@@ -133,14 +131,16 @@ const eventStartTime = computed(() =>{
     info.value = dataEachCategory.value.map((data) =>{
         return data.eventStartTime
     })
+    console.log(info.value);
     return info.value
 })
 
 const schedule = computed(()=>{
     const info = ref([])
-    info.value = dataEachCategory.value.map((data) =>{
-        return [new Date(data.eventStartTime) , new Date(new Date(data.eventStartTime).getTime() + data.eventDuration*60*1000)]
+    info.value = eventStartTime.value.map((data , index) =>{
+        return [new Date(data) , new Date(new Date(data).getTime() + dataEachCategory.value[index].eventDuration*60*1000)]
     })
+
     return info.value
 })
 
@@ -177,7 +177,7 @@ const checkemail = (email) => {
     <div v-show="create">
     <div class="back">
         <p class="addtitle" v-if="view"><b>EDIT APPOINTMENT</b></p>
-        <p class="addtitle" v-else><b>APPOINMENT</b></p>
+        <p class="addtitle" v-else><b>APPOINTMENT</b></p>
         <!-- edit -->
         <div class="input" v-show="view">
         <p class="names">Name &nbsp;<input type="text" size="50" :value="  params.name" disabled style="border-radius: 10px;"></p>
@@ -218,14 +218,15 @@ const checkemail = (email) => {
             <select class="option" v-model="category" style="border-radius: 10px;">
                 <option v-for="(category, index) in categories" :key="index">{{ category.eventCategoryName }}</option>
             </select>
-            <span class="duration">Duration : {{duration}} minutes</span>
             </p>
         </div>
         <br>
         <!-- create + edit -->
-        <div class="select2">
+        <div class="select2"> 
+            <!-- <p class="namecategory">Category Name : {{category}}</p> -->
             <p class="textdt">Date - Time 
             <input id="party" type="datetime-local" name="partydate" v-model="date" style="border-radius: 10px;">
+            <span class="duration">Duration : {{duration}} minutes</span>
             </p>
         </div>
         <!-- create + edit -->
@@ -263,9 +264,18 @@ const checkemail = (email) => {
 @import url('https://fonts.googleapis.com/css2?family=Mali:wght@500&display=swap');
 .alert{
     box-shadow: 5px 5px 5px rgb(197, 141, 180);
+    /* box-shadow: 5px 5px 5px rgb(#FADBD8); */
+}
+.namecategory{
+    font-family: 'Mali', cursive;
+    text-align: center;
+    margin-left: -2em;
+    margin-top: -1em;
+    margin-bottom: 2em;
 }
 .names{
     margin-left: -3em;
+    margin-top: 1.75em;
 }
 .duration{
     margin-left: 2.5em;
@@ -289,11 +299,12 @@ const checkemail = (email) => {
     padding-top: 1em;
     margin-left: 15em;
     width: 70em;
-    height: 45em;    
+    height: 39.55em;    
     padding: 60px;
     /* border: 1px solid #FFD8BE; */
     /* background-color: #C1E7E3; */
-    background: linear-gradient(-45deg , #AED6F1,#EBDEF0,#FADBD8,#B6E5F5);
+    background: linear-gradient(-45deg,#0583d2,#b8e3ff,#16558f);
+    /* animation: gradient 15s ease infinite; */
     border-radius: 20px;
     box-shadow: 5px 5px 10px grey;
     /* opacity: 90%; */
@@ -349,7 +360,7 @@ const checkemail = (email) => {
     font-family: 'Mali', cursive;
     /* font-family: 'Changa One', cursive; */
     font-size: 2em;
-    margin-top: -0.5em;
+    margin-top: -1.25em;
 }
 
 .emails{
@@ -359,6 +370,7 @@ const checkemail = (email) => {
 .input {
     text-align: center;
     font-family: 'Mali', cursive;
+    margin-top: -1em;
 }
 
 .select3 {

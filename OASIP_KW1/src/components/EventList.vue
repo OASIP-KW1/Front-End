@@ -203,8 +203,14 @@ const formatdate = (date) => {
                 </tr>
             </tbody>
         </table>
-        <div v-for="(item , index) in numofpage">
-          <p @click="goToPage(index)">{{index+1}}</p>
+        <!-- // ต้องใช้ v-for ในการแสดงเลข เพราะ แต่ละหน้าเลขไม่เท่ากัน
+        // ในเลขต้องใส่ @click="goToPage(index)" ด้วย เหมือนข้างล่างครับ -->
+        <div class="p-5 d-flex justify-content-center ">
+      <nav aria-label="Page navigation example">
+        <ul class="pagination" v-for="(item , index) in numofpage" style="display: table-cell"> 
+         <li class="page-item" @click="goToPage(index)"><a class="page-link" href="#">{{index+1}}</a></li>
+        </ul>
+      </nav>
         </div>
         </div>
         </div>
@@ -230,9 +236,12 @@ tr.head{
 td{
   font-family: 'Mali', cursive;
 }
+.p-5{
+  margin-top: -2em;
+}
 .container{
   text-align: center;
-  margin-top: -39.5em;
+  margin-top: -40.75em;
 }
 .option2{
   margin-top: 0.5em;
@@ -296,5 +305,8 @@ tr , td{
 }
 thead{
   border: #172B3A;
+}
+.Page{
+  align-content: center;
 }
 </style>
