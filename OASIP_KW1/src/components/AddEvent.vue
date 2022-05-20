@@ -177,11 +177,12 @@ const checkemail = (email) => {
     <div v-show="create">
     <div class="back">
         <p class="addtitle" v-if="view"><b>EDIT APPOINTMENT</b></p>
-        <p class="addtitle" v-else><b>APPOINTMENT</b></p>
+        <p class="addtitle" v-else><b>ADD APPOINTMENT</b></p>
         <!-- edit -->
         <div class="input" v-show="view">
         <p class="names">Name &nbsp;<input type="text" size="50" :value="  params.name" disabled style="border-radius: 10px;"></p>
-       <p class="emails">Email &nbsp; <input type="text" size="50" :value="  params.email" disabled style="border-radius: 10px;" ></p>
+        <p class="emails">Email &nbsp; <input type="text" size="50" :value="  params.email" disabled style="border-radius: 10px;" ></p>
+        <p class="category">Category &nbsp; <input type="text" size="50" v-model="category" disabled  style="border-radius: 10px;"></p>
         </div>
         <!-- end edit -->
         <div class="input" v-show="edit">
@@ -203,7 +204,7 @@ const checkemail = (email) => {
                 <!-- past day -->
             <p v-show="checked_date" style="color: red;">
                 <div class="alert alert-danger" role="alert">
-                Please validate that date-time is in the future
+                Please validate that date-time is in the future.
                 </div></p>
              <!-- create -->
             <div class="addform">
@@ -277,6 +278,9 @@ const checkemail = (email) => {
     margin-left: -3em;
     margin-top: 1.75em;
 }
+.category{
+    margin-left: -5em;
+}
 .duration{
     margin-left: 2.5em;
 }
@@ -303,7 +307,7 @@ const checkemail = (email) => {
     padding: 60px;
     /* border: 1px solid #FFD8BE; */
     /* background-color: #C1E7E3; */
-    background: linear-gradient(-45deg,#0583d2,#b8e3ff,#16558f);
+    background: linear-gradient(-45deg,#7DC8CA,#CAE9E0,#AAC9CE);
     /* animation: gradient 15s ease infinite; */
     border-radius: 20px;
     box-shadow: 5px 5px 10px grey;
