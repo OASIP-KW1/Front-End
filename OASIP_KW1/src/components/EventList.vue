@@ -192,7 +192,7 @@ const formatdate = (date) => {
       </select>
     </td>
     <td>
-      <input id="party" type="date" name="partydate" v-model="searchByDate" style="border-radius: 10px; padding-right: 1em; margin-left: -0.5em;">
+      <input id="date" type="date" name="partydate" v-model="searchByDate" style="border-radius: 10px; padding-right: 1em; margin-left: -0.5em;">
     </td>
     <td>
       <button @click="refresh" class="refresh">Refresh</button>&nbsp;&nbsp;<button @click="searchLastest" id="search">Search</button>
