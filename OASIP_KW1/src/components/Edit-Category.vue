@@ -12,7 +12,7 @@ const prop = defineProps({
 const allCategory = ref([])
 const nameOfCategory = ref([])
 const getAllCategory = async () =>{
-    const res = await fetch(`/api/eventCategory`)
+    const res = await fetch(`${import.meta.env.BASE_URL}api/eventCategory`)
     if(res.status === 200) {
     allCategory.value = await res.json()
     allCategory.value.forEach((category)=>{
@@ -144,10 +144,12 @@ const getUpdate = computed(() =>{
 }
 .card-text{
   font-family: 'Mali', cursive;
+  border-radius: 11px;
 }
 .card-title2{
   margin-top: 2em;
   font-family: 'Mali', cursive;
+  border-radius: 11px;
 }
 .iconpeople{
   margin-left: -35em;
@@ -167,6 +169,9 @@ const getUpdate = computed(() =>{
 }
 .id{
   margin-top: -2em;
+  font-family: 'Mali', cursive;
+}
+.btn{
   font-family: 'Mali', cursive;
 }
 </style>

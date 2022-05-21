@@ -40,11 +40,15 @@ const props = defineProps({
   margin-left: 2em;
 }
 .details{
-  background-color: #F7D97C;
+  background-color: #E59866 ;
   border-radius: 10px;
-  font-family: 'Ubuntu Mono', monospace;
-  padding-left: 5em;
-  padding-right: 5em;
+  font-family: 'Mali', cursive;
+  font-weight: bolder;
+  margin-top: 1.5em;
+  margin-left: 5.5em;
+  
+  /* padding-left: 5em; */
+  /* padding-right: 5em; */
 }
 .titleCategory{
   font-family: 'Mali', cursive;

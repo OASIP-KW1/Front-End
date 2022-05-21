@@ -19,7 +19,7 @@ let numofpage = ref()
 let noDate = ref(false)
 // GET
 const getEvent = async () =>{
-    const res = await fetch(`api/events`)
+    const res = await fetch(`${import.meta.env.BASE_URL}api/events`)
     if(res.status === 200) {
     alldata.value = await res.json()
     } 
@@ -29,7 +29,7 @@ onBeforeMount( async () => {
 })
 
 const getEventByPage = async () => {
-    const res = await fetch(`api/events/page?page=${page.value}`)
+    const res = await fetch(`${import.meta.env.BASE_URL}api/events/page?page=${page.value}`)
     if(res.status === 200) {
     databypage.value = await res.json()
     data.value = databypage.value.content;
