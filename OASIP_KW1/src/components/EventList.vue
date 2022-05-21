@@ -16,6 +16,7 @@ let dataEachPage = ref([])
 let head = ref(0)
 let page = ref(0)
 let numofpage = ref()
+let noDate = ref(false)
 // GET
 const getEvent = async () =>{
     const res = await fetch(`api/events`)
@@ -42,19 +43,7 @@ onBeforeMount( async () => {
 
 const goToPage = (index) =>{
   if(isSearching.value){
-    if(numofpage.value > 1){
-    databyseach.value = databyseach.value.filter((event) =>{
-      return !(data.value.includes(event))
-    })
-      let nextPage = ref([])
-      for(let i=0; i < databyseach.value.length; i++){
-        if(i < 6){
-        nextPage.value.push(databyseach.value[i]);
-        }
-      }
-      dataEachPage.value[head.value++] = nextPage.value
-      data.value = dataEachPage.value[index];
-      }
+    data.value = dataEachPage.value[index];
   }else{
   page.value = index
   getEventByPage()
@@ -64,15 +53,16 @@ const goToPage = (index) =>{
 const searchByEmail = ref('')
 const searchByCategory = ref('')
 const searchByTime = ref('')
+const searchByDate = ref('')
 
 const isSearching = ref(false);
 const searchLastest = () =>{
   isSearching.value = true;
   getEvent()
-  data.value = alldata.value
   databyseach.value = alldata.value
   setTimeout(() => {
     if(searchByEmail.value !== ''){
+      data.value = []
       console.log('search by e-mail');
       databyseach.value = databyseach.value.filter((event) =>{
       return event.bookingEmail == searchByEmail.value
@@ -81,34 +71,55 @@ const searchLastest = () =>{
     if(searchByCategory.value !== ''){
       console.log('search by category');
       databyseach.value = databyseach.value.filter((event) => {
+        console.log(event.eventCategoryName == searchByCategory.value);
       return event.eventCategoryName == searchByCategory.value
     })
     }
+    if(searchByDate.value !== ''){
+      console.log('search by date');
+      databyseach.value = alldata.value.filter((event) => {
+      return new Date(searchByDate.value).setHours(0,0,0,0) == new Date(event.eventStartTime).setHours(0,0,0,0)
+    })
+      databyseach.value.reverse();
+      data.value = databyseach.value
+    }else{
     if(searchByTime.value == 'Past'){
       console.log('search by past');
     databyseach.value = databyseach.value.filter((event) => {
         return new Date() > new Date(event.eventStartTime)
-    })
-    }else if(searchByTime.value == 'Today'){
-      console.log('search by today');
-    databyseach.value = databyseach.value.filter((event) => {
-        return new Date().setHours(0,0,0,0) == new Date(event.eventStartTime).setHours(0,0,0,0)
     })
     }else if(searchByTime.value == 'Future / On going'){
       console.log('search by Future');
       databyseach.value = databyseach.value.filter((event) => {
         return new Date() < new Date(event.eventStartTime)
     })
+      databyseach.value.reverse();
     }
-    console.log(databyseach.value);
-    numofpage.value = Math.ceil(databyseach.value.length / 6)
+    }
+    if(databyseach.value.length != 0){
+      noDate.value = false;
+      numofpage.value = Math.ceil(databyseach.value.length / 6)
       data.value = []
+      let u = 0;
+      head.value = 0;
       for(let i=0; i < databyseach.value.length; i++){
-        if(i < 6){
+        if(u < 6){
         data.value.push(databyseach.value[i]);
+        dataEachPage.value[head.value] = data.value;
+        u++;
+        }else{
+          u = 0
+          head.value++;
+          dataEachPage.value[head.value] = data.value;
+          data.value = [];
         }
       }
-      dataEachPage.value[head.value++] = data.value;
+      data.value = dataEachPage.value[0];
+      }else{
+        noDate.value = true
+        numofpage.value = 0;
+        data.value = []
+      }
   }, 400);
   
 }
@@ -118,7 +129,17 @@ const restoreDate = () =>{
   }
 }
 const deleteData = (eventID) =>{
-  data.value = data.value.filter((event) => event.id !== eventID)
+  let ans = confirm('Do you want to cancel appointment?');
+  if(ans){
+    data.value = data.value.filter((event) => event.id !== eventID)
+    page.value++
+    getEventByPage()
+    data.value.push(
+      databypage.value[0]
+    )
+    return eventID;
+  }else{}
+  page.value = 0
 }
 const refresh = () =>{
   searchByEmail.value = ''
@@ -145,13 +166,14 @@ const formatdate = (date) => {
 <!-- <div id="grad1"> -->
   <div>
       <div class="container">
-        <p v-if ="data.length == 0" class="p-3 text-center">CHECK APPOINMENT</p>
+        <p v-if ="noDate" class="p-3 text-center">CHECK APPOINMENT</p>
         <p v-else class="p-3 text-center">CHECK APPOINMENT</p>
         <table>
   <tr class="head">
     <th>Check Email</th>
     <th>Check Clinics or Category</th>
     <th>Current Date</th>
+    <th>Search By Date</th>
     <th>Option</th>
   </tr>
   <tr>
@@ -166,9 +188,11 @@ const formatdate = (date) => {
       <select class="option3" v-model="searchByTime">
       <option value="" disabled selected hidden id="time">Filter by Date-Time</option>
       <option>Future / On going</option>
-      <option>Today</option>
       <option>Past</option>
       </select>
+    </td>
+    <td>
+      <input id="party" type="date" name="partydate" v-model="searchByDate" style="border-radius: 10px; padding-right: 1em; margin-left: -0.5em;">
     </td>
     <td>
       <button @click="refresh" class="refresh">Refresh</button>&nbsp;&nbsp;<button @click="searchLastest" id="search">Search</button>
@@ -198,13 +222,11 @@ const formatdate = (date) => {
                     <td>{{formatdate(event.eventStartTime)}}</td>
                     <td>{{event.eventDuration}} minutes</td>
                     <td><router-link :to="{ name: 'Detailsbase' , params:{id:event.id}}"><button class="detail">Detail</button></router-link>&nbsp;&nbsp;
-                    <button class="delete" @click="$emit('deleteEvent',event.id); deleteData(event.id)">Cancel</button>
+                    <button class="delete" @click="$emit('deleteEvent',deleteData(event.id));">Cancel</button>
                     </td>
                 </tr>
             </tbody>
         </table>
-        <!-- // ต้องใช้ v-for ในการแสดงเลข เพราะ แต่ละหน้าเลขไม่เท่ากัน
-        // ในเลขต้องใส่ @click="goToPage(index)" ด้วย เหมือนข้างล่างครับ -->
         <div class="p-5 d-flex justify-content-center ">
       <nav aria-label="Page navigation example">
         <ul class="pagination" v-for="(item , index) in numofpage" style="display: table-cell"> 
@@ -215,7 +237,7 @@ const formatdate = (date) => {
         </div>
         </div>
   </div>
-        <div v-if ="data.length == 0" class="null">No Scheduled Events</div>
+        <div v-if ="noDate" class="null">No Scheduled Events</div>
 <!-- </div> -->
 
 </template>
@@ -253,6 +275,9 @@ td{
   margin-top: 0.25em;
   height: 2em;
   border-radius: 10px;
+}
+.page-link{
+  margin-left: 0.5em;
 }
 .col{
   margin-left: 5em;

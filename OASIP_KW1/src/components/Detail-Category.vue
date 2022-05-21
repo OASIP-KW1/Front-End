@@ -4,7 +4,7 @@ import { ref } from 'vue';
 defineEmits(['edit'])
 defineProps({
   categoryDetail: {
-    type: Array,
+    type: Object,
     require: true
   },
 })
