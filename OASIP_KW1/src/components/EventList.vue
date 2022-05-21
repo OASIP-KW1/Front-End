@@ -44,6 +44,7 @@ onBeforeMount( async () => {
 const goToPage = (index) =>{
   if(isSearching.value){
     data.value = dataEachPage.value[index];
+    console.log(dataEachPage.value[index]);
   }else{
   page.value = index
   getEventByPage()
@@ -71,17 +72,15 @@ const searchLastest = () =>{
     if(searchByCategory.value !== ''){
       console.log('search by category');
       databyseach.value = databyseach.value.filter((event) => {
-        console.log(event.eventCategoryName == searchByCategory.value);
       return event.eventCategoryName == searchByCategory.value
     })
     }
     if(searchByDate.value !== ''){
       console.log('search by date');
-      databyseach.value = alldata.value.filter((event) => {
+      databyseach.value = databyseach.value.filter((event) => {
       return new Date(searchByDate.value).setHours(0,0,0,0) == new Date(event.eventStartTime).setHours(0,0,0,0)
     })
       databyseach.value.reverse();
-      data.value = databyseach.value
     }else{
     if(searchByTime.value == 'Past'){
       console.log('search by past');
@@ -108,10 +107,11 @@ const searchLastest = () =>{
         dataEachPage.value[head.value] = data.value;
         u++;
         }else{
-          u = 0
-          head.value++;
-          dataEachPage.value[head.value] = data.value;
+          dataEachPage.value[head.value++] = data.value;
           data.value = [];
+          data.value.push(databyseach.value[i]);
+          dataEachPage.value[head.value] = data.value;
+          u = 0
         }
       }
       data.value = dataEachPage.value[0];
@@ -192,7 +192,7 @@ const formatdate = (date) => {
       </select>
     </td>
     <td>
-      <input id="date" type="date" name="partydate" v-model="searchByDate" style="border-radius: 10px;  ">
+      <input id="party" type="date" name="partydate" v-model="searchByDate" style="border-radius: 10px; padding-right: 1em; margin-left: -0.5em;">
     </td>
     <td>
       <button @click="refresh" class="refresh">Refresh</button>&nbsp;&nbsp;<button @click="searchLastest" id="search">Search</button>
