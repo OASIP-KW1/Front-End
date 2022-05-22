@@ -8,8 +8,8 @@ import Abouts from '../views/Abouts.vue'
 import CategoryDetail from '../views/Detail-Category.vue'
 import EditCategory from '../views/Edit-Category.vue'
 
-const history = createWebHistory('/kw1/')
-// const history = createWebHistory('')
+// const history = createWebHistory('/kw1/')
+const history = createWebHistory('')
 const routes = [
     {
         path: '/',

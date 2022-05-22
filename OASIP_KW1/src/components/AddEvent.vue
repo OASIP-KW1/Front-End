@@ -11,12 +11,11 @@ const props = defineProps({
     }
 })
 
-let data = ref([])
-
+let allData = ref([])
 const getDate = async () =>{
     const res = await fetch(`api/events`)
     if(res.status === 200) {
-    data.value = await res.json()
+    allData.value = await res.json()
     }
 }
 onBeforeMount( async () => {
@@ -81,7 +80,6 @@ const alldata = computed(() => {
     }
 })
 
-const monthName = ref(['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'])
 
 const datetime = () => {
     const disdate = new Date(date.value)
@@ -98,7 +96,6 @@ const isFuture = () =>{
     const disdate = new Date(date.value)
     return disdate > today
 }
-console.log(new Date(new Date().getTime()));
 
 const duration = computed(() => {
     const currentCategoryId = ref(0);
@@ -122,7 +119,7 @@ const categoryId = computed(() => {
 
 const dataEachCategory = computed(() =>{
     const info = ref([])
-    info.value = data.value.filter((item) =>{return item.eventCategory.eventCategoryName == category.value})
+    info.value = allData.value.filter((item) =>{return item.eventCategory.eventCategoryName == category.value})
     return info.value
 })
 

@@ -19,7 +19,7 @@ let numofpage = ref()
 let noDate = ref(false)
 // GET
 const getEvent = async () =>{
-    const res = await fetch(`${import.meta.env.BASE_URL}api/events`)
+    const res = await fetch(`api/events`)
     if(res.status === 200) {
     alldata.value = await res.json()
     } 
@@ -29,7 +29,7 @@ onBeforeMount( async () => {
 })
 
 const getEventByPage = async () => {
-    const res = await fetch(`${import.meta.env.BASE_URL}api/events/page?page=${page.value}`)
+    const res = await fetch(`api/events/page?page=${page.value}`)
     if(res.status === 200) {
     databypage.value = await res.json()
     data.value = databypage.value.content;
@@ -44,6 +44,7 @@ onBeforeMount( async () => {
 const goToPage = (index) =>{
   if(isSearching.value){
     data.value = dataEachPage.value[index];
+    console.log(dataEachPage.value[index]);
   }else{
   page.value = index
   getEventByPage()
@@ -58,44 +59,35 @@ const searchByDate = ref('')
 const isSearching = ref(false);
 const searchLastest = () =>{
   isSearching.value = true;
-  getEvent()
   databyseach.value = alldata.value
-  setTimeout(() => {
     if(searchByEmail.value !== ''){
-      data.value = []
-      console.log('search by e-mail');
       databyseach.value = databyseach.value.filter((event) =>{
-      return event.bookingEmail == searchByEmail.value
+      return event.bookingEmail == searchByEmail.value.trim()
     })
     }
     if(searchByCategory.value !== ''){
-      console.log('search by category');
       databyseach.value = databyseach.value.filter((event) => {
-        console.log(event.eventCategoryName == searchByCategory.value);
       return event.eventCategoryName == searchByCategory.value
     })
     }
     if(searchByDate.value !== ''){
-      console.log('search by date');
-      databyseach.value = alldata.value.filter((event) => {
+      databyseach.value = databyseach.value.filter((event) => {
       return new Date(searchByDate.value).setHours(0,0,0,0) == new Date(event.eventStartTime).setHours(0,0,0,0)
     })
       databyseach.value.reverse();
-      data.value = databyseach.value
     }else{
-    if(searchByTime.value == 'Past'){
-      console.log('search by past');
-    databyseach.value = databyseach.value.filter((event) => {
-        return new Date() > new Date(event.eventStartTime)
-    })
-    }else if(searchByTime.value == 'Future / On going'){
-      console.log('search by Future');
-      databyseach.value = databyseach.value.filter((event) => {
-        return new Date() < new Date(event.eventStartTime)
-    })
-      databyseach.value.reverse();
+      if(searchByTime.value == 'Past'){
+          databyseach.value = databyseach.value.filter((event) => {
+            return new Date() > new Date(event.eventStartTime)
+          })
+      }else if(searchByTime.value == 'Future / On going'){
+          databyseach.value = databyseach.value.filter((event) => {
+            return new Date() < new Date(event.eventStartTime)
+          })
+          databyseach.value.reverse();
+      }
     }
-    }
+
     if(databyseach.value.length != 0){
       noDate.value = false;
       numofpage.value = Math.ceil(databyseach.value.length / 6)
@@ -108,10 +100,11 @@ const searchLastest = () =>{
         dataEachPage.value[head.value] = data.value;
         u++;
         }else{
-          u = 0
-          head.value++;
-          dataEachPage.value[head.value] = data.value;
+          dataEachPage.value[head.value++] = data.value;
           data.value = [];
+          data.value.push(databyseach.value[i]);
+          dataEachPage.value[head.value] = data.value;
+          u = 0
         }
       }
       data.value = dataEachPage.value[0];
@@ -120,7 +113,6 @@ const searchLastest = () =>{
         numofpage.value = 0;
         data.value = []
       }
-  }, 400);
   
 }
 const restoreDate = () =>{
@@ -134,12 +126,13 @@ const deleteData = (eventID) =>{
     data.value = data.value.filter((event) => event.id !== eventID)
     page.value++
     getEventByPage()
+    console.log(databypage.value);
     data.value.push(
       databypage.value[0]
     )
+    console.log(data.value);
     return eventID;
   }else{}
-  page.value = 0
 }
 const refresh = () =>{
   searchByEmail.value = ''
