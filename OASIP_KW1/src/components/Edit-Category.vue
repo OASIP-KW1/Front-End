@@ -107,7 +107,7 @@ const getUpdate = computed(() =>{
           </p>
           <p v-show="check_duration" style="color: red;">
             <div class="alert alert-danger" role="alert">
-              Please validate duration is must between 1-480 characters.
+              Please validate duration is must be between 1-480 minutes.
             </div>
           </p>
           
