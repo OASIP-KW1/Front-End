@@ -152,10 +152,12 @@ const deleteData = (eventID) =>{
         databypage.value.content[0]
         )
       },500)
+      page.value--
     }else{ }
     return eventID;
   }
 }
+
 const refresh = () =>{
   searchByEmail.value = ''
   searchByCategory.value = ''
