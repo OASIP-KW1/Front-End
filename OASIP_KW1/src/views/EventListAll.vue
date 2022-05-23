@@ -18,15 +18,13 @@ onBeforeMount( async () => {
 })
 
 const deleteEvent = async (eventID) => {
-  let ans = confirm(`Do you want to cancel appointment?`)
-  if(ans){
   const res = await fetch (`${import.meta.env.BASE_URL}api/events/${eventID}` , 
   {method: 'delete'})
   if(res.status === 200){
     (data.value = data.value.filter((event) => event.id !== eventID))
   }
 }
-}
+
 </script>
  
 <template>

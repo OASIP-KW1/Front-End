@@ -28,6 +28,18 @@ onBeforeMount( async () => {
    await getEvent()
 })
 
+const getEventWithPage = async() =>{
+    const res = await fetch(`${import.meta.env.BASE_URL}api/events/page?page=${page.value}`)
+    if(res.status === 200) {
+    databypage.value = await res.json()
+    console.log(databypage.value.content);
+    numofpage.value = databypage.value.totalPages;
+    }
+}
+onBeforeMount( async () => {
+   await getEventByPage()
+})
+
 const getEventByPage = async () => {
     const res = await fetch(`${import.meta.env.BASE_URL}api/events/page?page=${page.value}`)
     if(res.status === 200) {
@@ -132,14 +144,17 @@ const deleteData = (eventID) =>{
   let ans = confirm('Do you want to cancel appointment?');
   if(ans){
     data.value = data.value.filter((event) => event.id !== eventID)
-    page.value++
-    getEventByPage()
-    data.value.push(
-      databypage.value[0]
-    )
+    if(numofpage.value > 1){
+      page.value++
+      getEventWithPage()
+      setTimeout(()=>{
+        data.value.push(
+        databypage.value.content[0]
+        )
+      },500)
+    }else{ }
     return eventID;
-  }else{}
-  page.value = 0
+  }
 }
 const refresh = () =>{
   searchByEmail.value = ''

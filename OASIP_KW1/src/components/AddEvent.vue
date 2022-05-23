@@ -162,9 +162,14 @@ const checkSchedule = (date)=>{
 
 const checkemail = (email) => {
     if(email.split('@').length == 2 && email.split('@')[0] != ""){
-        // console.log(object);
+        if(email.split('@')[1].split('.')[0] != ""){
         if(email.split('@')[1].split('.').length > 1){
             return true
+        }else{
+            return false
+        }
+        }else{
+            return false
         }
     }else {
         return false
