@@ -28,6 +28,18 @@ onBeforeMount( async () => {
    await getEvent()
 })
 
+const getEventWithPage = async() =>{
+    const res = await fetch(`${import.meta.env.BASE_URL}api/events/page?page=${page.value}`)
+    if(res.status === 200) {
+    databypage.value = await res.json()
+    console.log(databypage.value.content);
+    numofpage.value = databypage.value.totalPages;
+    }
+}
+onBeforeMount( async () => {
+   await getEventByPage()
+})
+
 const getEventByPage = async () => {
     const res = await fetch(`api/events/page?page=${page.value}`)
     if(res.status === 200) {
@@ -142,11 +154,17 @@ const deleteData = (eventID) =>{
         data.value.push(
         databypage.value.content[0]
         )
+<<<<<<< HEAD
       },400)
+=======
+      },500)
+      page.value--
+>>>>>>> 926137721dd736596c876887deced5fda817b40b
     }else{ }
     return eventID;
   }
 }
+
 const refresh = () =>{
   searchByEmail.value = ''
   searchByCategory.value = ''
