@@ -162,6 +162,7 @@ const refresh = () =>{
   searchByEmail.value = ''
   searchByCategory.value = ''
   searchByTime.value = ''
+  searchByDate.value = ''
   getEventByPage()
   numofpage.value = databypage.value.totalPages;
 }

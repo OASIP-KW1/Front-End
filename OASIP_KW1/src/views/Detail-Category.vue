@@ -11,7 +11,6 @@ const getCategoryDetail = async () =>{
     const res = await fetch(`${import.meta.env.BASE_URL}api/eventCategory/${params.id}`)
     if(res.status === 200) {
     eventDetail.value = await res.json()
-    console.log("Yo");
     console.log(eventDetail.value);
     }else 
     console.log("error, cann't get data");
