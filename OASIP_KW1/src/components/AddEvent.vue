@@ -39,9 +39,10 @@ let popup = ref(false)
 let create = ref(true)
 const edit = params.name == undefined?true:false
 const view = params.name == undefined?false:true
+
 const alldata = computed(() => {
-    if (name.value.trim() == undefined || email.value.trim() == undefined || date.value == undefined || category.value == undefined
-        || name.value.trim() == "" || email.value.trim() == "" || date.value == "" || category.value == "" || name.value.trim().length == 0 || email.value.trim().length == 0) {
+    if (name.value.trim() == undefined || email.value == undefined || date.value == undefined || category.value == undefined
+        || name.value.trim() == "" || email.value == "" || date.value == "" || category.value == "" || name.value.length == 0 || email.value.length == 0) {
         checked.value = true;
         checked_email.value = false;
         return { status: 0 }
@@ -159,14 +160,21 @@ const checkSchedule = (date)=>{
 
 const checkemail = (email) => {
     if(email.split('@').length == 2 && email.split('@')[0] != ""){
-        // console.log(object);
+        if(email.split('@')[1].split('.')[0] != ""){
         if(email.split('@')[1].split('.').length > 1){
             return true
+        }else{
+            return false
+        }
+        }else{
+            return false
         }
     }else {
         return false
         }
 }
+const today = ref(new Date().toISOString())
+console.log(today.value);
 </script>
  
 <template>
@@ -223,7 +231,7 @@ const checkemail = (email) => {
         <div class="select2"> 
             <!-- <p class="namecategory">Category Name : {{category}}</p> -->
             <p class="textdt">Date - Time 
-            <input id="party" type="datetime-local" name="partydate" v-model="date" style="border-radius: 10px;">
+            <input id="party" type="datetime-local" name="partydate" v-model="date" :min="today" style="border-radius: 10px;">
             <span class="duration">Duration : {{duration}} minutes</span>
             </p>
         </div>

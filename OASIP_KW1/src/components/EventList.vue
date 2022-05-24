@@ -35,7 +35,18 @@ const getEventByPage = async () => {
     data.value = databypage.value.content;
     numofpage.value = databypage.value.totalPages;
     }
-    
+}
+onBeforeMount( async () => {
+   await getEventByPage()
+})
+
+const getEventWithPage = async() =>{
+    const res = await fetch(`api/events/page?page=${page.value}`)
+    if(res.status === 200) {
+    databypage.value = await res.json()
+    console.log(databypage.value.content);
+    numofpage.value = databypage.value.totalPages;
+    }
 }
 onBeforeMount( async () => {
    await getEventByPage()
@@ -71,10 +82,6 @@ const searchLastest = () =>{
     })
     }
     if(searchByDate.value !== ''){
-<<<<<<< HEAD
-=======
-      console.log('search by date');
->>>>>>> 0087c62489da8976baeca92bd71d5aae54f929b5
       databyseach.value = databyseach.value.filter((event) => {
       return new Date(searchByDate.value).setHours(0,0,0,0) == new Date(event.eventStartTime).setHours(0,0,0,0)
     })
@@ -128,15 +135,17 @@ const deleteData = (eventID) =>{
   let ans = confirm('Do you want to cancel appointment?');
   if(ans){
     data.value = data.value.filter((event) => event.id !== eventID)
-    page.value++
-    getEventByPage()
-    console.log(databypage.value);
-    data.value.push(
-      databypage.value[0]
-    )
-    console.log(data.value);
+    if(numofpage.value > 1){
+      page.value++
+      getEventWithPage()
+      setTimeout(()=>{
+        data.value.push(
+        databypage.value.content[0]
+        )
+      },400)
+    }else{ }
     return eventID;
-  }else{}
+  }
 }
 const refresh = () =>{
   searchByEmail.value = ''
@@ -189,7 +198,7 @@ const formatdate = (date) => {
       </select>
     </td>
     <td>
-      <input id="date" type="date" name="partydate" v-model="searchByDate" style="border-radius: 10px; padding-right: 1em; margin-left: -0.5em;">
+      <input id="party" type="date" name="partydate" v-model="searchByDate" style="border-radius: 10px; padding-right: 1em; margin-left: -0.5em;">
     </td>
     <td>
       <button @click="refresh" class="refresh">Refresh</button>&nbsp;&nbsp;<button @click="searchLastest" id="search">Search</button>
