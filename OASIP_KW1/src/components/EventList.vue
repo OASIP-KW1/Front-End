@@ -19,7 +19,7 @@ let numofpage = ref()
 let noDate = ref(false)
 // GET
 const getEvent = async () =>{
-    const res = await fetch(`api/events`)
+    const res = await fetch(`${import.meta.env.BASE_URL}api/events`)
     if(res.status === 200) {
     alldata.value = await res.json()
     } 
@@ -153,6 +153,7 @@ const refresh = () =>{
   searchByEmail.value = ''
   searchByCategory.value = ''
   searchByTime.value = ''
+  searchByDate.value = ''
   getEventByPage()
   numofpage.value = databypage.value.totalPages;
 }

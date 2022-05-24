@@ -38,7 +38,7 @@ const check_description = ref(false);
 const updateComplete = ref(false);
 
 const getUpdate = computed(() =>{
-  if(categoryName.value.trim() == undefined || categoryName.value.trim() == "" || categoryName.value.trim().length == 0){
+  if(categoryName.value == undefined || categoryName.value == "" || categoryName.value.length == 0){
     check_name.value = true;
   }else{
     if(nameOfCategory.value.includes(categoryName.value) && categoryName.value != params.name){

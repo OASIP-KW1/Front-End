@@ -41,8 +41,8 @@ const edit = params.name == undefined?true:false
 const view = params.name == undefined?false:true
 
 const alldata = computed(() => {
-    if (name.value.trim() == undefined || email.value == undefined || date.value == undefined || category.value == undefined
-        || name.value.trim() == "" || email.value == "" || date.value == "" || category.value == "" || name.value.length == 0 || email.value.length == 0) {
+    if (name.value == undefined || email.value == undefined || date.value == undefined || category.value == undefined
+        || name.value == "" || email.value == "" || date.value == "" || category.value == "" || name.value.length == 0 || email.value.length == 0) {
         checked.value = true;
         checked_email.value = false;
         return { status: 0 }
