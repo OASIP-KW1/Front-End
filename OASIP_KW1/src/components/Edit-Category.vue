@@ -34,7 +34,6 @@ const check_name = ref(false);
 const check_name_over = ref(false);
 const check_duration = ref(false);
 const check_name_duplicate = ref(false);
-const check_description = ref(false);
 const updateComplete = ref(false);
 
 const getUpdate = computed(() =>{
@@ -56,20 +55,15 @@ const getUpdate = computed(() =>{
         check_name_over.value = false;
         check_name_duplicate.value = false;
       }else{
-        if(categoryDescription.value.length > 500){
-          check_description.value = true;
-        }else{
         updateComplete.value = true;
         check_duration.value = false;
         check_name.value = false;
         check_name_over.value = false;
         check_name_duplicate.value = false;
-        check_description.value = false;
         setTimeout(()=>{
           myRouter.go(-2);
         },950)
         return {id: params.id , name: categoryName.value , detail: categoryDescription.value , duration: categoryDuration.value , categoryName: categoryName.value}
-        }
       }
     }
   }
@@ -92,7 +86,7 @@ const getUpdate = computed(() =>{
       <div class="card-body">
           <p v-show="check_name" style="color: red;">
             <div class="alert alert-danger" role="alert">
-                Please input Category Name.
+                Please input Category Name
             </div>
           </p>
           <p v-show="check_name_over" style="color: red;">
@@ -102,18 +96,12 @@ const getUpdate = computed(() =>{
           </p>
           <p v-show="check_name_duplicate" style="color: red;">
             <div class="alert alert-danger" role="alert">
-                CategoryName is Duplicate.
+                CategoryName is Duplicate
             </div>
           </p>
           <p v-show="check_duration" style="color: red;">
             <div class="alert alert-danger" role="alert">
-              Please validate duration is must be between 1-480 minutes.
-            </div>
-          </p>
-          
-          <p v-show="check_description" style="color: red;">
-            <div class="alert alert-danger" role="alert">
-              CategoryDescription Must not exceed 500 characters.
+                Please validate duration is between 1-480
             </div>
           </p>
           <p v-show="updateComplete" style="color: darkolivegreen;">
@@ -155,12 +143,10 @@ const getUpdate = computed(() =>{
 }
 .card-text{
   font-family: 'Mali', cursive;
-  border-radius: 11px;
 }
 .card-title2{
   margin-top: 2em;
   font-family: 'Mali', cursive;
-  border-radius: 11px;
 }
 .iconpeople{
   margin-left: -35em;
@@ -180,9 +166,6 @@ const getUpdate = computed(() =>{
 }
 .id{
   margin-top: -2em;
-  font-family: 'Mali', cursive;
-}
-.btn{
   font-family: 'Mali', cursive;
 }
 </style>
