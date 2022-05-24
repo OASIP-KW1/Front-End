@@ -120,7 +120,8 @@ const categoryId = computed(() => {
 
 const dataEachCategory = computed(() =>{
     const info = ref([])
-    info.value = allData.value.filter((item) =>{return item.eventCategory.eventCategoryName == category.value})
+    info.value = allData.value.filter((item) =>{
+        return item.eventCategory.eventCategoryName == category.value})
     return info.value
 })
 
