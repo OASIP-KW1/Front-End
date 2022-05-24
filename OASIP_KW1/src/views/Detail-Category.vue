@@ -8,7 +8,7 @@ const {params} = useRoute()
 let eventDetail = ref([])
 // GET
 const getCategoryDetail = async () =>{
-    const res = await fetch(`api/eventCategory/${params.id}`)
+    const res = await fetch(`${import.meta.env.BASE_URL}api/eventCategory/${params.id}`)
     if(res.status === 200) {
     eventDetail.value = await res.json()
     console.log(eventDetail.value);
