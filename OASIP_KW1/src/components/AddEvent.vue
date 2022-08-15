@@ -13,7 +13,7 @@ const props = defineProps({
 
 let allData = ref([])
 const getDate = async () =>{
-    const res = await fetch(`api/events`)
+    const res = await fetch(`${import.meta.env.BASE_URL}api/events`)
     if(res.status === 200) {
     allData.value = await res.json()
     }
@@ -82,12 +82,24 @@ const alldata = computed(() => {
 })
 
 const updateData = () => {
-   if(eventStartTime.value.includes(checktime()) || checkSchedule(datetime())){
-                checked_time.value = true;
-                checked.value = false
-                checked_email.value = false
-                return { status: 0 }
-            }else{
+    if(eventStartTime.value.includes(checktime())){
+        checked_time.value = false;
+        create.value = false;
+        popup.value = true;
+        return {
+                bookingName: name.value, bookingEmail: email.value, eventCategory: {
+                    "id": categoryId.value,
+                    "eventCategoryName": category.value,
+                    "eventCategoryDescription": null,
+                    "eventDuration": duration.value
+                }, eventStartTime: datetime(), eventDuration: duration.value, eventNote: addnotes.value, status: 1 , id: params.id
+            }
+    }else{
+        if(checkSchedule(datetime())){
+            checked_time.value = true;
+            return { status : 0 }
+        }else{
+            checked_time.value = false;
             create.value = false;
             popup.value = true;
             return {
@@ -98,7 +110,8 @@ const updateData = () => {
                     "eventDuration": duration.value
                 }, eventStartTime: datetime(), eventDuration: duration.value, eventNote: addnotes.value, status: 1 , id: params.id
             }
-            }
+    }
+        }
 }
 const datetime = () => {
     const disdate = new Date(date.value)
@@ -202,6 +215,15 @@ const checkemail = (email) => {
         <p class="addtitle" v-else><b>ADD APPOINTMENT</b></p>
         <!-- edit -->
         <div class="input" v-show="view">
+        <p v-show="checked_time" style="color: red;">
+                <div class="alert alert-danger" role="alert">
+                 This time has already been registered.
+                </div></p>
+                <!-- past day -->
+            <p v-show="checked_date" style="color: red;">
+                <div class="alert alert-danger" role="alert">
+                Please validate that date-time is in the future.
+            </div></p>
         <p class="names">Name &nbsp;<input type="text" size="50" :value="  params.name" disabled style="border-radius: 10px;"></p>
         <p class="emails">Email &nbsp; <input type="text" size="50" :value="  params.email" disabled style="border-radius: 10px;" ></p>
         <p class="category">Category &nbsp; <input type="text" size="50" v-model="category" disabled  style="border-radius: 10px;"></p>
