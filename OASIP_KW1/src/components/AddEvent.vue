@@ -13,7 +13,7 @@ const props = defineProps({
 
 let allData = ref([])
 const getDate = async () =>{
-    const res = await fetch(`${import.meta.env.BASE_URL}api/events`)
+    const res = await fetch(`api/events`)
     if(res.status === 200) {
     allData.value = await res.json()
     }
@@ -63,7 +63,7 @@ const alldata = computed(() => {
                     "id": categoryId.value,
                     "eventCategoryName": category.value,
                     "eventCategoryDescription": null,
-                    "eventDuration": null
+                    "eventDuration": duration.value
                 }, eventStartTime: datetime(), eventDuration: duration.value, eventNote: addnotes.value, status: 1 , id: params.id
             }
             }
@@ -81,7 +81,25 @@ const alldata = computed(() => {
     }
 })
 
-
+const updateData = () => {
+   if(eventStartTime.value.includes(checktime()) || checkSchedule(datetime())){
+                checked_time.value = true;
+                checked.value = false
+                checked_email.value = false
+                return { status: 0 }
+            }else{
+            create.value = false;
+            popup.value = true;
+            return {
+                bookingName: name.value, bookingEmail: email.value, eventCategory: {
+                    "id": categoryId.value,
+                    "eventCategoryName": category.value,
+                    "eventCategoryDescription": null,
+                    "eventDuration": duration.value
+                }, eventStartTime: datetime(), eventDuration: duration.value, eventNote: addnotes.value, status: 1 , id: params.id
+            }
+            }
+}
 const datetime = () => {
     const disdate = new Date(date.value)
     return disdate
@@ -240,7 +258,7 @@ const checkemail = (email) => {
         <div class="button" v-show="edit"><button type="button" class="Close btn btn-light btn-lg"
                 @click="$emit('createAppointment', alldata)">Create Appointment</button></div>
         <div class="button" v-show="view"><button type="button" class="Close btn btn-light btn-lg"
-                @click="$emit('edit', alldata)">Update Appointment</button></div>
+                @click="$emit('edit', updateData)">Update Appointment</button></div>
         </div>
     </div>  
     <div class="modal-dialog " role="document" v-show="popup">
