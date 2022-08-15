@@ -37,10 +37,45 @@ let checked_time = ref(false)
 let checked_date = ref(false)
 let popup = ref(false)
 let create = ref(true)
-const edit = params.name == undefined?true:false
-const view = params.name == undefined?false:true
+const edit = ref(params.name == undefined?true:false)
+const view = ref(params.name == undefined?false:true)
 
 const alldata = computed(() => {
+    if(view.value){
+        if(eventStartTime.value.includes(checktime())){
+        checked_time.value = false;
+        create.value = false;
+        popup.value = true;
+        console.log("pai wayla sump");
+        return {
+                bookingName: name.value, bookingEmail: email.value, eventCategory: {
+                    "id": categoryId.value,
+                    "eventCategoryName": category.value,
+                    "eventCategoryDescription": null,
+                    "eventDuration": duration.value
+                }, eventStartTime: datetime(), eventDuration: duration.value, eventNote: addnotes.value, status: 1 , id: params.id
+            }
+    }else{
+        if(checkSchedule(datetime())){
+            checked_time.value = true;
+            console.log("mai pai");
+            return { status : 0 }
+        }else{
+            checked_time.value = false;
+            create.value = false;
+            popup.value = true;
+            console.log("pai wayla mai");
+            return {
+                bookingName: name.value, bookingEmail: email.value, eventCategory: {
+                    "id": categoryId.value,
+                    "eventCategoryName": category.value,
+                    "eventCategoryDescription": null,
+                    "eventDuration": duration.value
+                }, eventStartTime: datetime(), eventDuration: duration.value, eventNote: addnotes.value, status: 1 , id: params.id
+            }
+        }
+    }
+    }else{
     if (name.value == undefined || email.value == undefined || date.value == undefined || category.value == undefined
         || name.value == "" || email.value == "" || date.value == "" || category.value == "" || name.value.length == 0 || email.value.length == 0) {
         checked.value = true;
@@ -79,40 +114,41 @@ const alldata = computed(() => {
             return { status: 0 }
         }
     }
+    }
 })
 
-const updateData = () => {
-    if(eventStartTime.value.includes(checktime())){
-        checked_time.value = false;
-        create.value = false;
-        popup.value = true;
-        return {
-                bookingName: name.value, bookingEmail: email.value, eventCategory: {
-                    "id": categoryId.value,
-                    "eventCategoryName": category.value,
-                    "eventCategoryDescription": null,
-                    "eventDuration": duration.value
-                }, eventStartTime: datetime(), eventDuration: duration.value, eventNote: addnotes.value, status: 1 , id: params.id
-            }
-    }else{
-        if(checkSchedule(datetime())){
-            checked_time.value = true;
-            return { status : 0 }
-        }else{
-            checked_time.value = false;
-            create.value = false;
-            popup.value = true;
-            return {
-                bookingName: name.value, bookingEmail: email.value, eventCategory: {
-                    "id": categoryId.value,
-                    "eventCategoryName": category.value,
-                    "eventCategoryDescription": null,
-                    "eventDuration": duration.value
-                }, eventStartTime: datetime(), eventDuration: duration.value, eventNote: addnotes.value, status: 1 , id: params.id
-            }
-    }
-        }
-}
+// const updateData = () => {
+//     if(eventStartTime.value.includes(checktime())){
+//         checked_time.value = false;
+//         create.value = false;
+//         popup.value = true;
+//         return {
+//                 bookingName: name.value, bookingEmail: email.value, eventCategory: {
+//                     "id": categoryId.value,
+//                     "eventCategoryName": category.value,
+//                     "eventCategoryDescription": null,
+//                     "eventDuration": duration.value
+//                 }, eventStartTime: datetime(), eventDuration: duration.value, eventNote: addnotes.value, status: 1 , id: params.id
+//             }
+//     }else{
+//         if(checkSchedule(datetime())){
+//             checked_time.value = true;
+//             return { status : 0 }
+//         }else{
+//             checked_time.value = false;
+//             create.value = false;
+//             popup.value = true;
+//             return {
+//                 bookingName: name.value, bookingEmail: email.value, eventCategory: {
+//                     "id": categoryId.value,
+//                     "eventCategoryName": category.value,
+//                     "eventCategoryDescription": null,
+//                     "eventDuration": duration.value
+//                 }, eventStartTime: datetime(), eventDuration: duration.value, eventNote: addnotes.value, status: 1 , id: params.id
+//             }
+//     }
+//         }
+// }
 const datetime = () => {
     const disdate = new Date(date.value)
     return disdate
@@ -280,7 +316,7 @@ const checkemail = (email) => {
         <div class="button" v-show="edit"><button type="button" class="Close btn btn-light btn-lg"
                 @click="$emit('createAppointment', alldata)">Create Appointment</button></div>
         <div class="button" v-show="view"><button type="button" class="Close btn btn-light btn-lg"
-                @click="$emit('edit', updateData)">Update Appointment</button></div>
+                @click="$emit('edit', alldata)">Update Appointment</button></div>
         </div>
     </div>  
     <div class="modal-dialog " role="document" v-show="popup">
